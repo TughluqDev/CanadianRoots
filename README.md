@@ -1,4 +1,4 @@
-# Canadian Roots
+# Canadian Roots (School Project)
 
 *Discover Canada through its land, food, and cultures.*
 
