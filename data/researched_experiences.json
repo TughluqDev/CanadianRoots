@@ -1,0 +1,2089 @@
+{
+  "dataset_version": "1.0",
+  "researched_at": "2026-11-18",
+  "method": "Official websites fetched directly on 2026-11-18 for offerings, seasons and prices; coordinates from OpenStreetMap Nominatim or Wikipedia; images from the Wikimedia Commons API. See RESEARCH_SOURCES.md.",
+  "experiences": [
+    {
+      "slug": "canada-agriculture-and-food-museum",
+      "name": "Canada Agriculture and Food Museum",
+      "address": "901 Prince of Wales Drive",
+      "city": "Ottawa",
+      "province": "ON",
+      "region": "central",
+      "latitude": 45.3873,
+      "longitude": -75.7094,
+      "primary_culture": "british",
+      "cultures": [
+        "british",
+        "immigrant"
+      ],
+      "community": "Federal agricultural research tradition of the Central Experimental Farm",
+      "tags": [
+        "farming",
+        "animals",
+        "history",
+        "cooking",
+        "food_tasting",
+        "rural_life",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "A working farm and food-science museum inside Ottawa's Central Experimental Farm.",
+      "description": "Visitors walk through barns housing cattle, horses, goats, alpacas and other farm animals, and can watch museum guides care for them. Indoor exhibitions explain the science behind food production and sustainable agriculture, and the demonstration kitchen hosts seasonal cooking demonstrations built around harvest crops. Because the museum is open year-round, it works as a rainy-day or winter stop in the capital.",
+      "agricultural_significance": "The museum sits on the Central Experimental Farm, the federal research farm established in 1886 to test crops and livestock suited to Canadian conditions. Its exhibits connect that research legacy to modern food production, aquaculture and farm technology.",
+      "cultural_context": "The Experimental Farm system was created by the federal government in the late nineteenth century as settlement expanded west, reflecting the British-Canadian institutional model of scientific agriculture. Today the museum presents farming as a shared national story, with free admission for Indigenous visitors noted by Ingenium.",
+      "food_spotlight": {
+        "name": "Demonstration Kitchen harvest demos",
+        "description": "Seasonal demonstrations use crops such as apples and sweet corn to show how farm products become food.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Tour the livestock barns",
+        "Watch animal care and farm demonstrations",
+        "Food and farm-science exhibitions",
+        "Seasonal demonstration-kitchen sessions"
+      ],
+      "visit_duration_hours": 2.5,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Open Wednesday to Sunday, 9 a.m.-5 p.m., year-round (closed Dec. 25-26). Free admission daily from 4-5 p.m.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 15.0,
+        "child_price_cad": 12.75,
+        "basis": "per_person",
+        "notes": "Regular adult fee, taxes not included; youth 3-17 $12.75; children 2 and under free; family $42.50. Parking extra.",
+        "source_url": "https://ingenium.ca/agriculture/en/visit/"
+      },
+      "website": "https://ingenium.ca/agriculture/en/",
+      "sources": [
+        {
+          "url": "https://ingenium.ca/agriculture/en/visit/",
+          "title": "Plan your visit - Canada Agriculture and Food Museum",
+          "publisher": "Ingenium",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://ingenium.ca/agriculture/en/",
+          "title": "Canada Agriculture and Food Museum home",
+          "publisher": "Ingenium",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Central_Experimental_Farm",
+          "title": "Central Experimental Farm",
+          "publisher": "Wikipedia",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/CEF_Agricultural_Museum.jpg/1280px-CEF_Agricultural_Museum.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:CEF_Agricultural_Museum.jpg",
+        "author": "P199",
+        "license": "Public domain",
+        "caption": "The Canada Agriculture and Food Museum barn on the Central Experimental Farm, Ottawa"
+      }
+    },
+    {
+      "slug": "madahoki-farm",
+      "name": "Mādahòkì Farm",
+      "address": "4420 West Hunt Club Road",
+      "city": "Ottawa (Nepean)",
+      "province": "ON",
+      "region": "central",
+      "latitude": 45.3066,
+      "longitude": -75.81,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous"
+      ],
+      "community": "Indigenous Experiences; on unceded Algonquin territory; name is Anishinaabemowin",
+      "tags": [
+        "indigenous_culture",
+        "animals",
+        "farming",
+        "nature",
+        "hiking",
+        "food_tasting",
+        "traditional_crafts",
+        "cultural_festivals",
+        "warm_weather"
+      ],
+      "short_description": "An Indigenous-run agritourism farm in Ottawa's Greenbelt, home to a herd of endangered Ojibwe Spirit Horses.",
+      "description": "Operated by Indigenous Experiences, the farm invites visitors to meet the rare Ojibwe Spirit Horses along with goats and other small animals. A Legacy Trail with interpretive signs introduces traditional medicines and the Seven Grandfather Teachings, while an Indigenous marketplace sells goods from Indigenous vendors. Bookable add-ons such as the self-guided Trail of the Spirit Horse and seasonal festivals deepen the visit.",
+      "agricultural_significance": "The farm describes itself as Canada's only Indigenous agritourism destination and working farm, and it is helping to rebuild the population of the Ojibwe Spirit Horse, Canada's only Indigenous horse breed. Land-based programming ties animal care, plants and foodways together.",
+      "cultural_context": "Mādahòkì is an Anishinaabemowin word meaning 'to share the land', and the farm acknowledges that it sits on the unceded traditional territory of the Algonquin peoples. It opened in October 2021 and hosts events such as the Summer Solstice Indigenous Festival and the Sìgwan (spring) festival.",
+      "food_spotlight": {
+        "name": "Indigenous snack bar and Bannock in a Bag",
+        "description": "A rotating snack bar serves Indigenous treats during the visitor season, and the farm sells its own bannock mix in the marketplace.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Meet the Ojibwe Spirit Horses",
+        "Walk the Legacy Trail",
+        "Shop the Indigenous Marketplace",
+        "Trail of the Spirit Horse self-guided experience (paid)",
+        "Seasonal festivals and workshops"
+      ],
+      "visit_duration_hours": 2.0,
+      "available_months": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "season_notes": "2026 visitor experiences ran July 9 - October 4 (Thursday-Sunday, 11 a.m.-4 p.m. for add-ons). The marketplace is open Thursday-Sunday, 11 a.m.-4 p.m.; holiday programming is also offered.",
+      "pricing": {
+        "status": "free",
+        "adult_price_cad": 0.0,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "General admission is free. Paid add-ons: Trail of the Spirit Horse $20 adult / $12 child under 12 (approx. 45 min); workshops and horse encounters are extra.",
+        "source_url": "https://madahoki.ca/visitor-experiences/"
+      },
+      "website": "https://madahoki.ca/",
+      "sources": [
+        {
+          "url": "https://madahoki.ca/visitor-experiences/",
+          "title": "Visitor Experiences",
+          "publisher": "Mādahòkì Farm",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://madahoki.ca/location-hours/",
+          "title": "Location & Hours",
+          "publisher": "Mādahòkì Farm",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://ncc-ccn.gc.ca/news/a-new-indigenous-experiences-attraction-in-ottawa-madahoki-farm",
+          "title": "A new Indigenous experiences attraction in Ottawa: Mādahòkì Farm",
+          "publisher": "National Capital Commission",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Agawate.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Agawate.jpg",
+        "author": "Llcips09",
+        "license": "CC BY-SA 4.0",
+        "caption": "Related subject, not taken at the farm: Agawate, a Lac La Croix Indian Pony (Ojibwe horse) mare"
+      }
+    },
+    {
+      "slug": "upper-canada-village",
+      "name": "Upper Canada Village",
+      "address": "13740 County Road 2",
+      "city": "Morrisburg",
+      "province": "ON",
+      "region": "central",
+      "latitude": 44.9472,
+      "longitude": -75.0669,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Loyalist and English-Canadian settlers of the St. Lawrence valley",
+      "tags": [
+        "history",
+        "farming",
+        "rural_life",
+        "traditional_crafts",
+        "animals",
+        "food_tasting",
+        "photography",
+        "warm_weather"
+      ],
+      "short_description": "A living-history village recreating rural English Canada in 1866, with working mills and heritage trades.",
+      "description": "More than forty historic buildings, many relocated during construction of the St. Lawrence Seaway, form a village staffed by costumed interpreters. Visitors can watch flour being ground, wool being spun and blacksmiths at work, ride a horse-drawn conveyance, and eat period-style meals at Willard's Hotel. In late autumn and winter the site switches to evening events such as PumpkInferno and Alight at Night.",
+      "agricultural_significance": "The village shows the farm-to-table chain of a nineteenth-century Ontario community, from field and mill to bakery and table. Working mills and farm buildings demonstrate how grain, wool and dairy sustained rural households.",
+      "cultural_context": "The site interprets the year 1866 in a community shaped by Loyalist and later English-speaking settlement along the St. Lawrence. It opened in 1961, built from heritage buildings saved from villages flooded by the Seaway project.",
+      "food_spotlight": {
+        "name": "Village bread and cheddar",
+        "description": "The Village Café serves grilled cheddar sandwiches on fresh-baked Village Bread, and Willard's Hotel offers period-style dishes such as rarebit and afternoon tea.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Explore 40+ heritage buildings",
+        "Watch the working mills and heritage trades",
+        "Horse-drawn and miniature-train rides",
+        "Period dining at Willard's Hotel",
+        "Seasonal evening festivals"
+      ],
+      "visit_duration_hours": 4.0,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Main daytime season runs roughly May to September (exact 2027 dates not yet published). PumpkInferno runs in October and Alight at Night on select nights Nov. 27, 2026 - Jan. 2, 2027.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 26.0,
+        "child_price_cad": 17.0,
+        "basis": "per_person",
+        "notes": "Main-season adult (25-64) $26 plus HST; youth 5-12 $17; under 5 free; family $80. Special events priced separately.",
+        "source_url": "https://www.uppercanadavillage.com/visit/admissions/"
+      },
+      "website": "https://www.uppercanadavillage.com/",
+      "sources": [
+        {
+          "url": "https://www.uppercanadavillage.com/visit/admissions/",
+          "title": "Admissions",
+          "publisher": "Upper Canada Village / St. Lawrence Parks Commission",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.uppercanadavillage.com/visit/dining/",
+          "title": "Dining",
+          "publisher": "Upper Canada Village",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Uppercanvillage1.jpg/1280px-Uppercanvillage1.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Uppercanvillage1.jpg",
+        "author": "Bodoklecksel",
+        "license": "CC BY-SA 3.0",
+        "caption": "Heritage buildings at Upper Canada Village, Morrisburg"
+      }
+    },
+    {
+      "slug": "sucrerie-de-la-montagne",
+      "name": "Sucrerie de la Montagne",
+      "address": "300 chemin Saint-Georges",
+      "city": "Rigaud",
+      "province": "QC",
+      "region": "central",
+      "latitude": 45.4545,
+      "longitude": -74.306,
+      "primary_culture": "french",
+      "cultures": [
+        "french"
+      ],
+      "community": "Québécois maple-sugaring tradition",
+      "tags": [
+        "food_tasting",
+        "cold_weather",
+        "history",
+        "cultural_festivals",
+        "rural_life",
+        "nature"
+      ],
+      "short_description": "A traditional wood-fired sugar shack in a maple forest west of Montreal, famous for its sugaring-off feasts.",
+      "description": "During sugaring-off season, sap is still collected in pails and boiled down over a wood-fired evaporator. Guests sit down to a traditional sugar-shack meal, taste maple taffy poured on snow, browse a general store of maple products and handicrafts, and, for larger groups, enjoy live music and horse-drawn rides. The site also hosts meals and overnight stays outside the sugar season by reservation.",
+      "agricultural_significance": "Maple syrup production is one of Quebec's signature agricultural traditions, and the sucrerie demonstrates the older, labour-intensive pail-and-wood-fire method. Its menu showcases farm staples such as pea soup, ham, baked beans and maple desserts.",
+      "cultural_context": "Founded in 1978 by Pierre Faucher and now run with his son Stefan, the sucrerie presents the 'temps des sucres' as a festive rural Québécois gathering. It describes itself as a recognized Québec heritage site.",
+      "food_spotlight": {
+        "name": "Repas de cabane à sucre",
+        "description": "A multi-course meal of pea soup, maple-smoked ham, wood-fired baked beans, Beauce-style meat pie and sugar pie, plus taffy on snow.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Traditional sugar-shack meal",
+        "Maple taffy on snow",
+        "Visit the wood-fired evaporator and maple bush",
+        "Shop the general store",
+        "Horse-drawn rides and live music (group minimums apply)"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "season_notes": "Sugaring-off season with taffy on snow runs February to April (2026 rates listed Feb. 21 - May 3). Meals and lodging are available year-round by reservation.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 61.0,
+        "child_price_cad": 31.0,
+        "basis": "per_person",
+        "notes": "2026 rates: 13+ lunch $58-63 depending on date and day; ages 7-12 $31; ages 3-6 $26; taxes extra; reservation required. Price is for the meal experience.",
+        "source_url": "https://www.sucreriedelamontagne.com/en/sugar/"
+      },
+      "website": "https://www.sucreriedelamontagne.com/",
+      "sources": [
+        {
+          "url": "https://www.sucreriedelamontagne.com/en/sugar/",
+          "title": "Sugaring Off Time",
+          "publisher": "Sucrerie de la Montagne",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.sucreriedelamontagne.com/",
+          "title": "Sucrerie de la Montagne home",
+          "publisher": "Sucrerie de la Montagne",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Rigaud-Entr%C3%A9e_de_la_sucrerie_de_montagne-2025-0104%281%29.jpg/1280px-Rigaud-Entr%C3%A9e_de_la_sucrerie_de_montagne-2025-0104%281%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Rigaud-Entr%C3%A9e_de_la_sucrerie_de_montagne-2025-0104(1).jpg",
+        "author": "Veillg1",
+        "license": "CC0",
+        "caption": "Entrance to the Sucrerie de la Montagne on chemin Saint-Georges, Rigaud"
+      }
+    },
+    {
+      "slug": "fromagerie-la-station",
+      "name": "Fromagerie La Station",
+      "address": "440 chemin de Hatley",
+      "city": "Compton",
+      "province": "QC",
+      "region": "central",
+      "latitude": 45.207,
+      "longitude": -71.8681,
+      "primary_culture": "french",
+      "cultures": [
+        "french"
+      ],
+      "community": "Multi-generation family farm in the Eastern Townships (Cantons-de-l'Est)",
+      "tags": [
+        "cheese",
+        "farming",
+        "food_tasting",
+        "animals",
+        "rural_life",
+        "scenic_landscapes",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "An organic family dairy farm in Compton that makes raw-milk farmhouse cheeses and runs an ÉCONOMUSÉE of farm cheesemaking.",
+      "description": "A free self-guided interpretation route, open year-round during shop hours, covers the farm, its ripening rooms and the craft of farmhouse cheese, including a scent organ and multimedia displays. Booked guided tours add a look at the hay dryer and pastured cows and finish with a tasting. The farm shop sells the full range of cheeses, such as Alfred Le Fermier and Comtomme.",
+      "agricultural_significance": "La Station is a certified-organic farm where cheese is made from the herd's own milk, so pasture, cows and cheese are part of one operation. It shows how farmstead cheesemaking adds value to dairy farming in the Coaticook region.",
+      "cultural_context": "The farm presents itself as the work of four generations of farmers. It belongs to Quebec's farmhouse-cheese revival and to the ÉCONOMUSÉE network, which showcases traditional crafts in working businesses.",
+      "food_spotlight": {
+        "name": "Alfred Le Fermier",
+        "description": "One of the farm's signature cheeses, made from the farm's own organic milk.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Self-guided ÉCONOMUSÉE route (free)",
+        "Guided farm and cheese-dairy tour with tasting",
+        "See cows on pasture and the hay dryer",
+        "Farm shop"
+      ],
+      "visit_duration_hours": 1.5,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "The self-guided route is open year-round during shop hours, including winter. Guided tours run on dates listed in the online booking system.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 18.0,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "Guided tour $18 per adult, tasting included; children 12 and under free. Self-guided route has no charge.",
+        "source_url": "https://fromagerielastation.com/boutique/visites-guidees/"
+      },
+      "website": "https://fromagerielastation.com/",
+      "sources": [
+        {
+          "url": "https://fromagerielastation.com/boutique/visites-guidees/",
+          "title": "Visites guidées",
+          "publisher": "Fromagerie La Station",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://fromagerielastation.com/preparer-votre-visite-a-la-station/",
+          "title": "Préparer votre visite",
+          "publisher": "Fromagerie La Station",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": null
+    },
+    {
+      "slug": "abbaye-saint-benoit-du-lac",
+      "name": "Abbaye de Saint-Benoît-du-Lac",
+      "address": "1 rue Principale",
+      "city": "Saint-Benoît-du-Lac",
+      "province": "QC",
+      "region": "central",
+      "latitude": 45.1664,
+      "longitude": -72.2708,
+      "primary_culture": "french",
+      "cultures": [
+        "french"
+      ],
+      "community": "Benedictine monks (founded from the French abbey of Saint-Wandrille)",
+      "tags": [
+        "cheese",
+        "fruit_picking",
+        "food_tasting",
+        "history",
+        "scenic_landscapes",
+        "relaxation",
+        "photography"
+      ],
+      "short_description": "A Benedictine abbey on Lake Memphremagog where monks make award-winning cheeses and visitors pick apples in the abbey orchards.",
+      "description": "The abbey shop sells cheeses, ciders, compotes and spreads made by the monastic community, and the abbey church is open daily for visitors and Gregorian-chant services. Guided tours of selected spaces run in summer, and in early autumn the orchards of about 3,500 apple trees open for pick-your-own on weekends. The lakeside setting in the Eastern Townships makes it a calm stop between Magog and the U.S. border.",
+      "agricultural_significance": "The monks run a cheese dairy supplied entirely by local dairy farms, producing cheeses such as Bleu Bénédictin, and they tend extensive apple orchards used for fresh fruit and cider. Their products carry the PAX mark, which certifies work done by monks.",
+      "cultural_context": "The community traces its origins to monks of the abbey of Saint-Wandrille in Normandy who, exiled by French anti-clerical laws, settled on Lake Memphremagog in 1912. The current abbey church, designed by Dan Hanganu, was built between 1990 and 1994.",
+      "food_spotlight": {
+        "name": "Bleu Bénédictin",
+        "description": "A creamy blue-veined cheese made by the monks and a repeated prize-winner at the Royal Agricultural Winter Fair.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Shop monastery cheeses, ciders and compotes",
+        "Guided abbey tour (summer)",
+        "Pick-your-own apples (autumn weekends)",
+        "Attend Gregorian-chant services"
+      ],
+      "visit_duration_hours": 2.0,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Shop open daily year-round (9 a.m.-6 p.m. June-October, 9 a.m.-5 p.m. November-May). Orchards open weekends from early September to Thanksgiving; guided tours mainly late June to early September.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 15.0,
+        "child_price_cad": 9.0,
+        "basis": "per_person",
+        "notes": "Guided tour: $15 adult, $9 ages 7-17, free 6 and under, $35 family. Visiting the shop and church is free; apples are sold by weight.",
+        "source_url": "https://www.abbaye.ca/visiter-labbaye/visites-guidees/"
+      },
+      "website": "https://www.abbaye.ca/",
+      "sources": [
+        {
+          "url": "https://www.abbaye.ca/visiter-labbaye/vergers/",
+          "title": "Nos vergers",
+          "publisher": "Abbaye de Saint-Benoît-du-Lac",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.abbaye.ca/visiter-labbaye/boutique/",
+          "title": "Notre boutique",
+          "publisher": "Abbaye de Saint-Benoît-du-Lac",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.abbaye.ca/visiter-labbaye/visites-guidees/",
+          "title": "Visites guidées",
+          "publisher": "Abbaye de Saint-Benoît-du-Lac",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.abbaye.ca/comprendre-labbaye/histoire/",
+          "title": "Histoire",
+          "publisher": "Abbaye de Saint-Benoît-du-Lac",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Abbaye_de_Saint-Beno%C3%AEt-du-Lac_-_Cantons-de-l%E2%80%99Est_Qu%C3%A9bec.jpg/1280px-Abbaye_de_Saint-Beno%C3%AEt-du-Lac_-_Cantons-de-l%E2%80%99Est_Qu%C3%A9bec.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Abbaye_de_Saint-Beno%C3%AEt-du-Lac_-_Cantons-de-l%E2%80%99Est_Qu%C3%A9bec.jpg",
+        "author": "Hurteau, Paul ; Parent, Claude",
+        "license": "CC BY-SA 3.0",
+        "caption": "Abbaye de Saint-Benoît-du-Lac above Lake Memphremagog, Eastern Townships"
+      }
+    },
+    {
+      "slug": "sainte-marie-among-the-hurons",
+      "name": "Sainte-Marie among the Hurons",
+      "address": "16164 Highway 12 East",
+      "city": "Midland",
+      "province": "ON",
+      "region": "central",
+      "latitude": 44.7342,
+      "longitude": -79.8453,
+      "primary_culture": "french",
+      "cultures": [
+        "french",
+        "indigenous"
+      ],
+      "community": "17th-century French Jesuit mission in Wendake, homeland of the Wendat Nation",
+      "tags": [
+        "history",
+        "farming",
+        "animals",
+        "indigenous_culture",
+        "traditional_crafts",
+        "warm_weather",
+        "photography"
+      ],
+      "short_description": "A reconstructed 1639 French Jesuit mission in Wendat country, with a heritage farm of 17th-century crops and animal breeds.",
+      "description": "Costumed interpreters bring the palisaded mission to life with activities such as canoeing in the locked waterway, quill-pen writing, lacrosse and blacksmithing. The heritage farm, open from early May to Thanksgiving, features historic gardens and heritage breeds such as Canadienne cattle and Houdan chickens. Harvest and Indigenous Peoples' Day events add seasonal programming.",
+      "agricultural_significance": "The farm interprets the crops and animals that sustained life in Wendake in the 1600s, including Canadienne cattle, Canada's original dairy breed, of which fewer than 200 are registered. It also highlights the Wendat as skilled farmers whose agriculture supported the region.",
+      "cultural_context": "Wendake, on the shores of Georgian Bay, was the ancestral homeland of the Wendat, a matrilineal farming and trading people. French Jesuits built Sainte-Marie as their mission headquarters in the seventeenth century; the site was reconstructed after archaeological research and is now operated by the province.",
+      "food_spotlight": {
+        "name": "Restaurant Sainte-Marie",
+        "description": "The on-site restaurant is open year-round; harvest events such as Hearth to Table focus on historic foodways.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Explore the reconstructed mission with interpreters",
+        "Visit the heritage farm and gardens",
+        "Canoeing, lacrosse and quill-pen writing",
+        "Seasonal harvest festivals"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "season_notes": "Daily operation resumes May 1, 2027; the heritage farm is open early May to Thanksgiving. Special events (e.g., First Light, Nov. 26 - Dec. 13) and the restaurant operate outside the season.",
+      "pricing": {
+        "status": "estimate",
+        "adult_price_cad": 15.0,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "DEMO ESTIMATE: regular daily admission was not published during the off-season. Published event admission is $15 tax-included; a season pass is $35. Indigenous persons admitted free.",
+        "source_url": null
+      },
+      "website": "https://saintemarieamongthehurons.on.ca/",
+      "sources": [
+        {
+          "url": "https://saintemarieamongthehurons.on.ca/plan-your-visit/hours-rates/",
+          "title": "Hours and rates",
+          "publisher": "Sainte-Marie among the Hurons (Huronia Historical Parks)",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://saintemarieamongthehurons.on.ca/about-us/heritage-farm-at-sainte-marie/",
+          "title": "Heritage Farm",
+          "publisher": "Sainte-Marie among the Hurons",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://saintemarieamongthehurons.on.ca/about-us/historic-background/",
+          "title": "Historic background",
+          "publisher": "Sainte-Marie among the Hurons",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/St_Marie_Hurons_1.jpg/1280px-St_Marie_Hurons_1.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:St_Marie_Hurons_1.jpg",
+        "author": "P199",
+        "license": "Public domain",
+        "caption": "Main entrance of Sainte-Marie among the Hurons, Midland"
+      }
+    },
+    {
+      "slug": "doon-heritage-village",
+      "name": "Doon Heritage Village",
+      "address": "10 Huron Road",
+      "city": "Kitchener",
+      "province": "ON",
+      "region": "central",
+      "latitude": 43.4018,
+      "longitude": -80.4371,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant"
+      ],
+      "community": "Waterloo Region settler communities, including Old Order Mennonites (Pennsylvania German heritage)",
+      "tags": [
+        "history",
+        "farming",
+        "animals",
+        "rural_life",
+        "food_tasting",
+        "warm_weather",
+        "photography"
+      ],
+      "short_description": "A 60-acre living-history village showing rural Waterloo Region in 1914, with heritage farm animals.",
+      "description": "Costumed interpreters staff historic homes, shops and farm buildings set out as they would have looked in 1914. In season, farm animals live on the village farms, and the 'Taste of 1914' program runs on Saturday afternoons. Admission also covers the galleries of the adjoining Ken Seiling Waterloo Region Museum, which stays open after the village closes for the year.",
+      "agricultural_significance": "The village interprets the farm economy of Waterloo Region on the eve of the First World War, when mixed family farms supplied local markets. Seasonal livestock come from area farms, linking the museum to present-day agriculture.",
+      "cultural_context": "Waterloo Region was settled heavily by Pennsylvania German Mennonites and later German immigrants. The village's Peter Martin House, built in 1820, was restored with help from the Old Order Mennonite community, including descendants of its builder; the museum's newer interpretive plan aims to tell a broader range of community stories.",
+      "food_spotlight": {
+        "name": "Taste of 1914",
+        "description": "A Saturday-afternoon program presenting foods of the period in the village.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Walk the 1914 village with costumed interpreters",
+        "Meet seasonal farm animals",
+        "Taste of 1914 (Saturdays)",
+        "Waterloo Region Museum galleries"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "season_notes": "Village season runs from early spring to Labour Day, plus select fall Saturdays and Thanksgiving weekend (farm animals leave at the end of summer). The museum galleries are open year-round, Wednesday-Sunday.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 15.0,
+        "child_price_cad": 8.0,
+        "basis": "per_person",
+        "notes": "Adult (18-54) $15 plus HST; children 5-12 $8; under 5 free; family/small group (4) $30. Includes museum galleries.",
+        "source_url": "https://www.regionofwaterloomuseums.ca/visit/admissions-and-guidelines/"
+      },
+      "website": "https://www.regionofwaterloomuseums.ca/visit/doon-heritage-village/",
+      "sources": [
+        {
+          "url": "https://www.regionofwaterloomuseums.ca/visit/doon-heritage-village/",
+          "title": "Doon Heritage Village",
+          "publisher": "Region of Waterloo Museums",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.regionofwaterloomuseums.ca/visit/admissions-and-guidelines/",
+          "title": "Admissions and Guidelines",
+          "publisher": "Region of Waterloo Museums",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Doon_Heritage_Village",
+          "title": "Doon Heritage Village",
+          "publisher": "Wikipedia",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Doon_heritage_village_.jpg/1280px-Doon_heritage_village_.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Doon_heritage_village_.jpg",
+        "author": "Pcorb",
+        "license": "CC BY-SA 3.0",
+        "caption": "Doon Heritage Village, Kitchener"
+      }
+    },
+    {
+      "slug": "orwell-corner-historic-village",
+      "name": "Orwell Corner Historic Village",
+      "address": "7 Old Uigg Road",
+      "city": "Vernon Bridge (Orwell)",
+      "province": "PE",
+      "region": "atlantic",
+      "latitude": 46.1564,
+      "longitude": -62.8351,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Rural Prince Edward Island settler community of the 1890s",
+      "tags": [
+        "farming",
+        "animals",
+        "history",
+        "rural_life",
+        "food_tasting",
+        "cooking",
+        "scenic_landscapes",
+        "warm_weather"
+      ],
+      "short_description": "A restored 1890s Island crossroads village with a working farm, agricultural museum and tea room.",
+      "description": "Visitors can meet and help feed cows, horses, sheep, goats, pigs, turkeys and chickens, take a horse-and-wagon ride, and visit the blacksmith, general store, church and schoolhouse. The Agricultural Museum displays farm equipment, and the Community Hall tea room serves snacks and meals in summer. Ticketed programs such as Food on the Farm include hands-on bread- and butter-making.",
+      "agricultural_significance": "Orwell Corner preserves the mixed-farming way of life that defined rural PEI, where families raised livestock and crops for their own tables and local trade. Its agricultural museum and working barnyard make that history tangible.",
+      "cultural_context": "The village is operated by the PEI Museum and Heritage Foundation and depicts a late-Victorian Island farm community in the 1890s. Its gardens and picnic area overlook Orwell Bay.",
+      "food_spotlight": {
+        "name": "Food on the Farm",
+        "description": "A paid program in which participants make bread and butter the old-fashioned way; village admission is included.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Meet and feed farm animals",
+        "Horse-and-wagon rides",
+        "Agricultural Museum and blacksmith shop",
+        "Tea room meals",
+        "Food on the Farm program"
+      ],
+      "visit_duration_hours": 2.5,
+      "available_months": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Summer season only; the village was closed for the season at research time and 2027 dates were not yet published (months listed are approximate). Tea room open 9:30 a.m.-4:30 p.m. daily in summer, cash only.",
+      "pricing": {
+        "status": "unavailable",
+        "adult_price_cad": null,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "Standard village admission was not published at research time. Food on the Farm and Forge programs are $50 per person and 'In the Time of Maud' is $60, each including admission.",
+        "source_url": "https://www.peimuseum.ca/visit/orwell-corner-historic-village/"
+      },
+      "website": "https://www.peimuseum.ca/visit/orwell-corner-historic-village/",
+      "sources": [
+        {
+          "url": "https://www.peimuseum.ca/visit/orwell-corner-historic-village/",
+          "title": "Orwell Corner Historic Village",
+          "publisher": "PEI Museum and Heritage Foundation",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Orwell_Corner_Historic_Village%2C_Prince_Edward_Island_%28932044102%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Orwell_Corner_Historic_Village,_Prince_Edward_Island_(932044102).jpg",
+        "author": "Buddha Dog",
+        "license": "CC BY-SA 2.0",
+        "caption": "Chicken coop at Orwell Corner Historic Village"
+      }
+    },
+    {
+      "slug": "ross-farm-museum",
+      "name": "Ross Farm Museum",
+      "address": "4568 Highway 12",
+      "city": "New Ross",
+      "province": "NS",
+      "region": "atlantic",
+      "latitude": 44.7271,
+      "longitude": -64.4559,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Irish-born Captain William Ross and disbanded soldiers of the Nova Scotia Fencibles (settled 1816)",
+      "tags": [
+        "farming",
+        "animals",
+        "history",
+        "rural_life",
+        "traditional_crafts",
+        "food_tasting",
+        "cooking",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "A 60-acre living-history farm showing Nova Scotia family farming more than a century ago, complete with working oxen.",
+      "description": "Visitors roam rolling farmland, historic buildings and barns where heritage animals are kept and cows are milked. Interpreters demonstrate period chores, and Rosebank Cottage often offers samples of traditional recipes. Year-round workshops range from ox handling and spoon carving to sewing, and the Hearth Room Café serves house-made food.",
+      "agricultural_significance": "Ross Farm preserves heritage livestock and the ox-powered farming methods that cleared and worked Nova Scotia's forested interior. Its beginner ox workshops keep a rare draft-animal skill alive.",
+      "cultural_context": "In 1816 Captain William Ross, a native of County Cork, Ireland, led his family and 172 disbanded soldiers to settle the area at the urging of Governor Lord Dalhousie, who wanted farming settlements in Nova Scotia's forested interior. The frame house he built the following year, Rosebank, still stands, and the farm is now part of the Nova Scotia Museum network.",
+      "food_spotlight": {
+        "name": "Rosebank Cottage recipes",
+        "description": "Traditional recipes are frequently sampled in Rosebank Cottage during visits.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Explore the working heritage farm",
+        "See oxen and heritage livestock",
+        "Rosebank Cottage tastings",
+        "Seasonal craft and ox workshops",
+        "Hearth Room Café"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Open year-round with hours that vary by season; at research time the museum was open Saturday-Sunday 10 a.m.-4 p.m. Workshops are scheduled through the year.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 15.0,
+        "child_price_cad": 5.0,
+        "basis": "per_person",
+        "notes": "Adult $15; child 6-17 $5; 5 and under free; family $30.",
+        "source_url": "https://rossfarm.novascotia.ca/visit"
+      },
+      "website": "https://rossfarm.novascotia.ca/",
+      "sources": [
+        {
+          "url": "https://rossfarm.novascotia.ca/visit",
+          "title": "Visit",
+          "publisher": "Ross Farm Museum / Nova Scotia Museum",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://rossfarm.novascotia.ca/",
+          "title": "Ross Farm Museum home",
+          "publisher": "Ross Farm Museum",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://rossfarm.novascotia.ca/stories/history-ross-farm",
+          "title": "History of Ross Farm",
+          "publisher": "Ross Farm Museum",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Nova_Scotia_DSC01444_-_Ross_Barn_%287815305990%29.jpg/1280px-Nova_Scotia_DSC01444_-_Ross_Barn_%287815305990%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Nova_Scotia_DSC01444_-_Ross_Barn_(7815305990).jpg",
+        "author": "Dennis G. Jarvis",
+        "license": "CC BY-SA 2.0",
+        "caption": "The barn at Ross Farm Museum where animals are kept and cows are milked"
+      }
+    },
+    {
+      "slug": "grand-pre-national-historic-site",
+      "name": "Grand-Pré National Historic Site",
+      "address": "2205 Grand-Pré Road",
+      "city": "Grand-Pré",
+      "province": "NS",
+      "region": "atlantic",
+      "latitude": 45.1094,
+      "longitude": -64.3103,
+      "primary_culture": "french",
+      "cultures": [
+        "french",
+        "indigenous"
+      ],
+      "community": "Acadians; on the unceded territory of the Mi'kmaq",
+      "tags": [
+        "history",
+        "farming",
+        "scenic_landscapes",
+        "nature",
+        "photography",
+        "hiking",
+        "warm_weather"
+      ],
+      "short_description": "The heart of the UNESCO-listed Landscape of Grand-Pré, where Acadian dykelands still produce farmland reclaimed from the sea.",
+      "description": "The site's visitor centre uses multimedia and displays to tell the story of Acadian settlement and the Deportation, and the Memorial Church and Victorian garden stand in a sweeping farm landscape. Parks Canada interpreters lead guided tours, and the Harvest Moon trail links Grand-Pré to Annapolis Royal for walkers and cyclists. The surrounding dykeland fields are still actively farmed.",
+      "agricultural_significance": "Beginning in the 17th century, Acadian settlers built dykes and wooden aboiteau sluices to turn tidal marshland on the Minas Basin into farmland, a system later maintained by the Planters and today's farmers. That 1,300-hectare farmed landscape is why the Landscape of Grand Pré is a UNESCO World Heritage Site.",
+      "cultural_context": "Grand-Pré is a monument to Acadian culture and to the Deportation of the Acadians that began in 1755. Parks Canada and the Mi'kmaq of Nova Scotia co-manage protected areas under the Toqi'maliaptmu'k Arrangement, recognizing the site's location on unceded Mi'kmaw territory.",
+      "food_spotlight": {
+        "name": "Dykeland harvests",
+        "description": "The reclaimed marshlands around the site remain working farmland; the site itself does not operate a food program.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Interpretive exhibits on Acadian history",
+        "Memorial Church and Victorian garden",
+        "Guided tour with a Parks Canada interpreter",
+        "Walk or cycle the Harvest Moon trail"
+      ],
+      "visit_duration_hours": 2.0,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "season_notes": "Visitor Reception Centre and Memorial Church open May 15 - Oct. 12 (2026), 9 a.m.-5 p.m. Grounds and garden are accessible year-round.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 10.0,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "Daily adult admission $10 (May-October); senior $8.50; youth 17 and under free. Guided tour $6.50 per person extra.",
+        "source_url": "https://parks.canada.ca/lhn-nhs/ns/grandpre/visit/tarifs-fees"
+      },
+      "website": "https://parks.canada.ca/lhn-nhs/ns/grandpre",
+      "sources": [
+        {
+          "url": "https://parks.canada.ca/lhn-nhs/ns/grandpre",
+          "title": "Grand-Pré National Historic Site",
+          "publisher": "Parks Canada",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://parks.canada.ca/lhn-nhs/ns/grandpre/visit/tarifs-fees",
+          "title": "Fees",
+          "publisher": "Parks Canada",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://parks.canada.ca/lhn-nhs/ns/grandpre/visit/heures-hours",
+          "title": "Dates and hours of operation",
+          "publisher": "Parks Canada",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://whc.unesco.org/en/list/1404/",
+          "title": "Landscape of Grand Pré",
+          "publisher": "UNESCO World Heritage Centre",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Memorial_Church_Grand_Pr%C3%A9_1.jpg/1280px-Memorial_Church_Grand_Pr%C3%A9_1.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Memorial_Church_Grand_Pr%C3%A9_1.jpg",
+        "author": "Mykola Swarnyk",
+        "license": "CC BY-SA 3.0",
+        "caption": "The Memorial Church at Grand-Pré National Historic Site"
+      }
+    },
+    {
+      "slug": "kings-landing",
+      "name": "Kings Landing",
+      "address": "5804 Route 102",
+      "city": "Prince William",
+      "province": "NB",
+      "region": "atlantic",
+      "latitude": 45.8772,
+      "longitude": -66.9796,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Rural settler communities of the Saint John River valley",
+      "tags": [
+        "history",
+        "farming",
+        "rural_life",
+        "traditional_crafts",
+        "animals",
+        "food_tasting",
+        "scenic_landscapes",
+        "warm_weather"
+      ],
+      "short_description": "A living-history settlement on the Saint John River that recreates 19th-century rural New Brunswick.",
+      "description": "Costumed interpreters live out daily life in a riverside village of homes, farms and workshops about 20 minutes west of Fredericton. Visitors can see period farming and trades in action and stop for a meal at the King's Head Inn. Outside the main summer season, the site hosts holiday dinners and a Christmas village event.",
+      "agricultural_significance": "Kings Landing shows how river-valley farms fed New Brunswick households about 200 years ago. Interpreters demonstrate the farm work, food preparation and trades that kept a rural community self-sufficient.",
+      "cultural_context": "The settlement represents the English-speaking rural communities of the Saint John River valley in the 19th century. Kings Landing offers free admission to Indigenous visitors and to military veterans and serving members.",
+      "food_spotlight": {
+        "name": "King's Head Inn",
+        "description": "A historical-setting dining room serving hearty meals and treats; holiday feasts are offered in winter.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Explore the 19th-century village",
+        "Watch heritage farming and trades demonstrations",
+        "Dine at the King's Head Inn",
+        "Seasonal holiday events"
+      ],
+      "visit_duration_hours": 4.0,
+      "available_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Main season June to October (2026 season began June 6); special Christmas events from late November.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 19.55,
+        "child_price_cad": 16.62,
+        "basis": "per_person",
+        "notes": "2026 general admission, tax included: adult 19-64 $19.55; youth 6-18 $16.62; 5 and under free; family $60.",
+        "source_url": "https://kingslanding.nb.ca/hours-and-prices/"
+      },
+      "website": "https://kingslanding.nb.ca/",
+      "sources": [
+        {
+          "url": "https://kingslanding.nb.ca/hours-and-prices/",
+          "title": "Hours and Prices",
+          "publisher": "Kings Landing",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://kingslanding.nb.ca/",
+          "title": "Kings Landing home",
+          "publisher": "Kings Landing",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Kings_Landing_Historical_Settlement.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Kings_Landing_Historical_Settlement.jpg",
+        "author": "Neelix at English Wikipedia",
+        "license": "Public domain",
+        "caption": "The theatre building at Kings Landing"
+      }
+    },
+    {
+      "slug": "ukrainian-cultural-heritage-village",
+      "name": "Ukrainian Cultural Heritage Village",
+      "address": "Highway 16 (Yellowhead), Lamont County",
+      "city": "Lamont County (east of Edmonton)",
+      "province": "AB",
+      "region": "prairies",
+      "latitude": 53.5686,
+      "longitude": -112.7989,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant"
+      ],
+      "community": "Ukrainian Canadian settlers of east-central Alberta",
+      "tags": [
+        "history",
+        "farming",
+        "rural_life",
+        "cultural_festivals",
+        "photography",
+        "warm_weather"
+      ],
+      "short_description": "An open-air museum where costumed interpreters tell the stories of Ukrainian pioneers on the Alberta prairie.",
+      "description": "Visitors wander historic buildings, including a school, a railway station, a hotel, a lumber yard and a blacksmith shop, talking with costumed interpreters who portray early settlers. The site explains how Ukrainian immigration shaped east-central Alberta and the province's cultural identity. Special events run during the summer season.",
+      "agricultural_significance": "Ukrainian immigrants homesteaded the parkland east of Edmonton and built farming communities there. The village shows the rural buildings and work of those early settlers.",
+      "cultural_context": "The village, run by the Government of Alberta, tells the first-hand stories of early settlers in east-central Alberta, an area closely linked to Ukrainian immigration. It sits 25 minutes east of Edmonton on Highway 16.",
+      "food_spotlight": null,
+      "activities": [
+        "Tour the historic buildings",
+        "Talk with costumed interpreters",
+        "Seasonal special events"
+      ],
+      "visit_duration_hours": 3.5,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Closed Sept. 14, 2026 - May 21, 2027; the summer season runs from late May to mid-September.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 18.0,
+        "child_price_cad": 11.0,
+        "basis": "per_person",
+        "notes": "Adult (18-64) $18; youth 7-17 $11; child 0-6 free; family $45.",
+        "source_url": "https://www.ukrainianvillage.ca/"
+      },
+      "website": "https://www.ukrainianvillage.ca/",
+      "sources": [
+        {
+          "url": "https://www.ukrainianvillage.ca/",
+          "title": "Ukrainian Cultural Heritage Village",
+          "publisher": "Government of Alberta",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ukrainian_village.jpg/1280px-Ukrainian_village.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Ukrainian_village.jpg",
+        "author": "Kevlar67",
+        "license": "Public domain",
+        "caption": "Overview of the Ukrainian Cultural Heritage Village"
+      }
+    },
+    {
+      "slug": "fort-edmonton-park",
+      "name": "Fort Edmonton Park",
+      "address": "7000 143 Street NW",
+      "city": "Edmonton",
+      "province": "AB",
+      "region": "prairies",
+      "latitude": 53.5014,
+      "longitude": -113.5806,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous",
+        "british",
+        "immigrant"
+      ],
+      "community": "First Nations and Métis Peoples of the region (partner: Confederacy of Treaty Six First Nations and Métis Nation of Alberta)",
+      "tags": [
+        "history",
+        "indigenous_culture",
+        "animals",
+        "traditional_crafts",
+        "rural_life",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "A living-history park in Edmonton's river valley whose Indigenous Peoples Experience stays open on winter weekends.",
+      "description": "In summer, visitors ride the train and streetcar between recreated eras of Edmonton's past, take pony or wagon rides, and join costumed interpreters in historic buildings. The Indigenous Peoples Experience uses immersive exhibits and storytelling to share the histories and living traditions of First Nations and Métis Peoples, and it stays open on winter weekends with hands-on workshops. Plan at least four hours for a summer visit.",
+      "agricultural_significance": "The park traces the shift from the fur-trade fort economy to the farms and settler towns that grew around Edmonton. Animal rides and historic farm buildings illustrate prairie livelihoods.",
+      "cultural_context": "Fort Edmonton Park formally partners with the Confederacy of Treaty Six First Nations and the Métis Nation of Alberta and offers free admission to Indigenous Peoples. Its later-era streets interpret settlement by newcomers from many backgrounds.",
+      "food_spotlight": {
+        "name": "Indigenous Peoples Experience workshops",
+        "description": "Feature workshops such as sealskin crafting are offered in winter; the park's food outlets operate in the summer season.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Indigenous Peoples Experience",
+        "Train and streetcar rides (summer)",
+        "Pony and wagon rides (summer)",
+        "Costumed-interpreter programs",
+        "Winter workshops"
+      ],
+      "visit_duration_hours": 4.0,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Full park open in the summer season (2027 dates not yet published). From Sept. 26, 2026 to Apr. 25, 2027 only the Indigenous Peoples Experience is open, Saturdays and Sundays 12-4 p.m.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 20.0,
+        "child_price_cad": 12.0,
+        "basis": "per_person",
+        "notes": "Fall/winter Indigenous Peoples Experience admission: adult $20, child/youth 3-17 $12, family $50. Summer full-park admission was not published at research time; pony and wagon rides $8 each.",
+        "source_url": "https://www.fortedmontonpark.ca/plan-your-visit/fallandwinterhours"
+      },
+      "website": "https://www.fortedmontonpark.ca/",
+      "sources": [
+        {
+          "url": "https://www.fortedmontonpark.ca/plan-your-visit/fallandwinterhours",
+          "title": "Fall & Winter Hours and Admission",
+          "publisher": "Fort Edmonton Park",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.fortedmontonpark.ca/plan-your-visit/admission-hours",
+          "title": "Summer Hours & Admission",
+          "publisher": "Fort Edmonton Park",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Fort_Edmonton_Cabin.jpg/1280px-Fort_Edmonton_Cabin.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Fort_Edmonton_Cabin.jpg",
+        "author": "Dylan Kereluk from White Rock, Canada",
+        "license": "CC BY 2.0",
+        "caption": "A historic log cabin at Fort Edmonton Park"
+      }
+    },
+    {
+      "slug": "mennonite-heritage-village",
+      "name": "Mennonite Heritage Village",
+      "address": "231 PTH 12 N",
+      "city": "Steinbach",
+      "province": "MB",
+      "region": "prairies",
+      "latitude": 49.5517,
+      "longitude": -96.6872,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant"
+      ],
+      "community": "Russian Mennonite settlers of southern Manitoba",
+      "tags": [
+        "history",
+        "farming",
+        "rural_life",
+        "food_tasting",
+        "traditional_crafts",
+        "photography",
+        "warm_weather",
+        "cold_weather"
+      ],
+      "short_description": "A living-history village and museum telling the story of the Russian Mennonites who settled southern Manitoba.",
+      "description": "The outdoor village includes a working windmill, a Chortitz housebarn, a blacksmith shop, churches, a school and an agricultural building, while indoor galleries display Mennonite artefacts and changing exhibits. The Livery Barn Restaurant serves traditional dishes in summer and the General Store sells treats such as peppernuts. Winter weekends bring evening events and the museum galleries stay open year-round.",
+      "agricultural_significance": "Mennonite settlers farmed southern Manitoba in compact villages, and the housebarn, which joined family home and livestock barn under one roof, shows how they adapted to the prairie. The windmill demonstrates the wind-powered grain milling that served those communities.",
+      "cultural_context": "The village focuses on Russian Mennonites, a German-speaking Anabaptist people who emigrated from the Russian Empire to the Steinbach area. Exhibits and memorials also address conscientious objection and the persecution of Mennonites who stayed in the Soviet Union.",
+      "food_spotlight": {
+        "name": "Peppernuts and Livery Barn Restaurant",
+        "description": "Small spiced peppernut cookies are sold at the General Store, and the Livery Barn Restaurant serves Mennonite-style meals in summer.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Tour the historic village and windmill",
+        "Chortitz housebarn",
+        "Museum galleries",
+        "Livery Barn Restaurant (summer)",
+        "Seasonal workshops and winter events"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Summer season May 1 - Sept. 30 (village, restaurant and store open daily). Oct. 1 - Apr. 30 the museum galleries are open Tuesday-Saturday and heritage buildings are closed.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 16.0,
+        "child_price_cad": 9.0,
+        "basis": "per_person",
+        "notes": "Summer admission: adult $16; children 6-12 $9; 5 and under free; family $55. Winter adult admission $8.",
+        "source_url": "https://mhv.ca/pricing-hours/"
+      },
+      "website": "https://mhv.ca/",
+      "sources": [
+        {
+          "url": "https://mhv.ca/pricing-hours/",
+          "title": "Pricing & Hours of Operation",
+          "publisher": "Mennonite Heritage Village",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://mhv.ca/visit/",
+          "title": "Tour the Village",
+          "publisher": "Mennonite Heritage Village",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mennonite_Heritage_Village%2C_Steinbach_%28441289%29_%289442976439%29.jpg/1280px-Mennonite_Heritage_Village%2C_Steinbach_%28441289%29_%289442976439%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Mennonite_Heritage_Village,_Steinbach_(441289)_(9442976439).jpg",
+        "author": "Robert Linsdell from St. Andrews, Canada",
+        "license": "CC BY 2.0",
+        "caption": "Historic buildings at the Mennonite Heritage Village, Steinbach"
+      }
+    },
+    {
+      "slug": "wanuskewin-heritage-park",
+      "name": "Wanuskewin Heritage Park",
+      "address": "RR#4 Penner Road",
+      "city": "Saskatoon",
+      "province": "SK",
+      "region": "prairies",
+      "latitude": 52.2236,
+      "longitude": -106.595,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous"
+      ],
+      "community": "Northern Plains Indigenous peoples (name is nēhiyawēwin / Plains Cree)",
+      "tags": [
+        "indigenous_culture",
+        "animals",
+        "nature",
+        "hiking",
+        "history",
+        "food_tasting",
+        "scenic_landscapes",
+        "cultural_festivals",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "A sacred gathering place of more than 6,400 years north of Saskatoon, with a conservation bison herd and Indigenous cuisine.",
+      "description": "Valley walking trails lead through restored grassland past archaeological sites, and a conservation herd of plains bison roams the park. The visitor centre holds galleries of contemporary and historical work, and interpretive guides run drop-in programs, with dance, drum or fiddle presentations on weekends. The restaurant serves Indigenous-inspired dishes.",
+      "agricultural_significance": "Wanuskewin's story is one of land-based food systems: Northern Plains peoples gathered here for thousands of years to hunt bison and harvest plants. Grassland restoration and the return of bison connect visitors to that pre-agricultural prairie food landscape.",
+      "cultural_context": "The name, from nēhiyawēwin (Plains Cree), is roughly translated as 'seeking peace of mind'. The park works to advance understanding of the evolving cultures of Northern Plains Indigenous peoples and reinvests admission fees in programming, grassland restoration and its bison herd.",
+      "food_spotlight": {
+        "name": "Indigenous cuisine at the Wanuskewin restaurant",
+        "description": "The on-site restaurant serves a taste of Indigenous cuisine (11 a.m.-4 p.m.).",
+        "included_in_admission": false
+      },
+      "activities": [
+        "See the conservation bison herd",
+        "Walk the valley trails",
+        "Gallery exhibitions",
+        "Interpretive and weekend dance/music programs",
+        "Dine at the restaurant",
+        "Tipi sleepovers (seasonal)"
+      ],
+      "visit_duration_hours": 3.0,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Open year-round, daily 9:30 a.m.-5 p.m.; closed fall/winter statutory holidays.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 16.0,
+        "child_price_cad": 8.0,
+        "basis": "per_person",
+        "notes": "2026 rates: adult 18-64 $16; child 6-17 $8; 0-5 free; family (up to 6) $40. Parking $5.",
+        "source_url": "https://wanuskewin.com/visit/hours-admission/"
+      },
+      "website": "https://wanuskewin.com/",
+      "sources": [
+        {
+          "url": "https://wanuskewin.com/visit/hours-admission/",
+          "title": "Hours & Admission",
+          "publisher": "Wanuskewin Heritage Park",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://wanuskewin.com/",
+          "title": "Wanuskewin home",
+          "publisher": "Wanuskewin Heritage Park",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Wanuskewin_Heritage_Park.jpg/1280px-Wanuskewin_Heritage_Park.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Wanuskewin_Heritage_Park.jpg",
+        "author": "Canadian2006",
+        "license": "CC BY-SA 3.0",
+        "caption": "Wanuskewin Heritage Park near Saskatoon"
+      }
+    },
+    {
+      "slug": "motherwell-homestead",
+      "name": "Motherwell Homestead National Historic Site",
+      "address": "Lanark Place homestead, south of Abernethy",
+      "city": "Abernethy",
+      "province": "SK",
+      "region": "prairies",
+      "latitude": 50.7189,
+      "longitude": -103.425,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Ontario-born pioneer farmers of the Qu'Appelle region",
+      "tags": [
+        "farming",
+        "history",
+        "rural_life",
+        "animals",
+        "scenic_landscapes",
+        "warm_weather"
+      ],
+      "short_description": "The restored prairie homestead of W.R. Motherwell, a pioneer farmer who became Canada's Minister of Agriculture.",
+      "description": "Visitors live a day in the life of a 1900s prairie farmer at Lanark Place, Motherwell's homestead about an hour east of Regina. Parks Canada programs include tours, a children's day camp, the 'Little Red Hen' program and a fall pumpkin harvest festival.",
+      "agricultural_significance": "W.R. Motherwell championed scientific dryland farming methods and later served as federal Minister of Agriculture. His homestead illustrates the practices that helped make Saskatchewan a grain-growing powerhouse.",
+      "cultural_context": "Parks Canada notes that the fertile Qu'Appelle region was a crossroads for First Nations, Métis and waves of newcomers. Motherwell was part of the late-19th-century stream of pioneer farmers who moved west from Ontario.",
+      "food_spotlight": {
+        "name": "Pumpkin Harvest Festival",
+        "description": "A family fall festival celebrating the harvest on the homestead.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Tour the homestead",
+        "Hands-on homestead programs",
+        "Pumpkin Harvest Festival (fall)",
+        "Children's day camps"
+      ],
+      "visit_duration_hours": 2.0,
+      "available_months": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Seasonal; the site was closed for the season at research time and 2027 dates were not yet published (months listed are approximate, with a fall pumpkin festival).",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 10.0,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "Daily adult $10; senior $8.50; youth 17 and under free. Enhanced programs extra (e.g., Little Red Hen $41.75).",
+        "source_url": "https://parks.canada.ca/lhn-nhs/sk/motherwell/visit/tarifs-fees"
+      },
+      "website": "https://parks.canada.ca/lhn-nhs/sk/motherwell",
+      "sources": [
+        {
+          "url": "https://parks.canada.ca/lhn-nhs/sk/motherwell",
+          "title": "Motherwell Homestead National Historic Site",
+          "publisher": "Parks Canada",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://parks.canada.ca/lhn-nhs/sk/motherwell/visit/tarifs-fees",
+          "title": "Fees",
+          "publisher": "Parks Canada",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/MotherWell_Homestead.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:MotherWell_Homestead.jpg",
+        "author": "Mike Saccoia",
+        "license": "CC BY-SA 3.0",
+        "caption": "Motherwell Homestead National Historic Site"
+      }
+    },
+    {
+      "slug": "nkmip-cellars",
+      "name": "Nk'Mip Cellars",
+      "address": "1400 Rancher Creek Road",
+      "city": "Osoyoos",
+      "province": "BC",
+      "region": "west_coast",
+      "latitude": 49.0384,
+      "longitude": -119.4335,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous"
+      ],
+      "community": "Osoyoos Indian Band (Syilx / Okanagan)",
+      "tags": [
+        "food_tasting",
+        "indigenous_culture",
+        "scenic_landscapes",
+        "relaxation",
+        "warm_weather",
+        "photography"
+      ],
+      "short_description": "North America's first Indigenous-owned and -operated winery, set in vineyards above Osoyoos Lake.",
+      "description": "The wine shop offers walk-in tasting flights of the Winemaker's Series and premium Qwam Qwmt wines, along with Indigenous artisan goods. Seasonal guided experiences pair wines with food, such as the autumn Sip & Soups pairing, and the Sweetgrass restaurant patio overlooks the vineyards and lake. The neighbouring Nk'Mip Desert Cultural Centre adds a cultural visit.",
+      "agricultural_significance": "The Osoyoos Indian Band cultivates vineyards in one of Canada's hottest, driest landscapes and produces VQA wines from them. The winery is a leading example of Indigenous-led agricultural enterprise in the Okanagan.",
+      "cultural_context": "The Osoyoos Indian Band was registered as a reserve in 1877 and its lands extend across a large stretch of the south Okanagan. Nk'Mip means 'bottomland', describing its location at the southern end of the reserve; Qwam Qwmt translates as 'achieving excellence'.",
+      "food_spotlight": {
+        "name": "Sip & Soups pairing",
+        "description": "A reserved fall experience pairing three Nk'Mip wines with three of the chef's soups ($25).",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Wine-shop tasting flights",
+        "Seasonal food-and-wine pairing experiences",
+        "Dine at the Sweetgrass restaurant",
+        "Browse Indigenous artisan goods"
+      ],
+      "visit_duration_hours": 1.5,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Wine shop and tasting room open daily 10 a.m.-5 p.m. year-round, except listed holiday closures (Dec. 24-26, Jan. 1).",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 5.0,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "Fall tasting flight $5 per person (non-redeemable); Sip & Soups pairing $25. Tastings are for adults of legal drinking age.",
+        "source_url": "https://nkmipcellars.com/The-Winery"
+      },
+      "website": "https://www.nkmipcellars.com/",
+      "sources": [
+        {
+          "url": "https://nkmipcellars.com/The-Winery",
+          "title": "The Winery",
+          "publisher": "Nk'Mip Cellars",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.nkmipcellars.com/About-Us",
+          "title": "About Us",
+          "publisher": "Nk'Mip Cellars",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Nk%27mip_Cellars._%2838571175%29.jpg/1280px-Nk%27mip_Cellars._%2838571175%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Nk%27mip_Cellars._(38571175).jpg",
+        "author": "purplejavatroll from Canada",
+        "license": "CC BY-SA 2.0",
+        "caption": "Nk'Mip Cellars winery, Osoyoos"
+      }
+    },
+    {
+      "slug": "father-pandosy-mission",
+      "name": "Father Pandosy Mission Heritage Site",
+      "address": "3685 Benvoulin Road",
+      "city": "Kelowna",
+      "province": "BC",
+      "region": "west_coast",
+      "latitude": 49.85,
+      "longitude": -119.4678,
+      "primary_culture": "french",
+      "cultures": [
+        "french"
+      ],
+      "community": "French Oblate missionaries (Oblates of Mary Immaculate)",
+      "tags": [
+        "history",
+        "farming",
+        "rural_life",
+        "photography",
+        "relaxation",
+        "warm_weather"
+      ],
+      "short_description": "The 1859 Oblate mission that was the first permanent non-Indigenous settlement in the Okanagan Valley.",
+      "description": "Visitors wander a quiet four-acre site with the original chapel, root house and Brothers' House plus a barn and other historic buildings moved here. It is an easy, low-cost stop on Benvoulin Road in Kelowna's Mission district. The grounds are open from dawn to dusk in the spring-to-fall season.",
+      "agricultural_significance": "Father Charles Pandosy and the Oblates farmed the mission, raising hogs, sheep, oats, barley, wheat, tobacco and potatoes and irrigating their fields. The surviving root house reflects the food storage that kept a self-sufficient mission going.",
+      "cultural_context": "French-born Oblate priest Charles Pandosy founded the mission in 1859, and the site is recognized as the impetus for later settlement of the Okanagan. It is a designated provincial heritage site jointly administered by the Okanagan Historical Society and the Roman Catholic Bishop of Nelson.",
+      "food_spotlight": {
+        "name": "Mission root house",
+        "description": "An original 1859-era root house used to store the mission's harvest.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Self-guided tour of the heritage buildings",
+        "See the original chapel and root house",
+        "Picnic and photography"
+      ],
+      "visit_duration_hours": 1.0,
+      "available_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "season_notes": "Grounds open dawn to dusk from Easter to Thanksgiving, according to the Okanagan Historical Society.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 2.0,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "Suggested donation of $2 per person toward site upkeep.",
+        "source_url": "https://okanaganhistoricalsociety.org/father_pandosy_mission.php"
+      },
+      "website": "https://okanaganhistoricalsociety.org/father_pandosy_mission.php",
+      "sources": [
+        {
+          "url": "https://okanaganhistoricalsociety.org/father_pandosy_mission.php",
+          "title": "Father Pandosy Mission",
+          "publisher": "Okanagan Historical Society",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=3331",
+          "title": "Pandosy Mission",
+          "publisher": "Canada's Historic Places",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Father_Pandosy",
+          "title": "Father Pandosy",
+          "publisher": "Wikipedia",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": null
+    },
+    {
+      "slug": "kilby-historic-site",
+      "name": "Kilby Historic Site",
+      "address": "215 Kilby Road",
+      "city": "Harrison Mills",
+      "province": "BC",
+      "region": "west_coast",
+      "latitude": 49.2363,
+      "longitude": -121.957,
+      "primary_culture": "british",
+      "cultures": [
+        "british"
+      ],
+      "community": "Kilby family and early-20th-century settlers of Harrison Mills",
+      "tags": [
+        "farming",
+        "animals",
+        "history",
+        "rural_life",
+        "food_tasting",
+        "scenic_landscapes",
+        "warm_weather"
+      ],
+      "short_description": "BC's 'museum of rural life', with a 1906 general store and a 1920s-style working farm in the Fraser Valley.",
+      "description": "Interpreters bring the 1906 Kilby General Store to life with original artefacts and hands-on activities, and visitors can feed the goats, donkeys, pigs and chickens on the Waterloo Farm. The Kilby Café serves seasonal menus using regional ingredients, and a riverside campground sits next door. Themes include transportation, logging, farming and local Indigenous culture.",
+      "agricultural_significance": "In 1912 the Kilby family started the Waterloo Jersey Dairy Farm on more than 200 acres beside their store, also raising chickens and pigs. The preserved farm shows how livestock gave early Fraser Valley settlers both food and income.",
+      "cultural_context": "Harrison Mills was a boom-and-bust river community, and the Kilby site is its only remaining trace. The farm was named after Thomas Kilby's first Canadian home in Waterloo, Ontario; the family's earlier origins are not documented in the sources consulted.",
+      "food_spotlight": {
+        "name": "Kilby Café seasonal menu",
+        "description": "The café runs seasonal menus, such as a fall 'Taste the Wild' event with elk bannock tacos and salmon chowder.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "General Store museum with interpreters",
+        "Feed animals on the Waterloo Farm",
+        "Kilby Café",
+        "Seasonal events and camping"
+      ],
+      "visit_duration_hours": 2.5,
+      "available_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "2026: Apr. 2 - Dec. 13, with days varying by season (Thursday-Monday in summer, weekends Nov.-Dec.). Closed mid-December to spring.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 16.0,
+        "child_price_cad": 11.0,
+        "basis": "per_person",
+        "notes": "Adult $16; youth 6-16 / students $11; 5 and under free; family (2+2) $42.",
+        "source_url": "https://kilby.ca/visit/hours-fees/"
+      },
+      "website": "https://kilby.ca/",
+      "sources": [
+        {
+          "url": "https://kilby.ca/visit/hours-fees/",
+          "title": "Hours & Fees",
+          "publisher": "Kilby Historic Site",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://kilby.ca/experiences/waterloo-farm/",
+          "title": "Waterloo Farm Museum",
+          "publisher": "Kilby Historic Site",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/The_general_store_at_Kilby_Historic_Site_%2816538960449%29.jpg/1280px-The_general_store_at_Kilby_Historic_Site_%2816538960449%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:The_general_store_at_Kilby_Historic_Site_(16538960449).jpg",
+        "author": "Ruth Hartnup from Vancouver, Canada",
+        "license": "CC BY 2.0",
+        "caption": "The 1906 general store at Kilby Historic Site"
+      }
+    },
+    {
+      "slug": "gulf-of-georgia-cannery",
+      "name": "Gulf of Georgia Cannery National Historic Site",
+      "address": "12138 Fourth Avenue",
+      "city": "Richmond (Steveston)",
+      "province": "BC",
+      "region": "west_coast",
+      "latitude": 49.1247,
+      "longitude": -123.1869,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant",
+        "indigenous"
+      ],
+      "community": "Japanese, Chinese and European cannery workers alongside First Nations workers",
+      "tags": [
+        "fishing",
+        "history",
+        "food_tasting",
+        "photography",
+        "cold_weather",
+        "warm_weather"
+      ],
+      "short_description": "An 1894 salmon cannery in Steveston village that tells the story of Canada's West Coast fishing industry.",
+      "description": "Inside the historic plant, visitors follow the canning line and herring reduction plant through exhibits, films and tours. Current exhibits include work re-presencing Indigenous women's connections to fish, water and family around the Salish Sea. The surrounding Steveston waterfront is still a working fishing village.",
+      "agricultural_significance": "Salmon canning was one of British Columbia's largest employers and export industries, and this plant, nicknamed the 'Monster Cannery', packed more than 2.5 million cans in 1897. It shows how wild fisheries fed a global food trade.",
+      "cultural_context": "Each canning season drew hundreds of workers, usually of First Nations, Chinese, Japanese and European descent, making the cannery a meeting point of BC's immigrant and Indigenous communities. The site is operated by the Gulf of Georgia Cannery Society on behalf of Parks Canada.",
+      "food_spotlight": {
+        "name": "Canned Fraser River salmon",
+        "description": "The exhibits trace how salmon went from boat to can; food is not served inside the museum.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Canning-line exhibit",
+        "Herring reduction plant exhibit",
+        "Guided tours and films",
+        "Explore the Steveston waterfront"
+      ],
+      "visit_duration_hours": 1.5,
+      "available_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "season_notes": "Open daily 10 a.m.-5 p.m. year-round, closed on listed statutory holidays. The building is colder than outdoors; dress warmly.",
+      "pricing": {
+        "status": "verified",
+        "adult_price_cad": 14.75,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "Adult $14.75; senior $12.50; youth 17 and under free.",
+        "source_url": "https://gulfofgeorgiacannery.org/visit/hours-admissions/"
+      },
+      "website": "https://gulfofgeorgiacannery.org/",
+      "sources": [
+        {
+          "url": "https://gulfofgeorgiacannery.org/visit/hours-admissions/",
+          "title": "Hours & Admissions",
+          "publisher": "Gulf of Georgia Cannery Society",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://gulfofgeorgiacannery.org/",
+          "title": "Gulf of Georgia Cannery National Historic Site",
+          "publisher": "Gulf of Georgia Cannery Society",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gulf_of_Georgia_Cannery",
+          "title": "Gulf of Georgia Cannery",
+          "publisher": "Wikipedia",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gulf_of_Georgia_Cannery_2018.jpg/1280px-Gulf_of_Georgia_Cannery_2018.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Gulf_of_Georgia_Cannery_2018.jpg",
+        "author": "Wpcpey",
+        "license": "CC BY-SA 4.0",
+        "caption": "Gulf of Georgia Cannery National Historic Site, Steveston"
+      }
+    },
+    {
+      "slug": "danoja-zho-cultural-centre",
+      "name": "Dänojà Zho Cultural Centre",
+      "address": "Front Street, Dawson City waterfront",
+      "city": "Dawson City",
+      "province": "YT",
+      "region": "northern",
+      "latitude": 64.0645,
+      "longitude": -139.4331,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous"
+      ],
+      "community": "Tr'ondëk Hwëch'in (Hän-speaking First Nation)",
+      "tags": [
+        "indigenous_culture",
+        "history",
+        "traditional_crafts",
+        "fishing",
+        "scenic_landscapes",
+        "warm_weather"
+      ],
+      "short_description": "The Tr'ondëk Hwëch'in cultural centre on Dawson's waterfront, gateway to Hän heritage and the river life of the Klondike.",
+      "description": "Each summer the Gathering Room hosts a new exhibition, and visitors can join river-walk tours, watch films and see art shows. The gift shop sells hand-made clothing, beaded footwear, jewellery, music and books by First Nation artists. The building looks across the Yukon River toward Moosehide Village.",
+      "agricultural_significance": "The centre's architecture draws on salmon drying racks and winter shelters, reflecting a food system built on river fishing and harvesting. Tr'ondëk Hwëch'in also operate TH Farm near Dawson, described as the only First Nations working farm north of 60.",
+      "cultural_context": "Dänojà Zho means 'Long Ago House'. It opened in July 1998 to give the Tr'ondëk Hwëch'in a strong presence in their traditional territory that would not be bound to the gold-rush story, and its design won the Lieutenant Governor of BC's Medal in Architecture.",
+      "food_spotlight": {
+        "name": "Yukon River salmon traditions",
+        "description": "Salmon drying racks inspire the building's design; the centre does not list a food service.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Summer exhibitions in the Gathering Room",
+        "River-walk tours",
+        "Film presentations and art shows",
+        "First Nation artisan gift shop"
+      ],
+      "visit_duration_hours": 1.5,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Visitor programs run May to September; the building is open year-round for community use and rentals.",
+      "pricing": {
+        "status": "unavailable",
+        "adult_price_cad": null,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "Admission price was not published on the Tr'ondëk Hwëch'in page at research time.",
+        "source_url": null
+      },
+      "website": "https://www.trondek.ca/our-programs-services/heritage/danoja-zho-cultural-centre/",
+      "sources": [
+        {
+          "url": "https://www.trondek.ca/our-programs-services/heritage/danoja-zho-cultural-centre/",
+          "title": "Dänojà Zho Cultural Centre",
+          "publisher": "Tr'ondëk Hwëch'in Government",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.trondek.ca/our-programs-services/governance-executive-operations/thfarm/",
+          "title": "Tr'ondëk Hwëch'in Farm",
+          "publisher": "Tr'ondëk Hwëch'in Government",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Danoja_Zho_Cultural_Centre_%2848709845607%29.jpg/1280px-Danoja_Zho_Cultural_Centre_%2848709845607%29.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:Danoja_Zho_Cultural_Centre_(48709845607).jpg",
+        "author": "sf-dvs",
+        "license": "CC BY 2.0",
+        "caption": "Dänojà Zho Cultural Centre on the Dawson City waterfront"
+      }
+    },
+    {
+      "slug": "dawson-city-farmers-market",
+      "name": "Dawson City Farmers' Market",
+      "address": "Waterfront Park, Front Street",
+      "city": "Dawson City",
+      "province": "YT",
+      "region": "northern",
+      "latitude": 64.0682,
+      "longitude": -139.4267,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant",
+        "indigenous"
+      ],
+      "community": "Klondike growers and artisans (multicultural community of Dawson City)",
+      "tags": [
+        "farming",
+        "food_tasting",
+        "rural_life",
+        "traditional_crafts",
+        "warm_weather"
+      ],
+      "short_description": "A summer weekend market where Klondike farmers sell plants, vegetables, berries and preserves under the midnight sun.",
+      "description": "On summer Saturdays and Sundays, local farmers and artisans set up in Waterfront Park on Front Street. Early in the season stalls offer bedding plants and nursery stock; later come fresh vegetables, herbs, berries, apples and preserves. An artists' market runs alongside it, operated by the Klondike Institute of Art and Culture.",
+      "agricultural_significance": "The Klondike valley has some of the Yukon's best growing conditions, and the market is the main outlet for the small farms that supply Dawson. It shows how northern growers use long summer daylight to raise crops far north.",
+      "cultural_context": "Dawson's farming dates to the gold rush, when market gardens fed the boomtown, and it continues today with both settler-run farms and the Tr'ondëk Hwëch'in teaching farm, whose produce is sold in local markets. The artists' market carries a Hän-language name. (The 'immigrant' label here is an approximate fit for a mixed community.)",
+      "food_spotlight": {
+        "name": "Klondike-grown produce",
+        "description": "Seasonal vegetables, herbs, berries, apples and preserves grown in the Klondike valley.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Shop local produce and preserves",
+        "Buy bedding plants and nursery stock",
+        "Browse the artists' market"
+      ],
+      "visit_duration_hours": 1.0,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Saturdays and Sundays, mid-May to mid-September; farmers' market 11 a.m.-4 p.m., artists' market 11 a.m.-3 p.m.",
+      "pricing": {
+        "status": "free",
+        "adult_price_cad": 0.0,
+        "child_price_cad": 0.0,
+        "basis": "per_person",
+        "notes": "Free to browse; goods priced by vendors.",
+        "source_url": "https://cityofdawson.ca/p/farmers-artists-market"
+      },
+      "website": "https://cityofdawson.ca/p/farmers-artists-market",
+      "sources": [
+        {
+          "url": "https://cityofdawson.ca/p/farmers-artists-market",
+          "title": "Farmers' & Artists' Market",
+          "publisher": "City of Dawson",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://www.trondek.ca/our-programs-services/governance-executive-operations/thfarm/",
+          "title": "Tr'ondëk Hwëch'in Farm",
+          "publisher": "Tr'ondëk Hwëch'in Government",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": null
+    },
+    {
+      "slug": "rockpile-remedies",
+      "name": "Rockpile Remedies",
+      "address": "92 Eureka Drive, Dredge Pond Subdivision",
+      "city": "Dawson City",
+      "province": "YT",
+      "region": "northern",
+      "latitude": 64.0421,
+      "longitude": -139.34,
+      "primary_culture": "immigrant",
+      "cultures": [
+        "immigrant"
+      ],
+      "community": "Klondike Gold Rush landscape, reclaimed by present-day Dawson growers",
+      "tags": [
+        "farming",
+        "nature",
+        "traditional_crafts",
+        "history",
+        "warm_weather",
+        "scenic_landscapes"
+      ],
+      "short_description": "Herb gardens built on reclaimed Gold Rush dredge tailings, with garden tours and herbal-remedy workshops.",
+      "description": "Guided garden tours show medicinal herbs growing in quartz-rock beds on old dredge tailings along the Klondike River. Visitors can make their own herbal remedy during the tour workshop and shop an apothecary of Yukon-grown herbal products. Wildcrafting and herbalism courses are also offered.",
+      "agricultural_significance": "The gardens use the unusual microclimates of quartz tailings left by Gold Rush dredging, turning a damaged landscape into productive growing ground. It is a small-scale example of land reclamation through cultivation in the subarctic.",
+      "cultural_context": "The tailings piles around Dawson are a visible legacy of the Klondike Gold Rush and the industrial dredging that followed it. Tours combine Yukon history with herbal medicine. (The 'immigrant' label is an approximate fit; the business does not claim a specific ethnic heritage.)",
+      "food_spotlight": {
+        "name": "Yukon-grown herbal remedies",
+        "description": "Workshop participants make their own herbal remedy from plants grown on site.",
+        "included_in_admission": true
+      },
+      "activities": [
+        "Guided garden tour on reclaimed tailings",
+        "Herbal-remedy making workshop",
+        "Herbal apothecary shop",
+        "Wildcrafting and herbalism courses"
+      ],
+      "visit_duration_hours": 1.5,
+      "available_months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Summer season May 27 - Sept. 27, Monday-Friday 10 a.m.-5 p.m. (Saturdays at the Dawson Farmers' Market). Winter shop hours October-April by appointment/limited days.",
+      "pricing": {
+        "status": "unavailable",
+        "adult_price_cad": null,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "Tour price not listed on the Travel Yukon profile; booking through the operator.",
+        "source_url": null
+      },
+      "website": "https://www.travelyukon.com/en/see-and-do/experience-providers/rockpile-remedies",
+      "sources": [
+        {
+          "url": "https://www.travelyukon.com/en/see-and-do/experience-providers/rockpile-remedies",
+          "title": "Rockpile Remedies",
+          "publisher": "Travel Yukon (Government of Yukon)",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": null
+    },
+    {
+      "slug": "inuvik-community-greenhouse",
+      "name": "Inuvik Community Greenhouse",
+      "address": "Gwich'in Road",
+      "city": "Inuvik",
+      "province": "NT",
+      "region": "northern",
+      "latitude": 68.3599,
+      "longitude": -133.7196,
+      "primary_culture": "indigenous",
+      "cultures": [
+        "indigenous",
+        "immigrant"
+      ],
+      "community": "Inuvik residents in the Gwich'in Settlement Area and Inuvialuit region (community-run, not specific to one Nation)",
+      "tags": [
+        "farming",
+        "food_tasting",
+        "rural_life",
+        "warm_weather",
+        "photography"
+      ],
+      "short_description": "North America's northernmost commercial greenhouse, a converted hockey arena growing food under the midnight sun.",
+      "description": "Summer tours show more than 170 community garden plots on the main floor, including dedicated beds for Elders, children's groups and the food bank, and a commercial growing area upstairs. The greenhouse café serves a weekly-changing menu built on the harvest. Visitors also find a gift shop and plants for sale.",
+      "agricultural_significance": "Located north of the Arctic Circle, the greenhouse uses 24-hour summer daylight to grow fresh produce in a region that relies heavily on expensive imported food. It is often cited as a model for northern food security.",
+      "cultural_context": "Inuvik is home to Gwich'in, Inuvialuit and non-Indigenous residents, and the greenhouse is a shared community space where locals rent plots and volunteer. (Its cultural classification here reflects its setting and Elder plots, not ownership by a specific Nation.)",
+      "food_spotlight": {
+        "name": "Inuvik Greenhouse Café",
+        "description": "A garden-inspired menu that changes weekly to use the greenhouse's harvest.",
+        "included_in_admission": false
+      },
+      "activities": [
+        "Guided greenhouse tour",
+        "Greenhouse café",
+        "Gift shop and plant sales"
+      ],
+      "visit_duration_hours": 1.0,
+      "available_months": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "season_notes": "Scheduled tours June through September. Café open June-August (Wed 5-8 p.m., Thu-Sun 10 a.m.-4 p.m.) and September weekends.",
+      "pricing": {
+        "status": "unavailable",
+        "adult_price_cad": null,
+        "child_price_cad": null,
+        "basis": "per_person",
+        "notes": "No current tour price published by the Town of Inuvik or NWT Tourism.",
+        "source_url": null
+      },
+      "website": "https://www.inuvik.ca/discovering-inuvik/attractions/inuvik-community-greenhouse/",
+      "sources": [
+        {
+          "url": "https://www.inuvik.ca/discovering-inuvik/attractions/inuvik-community-greenhouse/",
+          "title": "Inuvik Community Greenhouse",
+          "publisher": "Town of Inuvik",
+          "accessed": "2026-11-18"
+        },
+        {
+          "url": "https://spectacularnwt.com/attractions/inuvik-community-greenhouse/",
+          "title": "Inuvik Community Greenhouse",
+          "publisher": "NWT Tourism (Spectacular NWT)",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "verified_at": "2026-11-18",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/The_Inuvik_community_greenhouse_converted_from_an_old_hockey_rink.jpg/1280px-The_Inuvik_community_greenhouse_converted_from_an_old_hockey_rink.jpg",
+        "page_url": "https://commons.wikimedia.org/wiki/File:The_Inuvik_community_greenhouse_converted_from_an_old_hockey_rink.jpg",
+        "author": "EightyOneImages",
+        "license": "CC BY-SA 4.0",
+        "caption": "The Inuvik Community Greenhouse, converted from a former hockey arena"
+      }
+    }
+  ]
+}

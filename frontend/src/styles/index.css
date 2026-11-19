@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --font-display: 'Fraunces Variable', 'Georgia', serif;
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-forest: #214b37;
+  --color-forest-900: #142f22;
+  --color-forest-700: #2c5f46;
+  --color-forest-100: #dfe9e3;
+  --color-cream: #f5f0e6;
+  --color-cream-50: #fbf8f2;
+  --color-cream-200: #ece4d4;
+  --color-cream-300: #e0d5bf;
+  --color-terracotta: #b86b45;
+  --color-terracotta-700: #96522f;
+  --color-terracotta-100: #f4e3d9;
+  --color-gold: #dbb66a;
+  --color-gold-100: #f6ecd5;
+  --color-sage: #99b6ad;
+  --color-sage-100: #e3ece9;
+  --color-ink: #1d2a23;
+  --color-ink-soft: #4c5a52;
+  --color-muted: #7a857e;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.375rem;
+  --radius-3xl: 2rem;
+
+  --shadow-soft: 0 1px 2px rgb(20 47 34 / 0.04), 0 8px 24px -8px rgb(20 47 34 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(20 47 34 / 0.05), 0 22px 44px -14px rgb(20 47 34 / 0.28);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.4s ease both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1, h2, h3, h4 { @apply font-display text-forest-900; font-optical-sizing: auto; letter-spacing: -0.015em; }
+  ::selection { background: var(--color-gold); color: var(--color-forest-900); }
+  :focus-visible { outline: 2px solid var(--color-terracotta); outline-offset: 2px; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .eyebrow { @apply text-xs font-semibold tracking-[0.18em] uppercase text-terracotta; }
+  .paper-grain {
+    background-image: radial-gradient(rgb(33 75 55 / 0.05) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Leaflet popups in the brand style */
+.leaflet-popup-content-wrapper { border-radius: 14px; box-shadow: var(--shadow-lift); }
+.leaflet-popup-content { margin: 12px 14px; font-family: var(--font-sans); }
+.leaflet-container { font-family: var(--font-sans); background: var(--color-sage-100); }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
