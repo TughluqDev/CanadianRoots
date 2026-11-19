@@ -13,7 +13,8 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from . import config
 from .api.routes import router
-from .db import init_db
+from .db import SessionLocal, init_db
+from .seed import load_dataset, seed
 
 log = logging.getLogger("canadian_roots")
 
@@ -21,12 +22,20 @@ log = logging.getLogger("canadian_roots")
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
+    if config.SEED_ON_STARTUP:
+        with SessionLocal() as session:
+            result = seed(session, load_dataset())
+        log.warning("Seeded destinations on startup: %s", result)
     yield
 
 
 app = FastAPI(title="Canadian Roots API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(
-    CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"]
+    CORSMiddleware,
+    allow_origins=config.CORS_ORIGINS,
+    allow_origin_regex=config.CORS_ORIGIN_REGEX,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 app.include_router(router)
 

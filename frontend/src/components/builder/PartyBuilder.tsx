@@ -12,7 +12,7 @@ import { StepIndicator, STEPS } from './StepIndicator'
 import { TripDetailsStep } from './TripDetailsStep'
 
 const STEP_FIELDS: FieldPath<PartyForm>[][] = [
-  ['name', 'starting_city_id', 'transportation_method', 'departure_month', 'departure_date', 'trip_duration_days', 'budget_preference'],
+  ['name', 'starting_city_id', 'transportation_method', 'departure_month', 'departure_date', 'budget_preference'],
   ['members'],
 ]
 
@@ -73,7 +73,7 @@ export function PartyBuilder({
   const submit = form.handleSubmit(onSubmit, () => {
     // Send the user back to the first step with an error.
     const e = form.formState.errors
-    if (e.starting_city_id || e.departure_month || e.departure_date || e.trip_duration_days) goTo(0)
+    if (e.starting_city_id || e.departure_month || e.departure_date) goTo(0)
     else if (e.members) goTo(1)
   })
 

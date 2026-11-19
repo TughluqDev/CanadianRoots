@@ -43,9 +43,9 @@ def test_party_create_and_retrieve_with_multiple_members(client):
 def test_party_update(client):
     pid = client.post("/api/parties", json=party_payload([member("A", ["french"])])).json()["id"]
     r = client.put(f"/api/parties/{pid}", json=party_payload(
-        [member("A", ["french"]), member("B", ["british"])], days=2))
+        [member("A", ["french"]), member("B", ["british"])]))
     assert r.status_code == 200
-    assert len(r.json()["members"]) == 2 and r.json()["trip_duration_days"] == 2
+    assert len(r.json()["members"]) == 2
 
 
 def test_cultural_preference_required(client):
@@ -61,7 +61,6 @@ def test_invalid_inputs_rejected(client):
         party_payload([member("Bob", ["french"], region="mars")]),
         party_payload([member("  ", ["french"])]),
         party_payload([member("Bob", ["french"])], city="atlantis"),
-        party_payload([member("Bob", ["french"])], days=9),
         party_payload([]),
         {**party_payload([member("Bob", ["french"])]), "departure_month": None,
          "departure_date": str(date.today() - timedelta(days=3))},

@@ -5,7 +5,7 @@ __pycache__/
 .pytest_cache/
 
 # Local database & secrets
-*.db
+
 *.db-journal
 .env
 !.env.example

@@ -132,5 +132,3 @@ MONTH_NAMES = [
     "September", "October", "November", "December",
 ]
 
-MIN_TRIP_DAYS = 1
-MAX_TRIP_DAYS = 5

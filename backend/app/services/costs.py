@@ -52,6 +52,26 @@ def sample_airfare(flight_km: float) -> float:
     return float(round((160 + 0.17 * flight_km) / 10) * 10)
 
 
+def sample_multi_city_airfare(leg_kms: list[float]) -> float:
+    """Sample fare for an itinerary of one-way legs: half the round-trip formula per leg, so two
+    equal legs cost exactly ``sample_airfare`` of one of them."""
+    return float(round(sum(80 + 0.085 * km for km in leg_kms) / 10) * 10)
+
+
+def _sample_fare(travel: dict[str, Any]) -> float:
+    if travel.get("effective_method") != "plane":
+        return 0.0
+    flights = travel.get("flights")
+    if flights:
+        return sample_multi_city_airfare([f["km"] for f in flights])
+    return sample_airfare(travel.get("flight_km", 0))
+
+
+def _airfare_label(travel: dict[str, Any]) -> str:
+    n = len(travel.get("flights") or [])
+    return f"Airfare, {n} flights (sample)" if n and n != 2 else "Round-trip airfare (sample)"
+
+
 def default_assumptions(
     region: str, budget_preference: str | None, travel: dict[str, Any]
 ) -> dict[str, float]:
@@ -61,7 +81,7 @@ def default_assumptions(
         "fuel_consumption_l_per_100km": 9.0,
         "vehicle_capacity": 5,
         "parking_misc_per_vehicle_per_day": 15.0,
-        "airfare_per_person": sample_airfare(travel.get("flight_km", 0)) if travel.get("effective_method") == "plane" else 0.0,
+        "airfare_per_person": _sample_fare(travel),
         "airport_transfer_per_person": 40.0,
         "rental_car_per_day": 80.0,
         "nightly_room_rate": round(REGION_BY_ID[region].nightly_rate * ROOM_MULTIPLIER_BY_BUDGET[tier]),
@@ -128,7 +148,7 @@ def compute_budget(
     fuel_cost = fuel_litres * a["fuel_price_per_litre"]
     t_items: list[dict[str, Any]] = []
     if travel.get("effective_method") == "plane":
-        t_items.append({"label": "Round-trip airfare (sample)",
+        t_items.append({"label": _airfare_label(travel),
                         "detail": f"{travellers} × ${a['airfare_per_person']:.0f} sample fare",
                         "amount": _money(a["airfare_per_person"] * travellers)})
         t_items.append({"label": "Airport transfers",

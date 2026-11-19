@@ -62,6 +62,12 @@ export const REGION_META: Record<RegionId, { short: string; tint: string }> = {
   west_coast: { short: 'British Columbia', tint: 'from-[#1d4a46]/80' },
 }
 
+/** "Central Canada", "Central Canada & Northern Canada", ... for one or more visited regions. */
+export function regionList(regions: RegionId[] | undefined, fallback: RegionId | null): string {
+  const ids = regions && regions.length ? regions : fallback ? [fallback] : []
+  return ids.length ? ids.map((r) => REGION_NAMES[r]).join(' & ') : 'Canada'
+}
+
 export const REGION_NAMES: Record<RegionId, string> = {
   central: 'Central Canada',
   atlantic: 'Atlantic Canada',

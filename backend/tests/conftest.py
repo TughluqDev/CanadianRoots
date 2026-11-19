@@ -15,6 +15,7 @@ from sqlalchemy.pool import StaticPool
 
 # Never touch the developer's real database from tests.
 os.environ["DATABASE_URL"] = "sqlite://"
+os.environ["SEED_ON_STARTUP"] = "false"  # tests seed their own synthetic fixture
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.db import Base, get_session  # noqa: E402
@@ -116,7 +117,7 @@ def member(name: str, cultures: list[str], interests: list[str] | None = None, r
 def party_payload(members: list[dict], **kw) -> dict:
     return {"name": kw.get("name", "Test Party"), "starting_city_id": kw.get("city", "toronto"),
             "transportation_method": kw.get("transport", "car"), "departure_month": kw.get("month", 7),
-            "trip_duration_days": kw.get("days", 3), "budget_preference": kw.get("budget"),
+            "budget_preference": kw.get("budget"),
             "members": members}
 
 

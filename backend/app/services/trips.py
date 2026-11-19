@@ -46,7 +46,7 @@ def _stop_inputs(trip: Trip) -> list[costs.StopCostInput]:
 def _recompute(trip: Trip) -> None:
     party = trip.party
     budget = costs.compute_budget(
-        travellers=len(party.members), duration_days=party.trip_duration_days,
+        travellers=len(party.members), duration_days=trip.duration_days,
         stops=_stop_inputs(trip), travel=trip.travel, assumptions=trip.assumptions,
     )
     by_slug = {i["slug"]: i["subtotal"] for i in budget["activities"]["items"]}
@@ -61,10 +61,11 @@ def generate_trip(session: Session, party: Party) -> Trip:
     if city is None:
         raise PlanningError("This party's starting city is no longer supported.")
     settings = PartySettings(city, party.transportation_method, party.departure_month,
-                             party.trip_duration_days, party.budget_preference)
+                             party.budget_preference)
     plan = plan_trip(settings, member_profiles(party), load_experiences(session))
 
-    trip = Trip(party=party, primary_region=plan.primary_region, travel=plan.travel,
+    trip = Trip(party=party, primary_region=plan.primary_region, duration_days=plan.duration_days,
+                travel=plan.travel,
                 notes=plan.notes, currency="CAD", budget={}, estimated_total=0.0)
     trip.assumptions = costs.default_assumptions(plan.primary_region, party.budget_preference, plan.travel)
     trip.stops = [
@@ -121,10 +122,14 @@ def experience_out(e: Experience) -> ExperienceOut:
     )
 
 
+def trip_regions(trip: Trip) -> list[str]:
+    return list(dict.fromkeys(s.experience.region for s in trip.stops))
+
+
 def trip_out(trip: Trip) -> TripOut:
     return TripOut(
         id=trip.id, generated_at=trip.generated_at, primary_region=trip.primary_region,
-        currency=trip.currency, estimated_total=trip.estimated_total, party=party_out(trip.party),
+        regions=trip_regions(trip), duration_days=trip.duration_days, currency=trip.currency, estimated_total=trip.estimated_total, party=party_out(trip.party),
         stops=[
             TripStopOut(id=s.id, day_number=s.day_number, visit_order=s.visit_order,
                         party_activity_cost=s.party_activity_cost,
@@ -150,8 +155,8 @@ def trip_summary(trip: Trip) -> TripSummaryOut:
     cover = next((s.experience.image_url for s in trip.stops if s.experience.image_url), None)
     return TripSummaryOut(
         id=trip.id, generated_at=trip.generated_at, party_id=party.id, party_name=party.name,
-        starting_city=party.starting_city, primary_region=trip.primary_region,
-        trip_duration_days=party.trip_duration_days, transportation_method=party.transportation_method,
+        starting_city=party.starting_city, primary_region=trip.primary_region, regions=trip_regions(trip),
+        duration_days=trip.duration_days, transportation_method=party.transportation_method,
         party_size=len(party.members), estimated_total=trip.estimated_total, stop_count=len(trip.stops),
         cover_image_url=cover, stop_names=[s.experience.name for s in trip.stops],
     )

@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 
 interface M { name: string; cultures: string[]; interests: string[]; region?: string }
-interface Opts { name: string; city: string; plane?: boolean; month: string; days: number; members: M[] }
+interface Opts { name: string; city: string; plane?: boolean; month: string; members: M[] }
 
 const CULTURE_LABEL: Record<string, RegExp> = {
   indigenous: /Indigenous Influences/, british: /British Influences/, french: /French Influences/, immigrant: /Immigrant Influences/,
@@ -20,7 +20,6 @@ async function buildParty(page: Page, o: Opts) {
   await page.keyboard.press('Enter')
   if (o.plane) await page.getByText('Fly & drive').click()
   await page.getByRole('radio', { name: o.month, exact: true }).click()
-  await page.getByRole('radio', { name: `${o.days} day${o.days > 1 ? 's' : ''}` }).click()
   await page.getByRole('button', { name: 'Continue' }).click()
 
   for (const [i, m] of o.members.entries()) {
@@ -57,11 +56,11 @@ function checkBudget(trip: any) {
   expect(b.activities.items.length).toBe(slugs.length)
 }
 
-test('Scenario A — four mixed travellers drive from Toronto for three days', async ({ page }) => {
+test('Scenario A — four mixed travellers drive from Toronto', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', (e) => errors.push(String(e)))
   const { trip } = await buildParty(page, {
-    name: 'Scenario A', city: 'Toronto', month: 'Jul', days: 3,
+    name: 'Scenario A', city: 'Toronto', month: 'Jul',
     members: [
       { name: 'Bob', cultures: ['indigenous'], interests: ['Cold Weather', 'Fishing', 'Indigenous Culture'] },
       { name: 'Sarah', cultures: ['french'], interests: ['Cheese', 'Food Tasting'] },
@@ -83,7 +82,7 @@ test('Scenario A — four mixed travellers drive from Toronto for three days', a
 
 test('Scenario B — regional preference with flights', async ({ page }) => {
   const { trip } = await buildParty(page, {
-    name: 'Scenario B', city: 'Toronto', plane: true, month: 'Aug', days: 3,
+    name: 'Scenario B', city: 'Toronto', plane: true, month: 'Aug',
     members: [
       { name: 'Ana', cultures: ['british', 'french'], interests: ['History', 'Rural Life'], region: 'Atlantic Canada' },
       { name: 'Ben', cultures: ['french'], interests: ['Food Tasting', 'Scenic Landscapes'] },
@@ -102,7 +101,7 @@ test('Scenario B — regional preference with flights', async ({ page }) => {
 
 test('Scenario C — overlapping interests share one destination, charged once', async ({ page }) => {
   const { trip } = await buildParty(page, {
-    name: 'Scenario C', city: 'Ottawa', month: 'Sep', days: 2,
+    name: 'Scenario C', city: 'Ottawa', month: 'Sep',
     members: [
       { name: 'Lee', cultures: ['british'], interests: ['Farming', 'Animals'] },
       { name: 'Mia', cultures: ['british'], interests: ['History', 'Farming'] },

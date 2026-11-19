@@ -3,7 +3,7 @@ import type * as React from 'react'
 import { Link } from 'react-router'
 import { SmartImage } from '@/components/common/SmartImage'
 import { Button } from '@/components/ui/button'
-import { REGION_NAMES } from '@/lib/domain'
+import { regionList } from '@/lib/domain'
 import { money, MONTHS } from '@/lib/utils'
 import type { Trip } from '@/types/api'
 
@@ -22,7 +22,8 @@ function Stat({ icon: Icon, label, value }: { icon: React.ComponentType<{ classN
 export function JourneyHero({ trip }: { trip: Trip }) {
   const { party, budget, travel } = trip
   const cover = trip.stops.find((s) => s.experience.image_url)?.experience
-  const region = trip.primary_region ? REGION_NAMES[trip.primary_region] : 'Canada'
+  const region = regionList(trip.regions, trip.primary_region)
+  const flights = travel.flights ?? []
   const when = party.departure_date
     ? new Date(`${party.departure_date}T12:00:00`).toLocaleDateString('en-CA', { month: 'long', day: 'numeric', year: 'numeric' })
     : MONTHS[party.departure_month - 1]
@@ -41,16 +42,16 @@ export function JourneyHero({ trip }: { trip: Trip }) {
           {party.name || `${party.starting_city} to ${region}`}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-cream/80">
-          {trip.stops.length} hand-matched stop{trip.stops.length === 1 ? '' : 's'} across {party.trip_duration_days} day
-          {party.trip_duration_days === 1 ? '' : 's'}, chosen so every traveller finds something that speaks to them.
+          {trip.stops.length} hand-matched stop{trip.stops.length === 1 ? '' : 's'} across {trip.duration_days} day
+          {trip.duration_days === 1 ? '' : 's'}, chosen so every traveller finds something that speaks to them.
         </p>
         <div className="mt-10 grid gap-6 rounded-2xl border border-white/15 bg-white/8 p-6 backdrop-blur-md sm:grid-cols-3 lg:grid-cols-[repeat(5,auto)_1fr] lg:items-center lg:gap-10">
           <Stat icon={MapPin} label="From" value={`${party.starting_city}, ${party.starting_province}`} />
           <Stat icon={Users} label="Party" value={`${party.members.length} traveller${party.members.length === 1 ? '' : 's'}`} />
-          <Stat icon={Clock} label="Length" value={`${party.trip_duration_days} day${party.trip_duration_days === 1 ? '' : 's'}`} />
+          <Stat icon={Clock} label="Length" value={`${trip.duration_days} day${trip.duration_days === 1 ? '' : 's'}`} />
           <Stat icon={CalendarDays} label="When" value={when} />
           <Stat icon={travel.effective_method === 'plane' ? Plane : Car} label="Travel"
-            value={travel.effective_method === 'plane' ? `Fly to ${travel.arrival_airport?.code}` : 'Road trip'} />
+            value={travel.effective_method !== 'plane' ? 'Road trip' : flights.length > 2 ? `${flights.length} flights` : `Fly to ${travel.arrival_airport?.code}`} />
           <div className="lg:text-right">
             <p className="text-[11px] font-semibold tracking-[0.14em] text-cream/60 uppercase">Estimated total</p>
             <p className="font-display text-3xl font-medium text-gold">{money(budget.total)}</p>

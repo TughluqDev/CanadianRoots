@@ -114,30 +114,10 @@ export function TripDetailsStep({ cities }: { cities: City[] }) {
           </div>
         )}
         <FieldError>{errors.departure_month?.message ?? errors.departure_date?.message}</FieldError>
-        <p className="mt-2 text-xs text-muted">Seasonality matters: destinations closed in your month are never scheduled.</p>
+        <p className="mt-2 text-xs text-muted">Seasonality matters: destinations closed in your month are never scheduled. There’s no need to pick a trip length: we work out how many days your stops and travel need.</p>
       </fieldset>
 
-      <div className="grid gap-8 lg:grid-cols-[auto_1fr]">
-        <fieldset>
-          <legend className="mb-3 text-sm font-semibold text-forest-900">Trip length</legend>
-          <Controller
-            control={control}
-            name="trip_duration_days"
-            render={({ field }) => (
-              <div className="inline-flex gap-1.5 rounded-2xl border border-cream-300 bg-white/70 p-1.5" role="radiogroup" aria-label="Trip length in days">
-                {[1, 2, 3, 4, 5].map((d) => (
-                  <button key={d} type="button" role="radio" aria-checked={field.value === d} aria-label={`${d} day${d > 1 ? 's' : ''}`}
-                    onClick={() => field.onChange(d)}
-                    className={cn('flex size-14 cursor-pointer flex-col items-center justify-center rounded-xl transition-all',
-                      field.value === d ? 'bg-forest text-cream shadow-soft' : 'text-ink-soft hover:bg-forest/5')}>
-                    <span className="font-display text-xl leading-none font-semibold">{d}</span>
-                    <span className="text-[10px] tracking-wide uppercase opacity-75">{d > 1 ? 'days' : 'day'}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-          />
-        </fieldset>
+      <div>
         <fieldset>
           <legend className="mb-3 text-sm font-semibold text-forest-900">Budget style <span className="font-normal text-muted">(optional)</span></legend>
           <Controller

@@ -25,7 +25,6 @@ export const partySchema = z
     timing: z.enum(['month', 'date']),
     departure_month: z.number().int().min(1).max(12).nullable(),
     departure_date: z.string(),
-    trip_duration_days: z.number().int().min(1, 'Trips are 1–5 days.').max(5, 'Trips are 1–5 days.'),
     budget_preference: z.enum(['economy', 'moderate', 'premium']).nullable(),
     members: z.array(memberSchema).min(1, 'Add at least one traveller.'),
   })
@@ -55,7 +54,6 @@ export function defaultPartyForm(): PartyForm {
     timing: 'month',
     departure_month: null,
     departure_date: '',
-    trip_duration_days: 3,
     budget_preference: 'moderate',
     members: [emptyMember()],
   }
@@ -68,7 +66,6 @@ export function toPartyInput(form: PartyForm): PartyInput {
     transportation_method: form.transportation_method,
     departure_month: form.timing === 'month' ? form.departure_month : null,
     departure_date: form.timing === 'date' ? form.departure_date : null,
-    trip_duration_days: form.trip_duration_days,
     budget_preference: form.budget_preference,
     members: form.members.map(({ name, interests, cultures, preferred_region }) => ({
       name: name.trim(), interests, cultures, preferred_region,
@@ -85,7 +82,6 @@ export function fromParty(p: Party): PartyForm {
     timing: dateStillValid ? 'date' : 'month',
     departure_month: p.departure_month,
     departure_date: dateStillValid ? p.departure_date! : '',
-    trip_duration_days: p.trip_duration_days,
     budget_preference: p.budget_preference,
     members: p.members.map((m) => ({
       key: newKey(), name: m.name, interests: m.interests, cultures: m.cultures, preferred_region: m.preferred_region,

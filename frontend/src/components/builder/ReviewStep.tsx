@@ -40,7 +40,7 @@ export function ReviewStep({ cities, onEdit }: { cities: City[]; onEdit: (step: 
           <Fact icon={MapPin} label="Starting from" value={city ? `${city.name}, ${city.province}` : '—'} />
           <Fact icon={v.transportation_method === 'plane' ? Plane : Car} label="Travel" value={v.transportation_method === 'plane' ? 'Fly & drive' : 'Road trip'} />
           <Fact icon={CalendarDays} label="When" value={when} />
-          <Fact icon={Clock} label="Length" value={`${v.trip_duration_days} day${v.trip_duration_days > 1 ? 's' : ''}`} />
+          <Fact icon={Clock} label="Length" value="Calculated for you" />
         </div>
         {v.budget_preference && (
           <p className="mt-6 flex items-center gap-2 text-sm text-ink-soft">

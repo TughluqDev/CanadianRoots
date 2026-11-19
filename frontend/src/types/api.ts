@@ -92,7 +92,6 @@ export interface PartyInput {
   transportation_method: TransportMethod
   departure_month: number | null
   departure_date: string | null
-  trip_duration_days: number
   budget_preference: BudgetPreference | null
   members: MemberInput[]
 }
@@ -133,6 +132,16 @@ export interface Recommendation {
   unmet: string[]
 }
 
+export interface Flight {
+  from: { code: string; city: string; province: string }
+  to: { code: string; city: string; province: string }
+  km: number
+  hours: number
+  to_airport_hours: number
+  /** Slug of the stop this flight leads to; null for the flight home. */
+  before_stop: string | null
+}
+
 export interface Travel {
   method: TransportMethod
   effective_method: TransportMethod
@@ -143,6 +152,9 @@ export interface Travel {
   flight_hours?: number
   pre_flight_hours?: number
   no_flight_reason?: string
+  regions?: RegionId[]
+  flights?: Flight[]
+  return_flight?: boolean
   ground_km: number
   outbound_hours: number
   return_hours: number
@@ -201,6 +213,8 @@ export interface Trip {
   id: number
   generated_at: string
   primary_region: RegionId | null
+  regions: RegionId[]
+  duration_days: number
   currency: 'CAD'
   estimated_total: number
   party: Party
@@ -219,7 +233,8 @@ export interface TripSummary {
   party_name: string | null
   starting_city: string
   primary_region: RegionId | null
-  trip_duration_days: number
+  regions: RegionId[]
+  duration_days: number
   transportation_method: TransportMethod
   party_size: number
   estimated_total: number

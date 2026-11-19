@@ -25,7 +25,6 @@ class Party(Base):
     __tablename__ = "party"
     __table_args__ = (
         CheckConstraint("transportation_method IN ('car','plane')", name="ck_party_transport"),
-        CheckConstraint("trip_duration_days BETWEEN 1 AND 5", name="ck_party_duration"),
         CheckConstraint("departure_month BETWEEN 1 AND 12", name="ck_party_month"),
     )
 
@@ -39,7 +38,6 @@ class Party(Base):
     transportation_method: Mapped[str] = mapped_column(String(10))
     departure_month: Mapped[int] = mapped_column(Integer)
     departure_date: Mapped[date | None] = mapped_column(Date)
-    trip_duration_days: Mapped[int] = mapped_column(Integer, default=3)
     budget_preference: Mapped[str | None] = mapped_column(String(20))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
@@ -203,6 +201,8 @@ class Trip(Base):
     party_id: Mapped[int] = mapped_column(ForeignKey("party.id", ondelete="CASCADE"), index=True)
     generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     primary_region: Mapped[str | None] = mapped_column(String(20))
+    # Calculated by the planner from the stops and travel time (no user-chosen limit).
+    duration_days: Mapped[int] = mapped_column(Integer)
     # Editable cost assumptions and the computed itemized budget are stored as JSON snapshots
     assumptions: Mapped[dict[str, Any]] = mapped_column(JSON)
     travel: Mapped[dict[str, Any]] = mapped_column(JSON)

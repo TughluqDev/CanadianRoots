@@ -5,7 +5,7 @@ import { EmptyState, ErrorState } from '@/components/common/StateViews'
 import { SmartImage } from '@/components/common/SmartImage'
 import { Button } from '@/components/ui/button'
 import { Card, Skeleton } from '@/components/ui/primitives'
-import { REGION_NAMES } from '@/lib/domain'
+import { regionList } from '@/lib/domain'
 import { money } from '@/lib/utils'
 import { api } from '@/services/api'
 
@@ -38,13 +38,13 @@ export function SavedTripsPage() {
               <SmartImage src={t.cover_image_url} alt="" region={t.primary_region} className="aspect-[16/9] sm:aspect-auto sm:h-full" />
               <div className="flex flex-col p-5">
                 <p className="text-xs font-semibold text-terracotta">
-                  {t.primary_region ? REGION_NAMES[t.primary_region] : 'Canada'} · {new Date(t.generated_at).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  {regionList(t.regions, t.primary_region)} · {new Date(t.generated_at).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </p>
                 <h2 className="mt-1 text-xl font-medium">{t.party_name || `From ${t.starting_city}`}</h2>
                 <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{t.stop_names.join(' · ')}</p>
                 <div className="mt-3 flex flex-wrap gap-4 text-sm text-ink-soft">
                   <span className="flex items-center gap-1.5"><Users className="size-4 text-sage" aria-hidden />{t.party_size}</span>
-                  <span className="flex items-center gap-1.5">{t.transportation_method === 'plane' ? <Plane className="size-4 text-sage" aria-hidden /> : <Car className="size-4 text-sage" aria-hidden />}{t.trip_duration_days} day{t.trip_duration_days > 1 ? 's' : ''}</span>
+                  <span className="flex items-center gap-1.5">{t.transportation_method === 'plane' ? <Plane className="size-4 text-sage" aria-hidden /> : <Car className="size-4 text-sage" aria-hidden />}{t.duration_days} day{t.duration_days > 1 ? 's' : ''}</span>
                   <span className="font-semibold text-forest-900">{money(t.estimated_total)}</span>
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-4">

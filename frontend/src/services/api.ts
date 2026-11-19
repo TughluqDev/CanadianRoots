@@ -2,7 +2,12 @@ import type {
   Assumptions, City, Experience, Party, PartyInput, PreferencesResponse, Region, Trip, TripSummary,
 } from '@/types/api'
 
-const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? ''
+// In development Vite proxies /api to the local backend, so the base stays empty. In production
+// (Vercel) set VITE_API_BASE_URL to the Render API origin, e.g. https://canadian-roots-api.onrender.com
+const BASE = ((import.meta.env.VITE_API_BASE_URL as string | undefined) ?? '').trim().replace(/\/+$/, '')
+if (import.meta.env.PROD && !BASE) {
+  console.error('VITE_API_BASE_URL is not set; API requests will go to this site instead of the backend.')
+}
 
 export class ApiError extends Error {
   status: number
@@ -20,7 +25,12 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       headers: { 'Content-Type': 'application/json', ...(init?.headers ?? {}) },
     })
   } catch {
-    throw new ApiError("We can't reach the Canadian Roots server. Is the backend running on port 8000?", 0)
+    throw new ApiError(
+      import.meta.env.DEV
+        ? "We can't reach the Canadian Roots server. Is the backend running on port 8000?"
+        : "We can't reach the Canadian Roots server right now. Please try again in a moment.",
+      0,
+    )
   }
   if (res.status === 204) return undefined as T
   let body: unknown = null

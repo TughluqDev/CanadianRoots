@@ -1,0 +1,36 @@
+# Render Blueprint for the Canadian Roots API (FastAPI + SQLite).
+# In the Render dashboard: New > Blueprint, then pick this repository.
+#
+# SQLite lives on a persistent disk mounted at /var/data. Persistent disks need a paid instance
+# type (Starter or higher); on the Free plan the filesystem is wiped on every deploy and restart,
+# so saved trips would be lost. A service with a disk runs as a single instance.
+services:
+  - type: web
+    name: canadian-roots-api
+    runtime: python
+    plan: starter
+    region: oregon
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: canadian-roots-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DATABASE_URL
+        value: sqlite:////var/data/canadian_roots.db
+      # Your Vercel production URL(s), comma-separated, no trailing slash,
+      # e.g. https://canadian-roots.vercel.app — set this in the dashboard after the first deploy.
+      - key: CORS_ORIGINS
+        sync: false
+      # Optional: also allow Vercel preview deployments, e.g.
+      #   ^https://canadian-roots(-[a-z0-9-]+)?\.vercel\.app$
+      - key: CORS_ORIGIN_REGEX
+        sync: false
+      - key: SEED_ON_STARTUP
+        value: "true"

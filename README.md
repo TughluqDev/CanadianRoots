@@ -83,7 +83,7 @@ npm run test:e2e                  # reuses running servers, or starts them
 
 The end-to-end suite covers:
 
-- **Scenario A:** 4 travellers drive from Toronto for 3 days.
+- **Scenario A:** 4 travellers drive from Toronto.
 - **Scenario B:** a plane trip where one traveller prefers Atlantic Canada.
 - **Scenario C:** 3 travellers with overlapping interests share a stop and are charged for it once. This test also edits the cost assumptions.
 - Form validation.
@@ -107,6 +107,28 @@ You can also delete `backend/canadian_roots.db` and run the seed script again.
 | Map tiles (OpenStreetMap) | ❌ online only. Markers still render and a notice explains |
 | Official-website and source links | ❌ online only |
 
+## 7. Hosting (Vercel frontend + Render backend)
+
+The frontend is a static Vite build on **Vercel**. The API runs on **Render**, with the SQLite database file on a Render persistent disk.
+
+**Backend on Render** (`render.yaml` at the repo root is a ready-made Blueprint):
+
+1. Push the repo to GitHub, then in Render choose **New → Blueprint** and select it. This creates the `canadian-roots-api` web service:
+   - root directory `backend`, Python 3.12
+   - start command `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - health check `/api/health`
+   - a 1 GB disk mounted at `/var/data`, with `DATABASE_URL=sqlite:////var/data/canadian_roots.db`
+2. **The disk needs a paid instance (Starter or higher).** On the Free plan there is no disk: the database would be wiped on every deploy or restart, and saved trips lost. A service with a disk runs as a single instance, which is what SQLite needs anyway.
+3. Nothing needs to be seeded by hand. On every start the server creates the schema and upserts the 25 destinations from `data/researched_experiences.json`. This never touches saved parties or trips, so data edits ship with each deploy. Set `SEED_ON_STARTUP=false` to turn it off.
+4. After the frontend is deployed, set `CORS_ORIGINS` to its URL, e.g. `https://canadian-roots.vercel.app` (comma-separate several; no trailing slash). To also allow Vercel preview deployments, set `CORS_ORIGIN_REGEX`, e.g. `^https://canadian-roots(-[a-z0-9-]+)?\.vercel\.app$`.
+5. Back up the database from the service's **Shell** tab, e.g. `python -c "import sqlite3; sqlite3.connect('/var/data/canadian_roots.db').backup(sqlite3.connect('/var/data/backup.db'))"`, then download it over SSH (`scp`). Render also snapshots disks daily.
+
+**Frontend on Vercel:**
+
+1. **Add New → Project**, import the repo, and set **Root Directory** to `frontend`. `frontend/vercel.json` sets the Vite build, the `dist` output, the SPA fallback (so `/journey/12` loads on refresh) and cache headers.
+2. Add the environment variable `VITE_API_BASE_URL` = your Render URL, e.g. `https://canadian-roots-api.onrender.com` (no trailing slash). It is baked in at build time, so **redeploy after changing it**.
+3. Destination photos in `frontend/public/images` are served by Vercel, and the API returns them as site-relative paths.
+
 ---
 
 ## Architecture
@@ -121,7 +143,7 @@ backend/app/
   seed.py            validates the research JSON and upserts it
   services/
     scoring.py       per-member scoring and explanation templates
-    planner.py       group-level clustering, feasibility, day scheduling
+    planner.py       multi-region areas, flights, day scheduling
     costs.py         pure, itemized CAD cost engine
     trips.py         orchestration, persistence, serialization
   api/routes.py      REST endpoints
@@ -133,7 +155,7 @@ data/researched_experiences.json   25 sourced destinations
 scripts/              seed_database.py, fetch_images.py, setup/dev helpers
 ```
 
-**Database initialization.** The schema is created with `metadata.create_all`. That is enough for a small demo with an idempotent seed; there are no migrations. The tables use foreign keys with cascades, unique constraints (for example, one row per experience–tag pair and one recommendation per trip–member pair), and check constraints on the transport method, trip length, month and pricing status.
+**Database initialization.** The schema is created with `metadata.create_all`. That is enough for a small demo with an idempotent seed; there are no migrations. The tables use foreign keys with cascades, unique constraints (for example, one row per experience–tag pair and one recommendation per trip–member pair), and check constraints on the transport method, month and pricing status.
 
 ### API
 
@@ -161,16 +183,17 @@ Errors come back as JSON `{ "detail": "<friendly message>" }` with the matching 
    - ±5 adjustment for economy budgets.
 
    A destination only counts as *suitable* for a traveller if at least one interest or culture matches.
-3. **Group clustering.**
-   - Each eligible destination is treated as an anchor. Every eligible destination within a radius of it joins its cluster. The radius depends on trip length: 80 km for 1 day, 150, 220, 280, and 320 km for 5 days.
-   - A cluster is rejected if the one-way trip there takes too long: 2.5 h for a 1-day trip, then 4.5, 6.5, 8, and 9.5 h for 5 days.
-   - For flights: the arrival airport is the one nearest the anchor, and the anchor must be within a 3.5 h drive of it. If that airport is the same as the home airport, the trip is planned as a drive instead.
-4. **Stop selection.** Stops are added one at a time, always picking the stop that most improves the group's best matches. This favours stops that suit several travellers, and lightly fills extra days.
+3. **Areas and regions.** A trip is made of one or more *areas*. An area is a cluster of eligible destinations within 320 km of an anchor destination.
+   - **Every preferred region is visited.** Each region a traveller picks gets its own area inside that region, and the whole group travels there together. The group is never squeezed into a single region. If nothing in that region matches anyone's interests, the trip still goes to the stop there that the traveller who picked it would enjoy most. If the region has nothing open that month, the app says so.
+   - One more area is chosen anywhere when nobody named a region, or when someone still has no suitable stop.
+   - There is no fixed trip length and no hard limit on distance. Every hour of travel to reach an area counts against its score, so nearby areas win unless a farther one suits the group much better.
+   - Areas are visited in nearest-neighbour order from home. When travelling by plane, each hop (home to the first area, area to area, last area to home) is flown if the nearest airports differ and flying is faster; otherwise it is driven. An area reached by air should be within a 3.5 h drive of its arrival airport.
+4. **Stop selection.** Within each area, stops are added one at a time, always picking the stop that most improves the group's best matches across the whole trip so far. This favours stops that suit several travellers. If only one stop is chosen, a second one the group still enjoys is added.
 5. **Scheduling.**
    - Stops are ordered nearest-neighbour from the start point.
-   - Each day has a 10-hour budget covering both driving and visits. The last day also reserves time for the trip home.
-   - A stop that doesn't fit is dropped, and the app says so.
-6. **Choosing the trip.** Each candidate itinerary is scored as: sum of each traveller's best score, plus 15 for each traveller served, minus 3 per hour of travel to get there. The highest score wins. Ties are broken by shorter travel, then alphabetically by slug.
+   - Each day has a 10-hour budget covering both driving and visits, with at most 3 stops a day. A long drive simply takes extra travel days.
+   - **Trip length is calculated automatically:** it is the number of days needed for every stop plus the journey home. Travellers never pick a number of days, and no stop is dropped for lack of time.
+6. **Choosing each area.** Each candidate area is scored as: how much it improves each traveller's best score, plus 15 for each traveller it serves for the first time, minus 3 per hour of travel to get there. The highest score wins. Ties are broken by shorter travel, then alphabetically by slug.
 7. **Recommendations and explanations.**
    - Each traveller is recommended the scheduled stop with their highest score.
    - Explanations are built from templates using that traveller's matches and wording taken from the destination record. Templates rotate between travellers so the text doesn't repeat.
@@ -188,7 +211,7 @@ Distances are straight-line distances × 1.25 at 80 km/h. They are always shown 
   - Everyone is priced at the adult rate.
 - **Car:** round-trip distance × 9 L/100 km × $1.60/L for each vehicle (5 seats per vehicle), plus $15 per vehicle per day for parking and incidentals. This is a cost for the whole party, not per person.
 - **Plane:**
-  - A sample round-trip fare per traveller: $160 + $0.17 per km of flight distance, rounded to $10. This is not a quote, and a direct route may not exist.
+  - A sample fare per traveller: $80 + $0.085 per km for each flight, rounded to $10. A simple out-and-back trip is therefore $160 + $0.17 per km of one-way distance. Multi-region trips add a flight per hop. This is not a quote, and a direct route may not exist.
   - Plus $40 per person for airport transfers, a rental car at $80 per day, and fuel for local driving.
 - **Lodging:**
   - Rooms = travellers ÷ 2 per room, rounded up. Nights = trip days − 1.

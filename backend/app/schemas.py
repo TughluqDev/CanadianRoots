@@ -7,7 +7,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from .domain import CITY_BY_ID, CULTURE_IDS, INTEREST_IDS, MAX_TRIP_DAYS, MIN_TRIP_DAYS, REGION_IDS
+from .domain import CITY_BY_ID, CULTURE_IDS, INTEREST_IDS, REGION_IDS
 
 MAX_PARTY_SIZE = 100  # sanity guard against abuse, not a product limit
 
@@ -65,7 +65,6 @@ class PartyIn(BaseModel):
     transportation_method: Literal["car", "plane"]
     departure_month: int | None = Field(default=None, ge=1, le=12)
     departure_date: date | None = None
-    trip_duration_days: int = Field(default=3, ge=MIN_TRIP_DAYS, le=MAX_TRIP_DAYS)
     budget_preference: Literal["economy", "moderate", "premium"] | None = None
     members: list[MemberIn] = Field(min_length=1, max_length=MAX_PARTY_SIZE)
 
@@ -113,7 +112,6 @@ class PartyOut(BaseModel):
     transportation_method: str
     departure_month: int
     departure_date: date | None
-    trip_duration_days: int
     budget_preference: str | None
     created_at: datetime
     members: list[MemberOut]
@@ -215,6 +213,8 @@ class TripOut(BaseModel):
     id: int
     generated_at: datetime
     primary_region: str | None
+    regions: list[str]  # every region visited, in visit order
+    duration_days: int
     currency: str
     estimated_total: float
     party: PartyOut
@@ -233,7 +233,8 @@ class TripSummaryOut(BaseModel):
     party_name: str | None
     starting_city: str
     primary_region: str | None
-    trip_duration_days: int
+    regions: list[str]
+    duration_days: int
     transportation_method: str
     party_size: int
     estimated_total: float

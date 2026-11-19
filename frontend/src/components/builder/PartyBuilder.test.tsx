@@ -93,7 +93,7 @@ describe('PartyBuilder', () => {
     await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1))
     const input = toPartyInput(onSubmit.mock.calls[0][0])
     expect(input).toMatchObject({
-      starting_city_id: 'toronto', transportation_method: 'car', departure_month: 7, trip_duration_days: 3,
+      starting_city_id: 'toronto', transportation_method: 'car', departure_month: 7,
       members: [{ name: 'Bob', cultures: ['indigenous'], interests: ['fishing'], preferred_region: 'atlantic' }],
     })
   })

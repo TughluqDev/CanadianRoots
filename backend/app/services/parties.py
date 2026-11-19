@@ -20,7 +20,6 @@ def _apply(party: Party, data: PartyIn) -> None:
     party.transportation_method = data.transportation_method
     party.departure_month = data.departure_month  # type: ignore[assignment]  (validated non-null)
     party.departure_date = data.departure_date
-    party.trip_duration_days = data.trip_duration_days
     party.budget_preference = data.budget_preference
     party.members.clear()
     for pos, m in enumerate(data.members):
@@ -58,7 +57,7 @@ def party_out(party: Party) -> PartyOut:
         starting_city=party.starting_city, starting_province=party.starting_province,
         origin_latitude=party.origin_latitude, origin_longitude=party.origin_longitude,
         transportation_method=party.transportation_method, departure_month=party.departure_month,
-        departure_date=party.departure_date, trip_duration_days=party.trip_duration_days,
+        departure_date=party.departure_date,
         budget_preference=party.budget_preference, created_at=party.created_at,
         members=[
             MemberOut(id=m.id, name=m.name, interests=m.values("interest"),

@@ -37,11 +37,11 @@ const exp = (slug: string, name: string): Experience => ({
 })
 
 export const trip: Trip = {
-  id: 7, generated_at: '2026-11-18T12:00:00', primary_region: 'central', currency: 'CAD', estimated_total: 1234.5,
+  id: 7, generated_at: '2026-11-18T12:00:00', primary_region: 'central', regions: ['central'], duration_days: 2, currency: 'CAD', estimated_total: 1234.5,
   party: {
     id: 3, name: 'Harvest Crew', starting_city_id: 'ottawa', starting_city: 'Ottawa', starting_province: 'ON',
     origin_latitude: 45.42, origin_longitude: -75.7, transportation_method: 'car', departure_month: 7,
-    departure_date: null, trip_duration_days: 2, budget_preference: 'moderate', created_at: '2026-11-18T12:00:00',
+    departure_date: null, budget_preference: 'moderate', created_at: '2026-11-18T12:00:00',
     members: [
       { id: 1, name: 'Lee', interests: ['animals'], cultures: ['british'], preferred_region: null },
       { id: 2, name: 'Mia', interests: ['history'], cultures: ['british'], preferred_region: 'central' },

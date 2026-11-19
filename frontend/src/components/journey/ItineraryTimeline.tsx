@@ -3,7 +3,17 @@ import { MemberAvatar } from '@/components/common/badges'
 import { SmartImage } from '@/components/common/SmartImage'
 import { Card } from '@/components/ui/primitives'
 import { hours, money } from '@/lib/utils'
-import type { Member, Recommendation, Trip, TripStop } from '@/types/api'
+import type { Flight, Member, Recommendation, Trip, TripStop } from '@/types/api'
+
+function FlightLeg({ flight, first }: { flight: Flight; first: boolean }) {
+  return (
+    <p className="mt-2 flex items-center gap-2 py-1 text-sm text-ink-soft">
+      <Plane className="size-4 text-terracotta" aria-hidden />
+      Fly {flight.from.code} → {flight.to.code} (≈ {hours(flight.hours)} incl. airport time)
+      {first ? ', pick up the rental car.' : `, continuing to ${flight.to.city}.`}
+    </p>
+  )
+}
 
 function TravelLeg({ km, h, from }: { km: number; h: number; from: string | null }) {
   return (
@@ -51,24 +61,28 @@ function StopCard({ stop, members, recs }: { stop: TripStop; members: Member[]; 
 }
 
 export function ItineraryTimeline({ trip }: { trip: Trip }) {
-  const days = Array.from({ length: trip.party.trip_duration_days }, (_, i) => i + 1)
-  const plane = trip.travel.effective_method === 'plane'
+  const days = Array.from({ length: trip.duration_days }, (_, i) => i + 1)
+  const flights = trip.travel.flights ?? []
+  const flightTo = (slug: string) => flights.find((f) => f.before_stop === slug)
+  // Trips saved before multi-region support describe a single outbound flight only.
+  const legacyFlight = trip.travel.effective_method === 'plane' && flights.length === 0 && trip.travel.origin_airport
+  const flyHome = trip.travel.return_flight ?? trip.travel.effective_method === 'plane'
   return (
     <ol className="relative space-y-10 border-l-2 border-dashed border-sage/60 pl-6 sm:pl-10">
       {days.map((day) => {
         const stops = trip.stops.filter((s) => s.day_number === day)
         const isFirst = day === 1
-        const isLast = day === trip.party.trip_duration_days
+        const isLast = day === trip.duration_days
         return (
           <li key={day} className="relative">
             <span className="absolute top-0 -left-[35px] flex size-12 items-center justify-center rounded-full bg-forest font-display text-lg text-gold ring-8 ring-cream sm:-left-[51px]">
               {day}
             </span>
             <h3 className="pt-2 text-2xl font-medium">Day {day}</h3>
-            {isFirst && plane && trip.travel.origin_airport && (
+            {isFirst && legacyFlight && (
               <p className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
                 <Plane className="size-4 text-terracotta" aria-hidden />
-                Fly {trip.travel.origin_airport.code} → {trip.travel.arrival_airport?.code} (≈ {hours(trip.travel.flight_hours ?? 0)} incl. airport time), pick up the rental car.
+                Fly {trip.travel.origin_airport!.code} → {trip.travel.arrival_airport?.code} (≈ {hours(trip.travel.flight_hours ?? 0)} incl. airport time), pick up the rental car.
               </p>
             )}
             <div className="mt-4 space-y-1">
@@ -77,17 +91,21 @@ export function ItineraryTimeline({ trip }: { trip: Trip }) {
                   Unscheduled time — linger at local markets, revisit a favourite, or rest before the drive.
                 </p>
               )}
-              {stops.map((s) => (
+              {stops.map((s) => {
+                const flight = flightTo(s.experience.slug)
+                return (
                 <div key={s.id}>
+                  {flight && <FlightLeg flight={flight} first={flight === flights[0]} />}
                   <TravelLeg km={s.travel_km_from_previous} h={s.travel_hours_from_previous} from={s.previous_label} />
                   <StopCard stop={s} members={trip.party.members} recs={trip.recommendations} />
                 </div>
-              ))}
+                )
+              })}
               {isLast && (
                 <div className="flex items-center gap-2 pt-4 text-sm text-ink-soft">
                   <Home className="size-4 text-terracotta" aria-hidden />
                   Head home: ≈ {Math.round(trip.travel.return_km)} km to {trip.travel.return_label}
-                  {plane ? `, then fly back to ${trip.travel.origin_airport?.city}` : ''} (about {hours(trip.travel.return_hours)} total).
+                  {flyHome ? `, then fly back to ${trip.travel.origin_airport?.city}` : ''} (about {hours(trip.travel.return_hours)} total).
                 </div>
               )}
             </div>
