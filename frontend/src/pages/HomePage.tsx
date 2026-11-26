@@ -13,7 +13,6 @@ import type { CultureId, Experience, RegionId } from '@/types/api'
 const HERO_SLUG = 'grand-pre-national-historic-site'
 const REGION_ORDER: RegionId[] = ['central', 'atlantic', 'prairies', 'west_coast', 'northern']
 
-/** One photographed destination per region first, then fill to six. Deterministic. */
 function featured(list: Experience[]): Experience[] {
   const withImg = list.filter((e) => e.image_url)
   const picks: Experience[] = []
@@ -26,9 +25,9 @@ function featured(list: Experience[]): Experience[] {
 }
 
 const STEPS = [
-  { icon: Users, title: 'Build your party', text: 'Add every traveller with their interests, the heritages they’re curious about, and an optional favourite region.' },
-  { icon: Sparkles, title: 'We match & route', text: 'A transparent scoring engine finds real destinations that satisfy the group — open in your month and reachable in your timeframe.' },
-  { icon: Map, title: 'Explore & budget', text: 'Get a day-by-day plan, food spotlights, cultural context and an itemized CAD budget you can fine-tune.' },
+  { icon: Users, title: 'Build your party', text: 'Add each traveller’s interests and any region they’d like to visit.' },
+  { icon: Sparkles, title: 'Find stops', text: 'We look for stops that match your interests and are open in your travel month.' },
+  { icon: Map, title: 'Review the trip', text: 'See your daily itinerary and adjust your budget.' },
 ]
 
 export function HomePage() {
@@ -49,11 +48,10 @@ export function HomePage() {
           <div className="max-w-3xl animate-fade-up">
             <p className="eyebrow mb-5 text-gold">Agritourism across Canada</p>
             <h1 className="text-5xl leading-[1.02] font-medium text-cream sm:text-7xl">
-              Discover Canada through its land, food, and cultures.
+              Plan a farm and food trip in Canada.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85">
-              Plan a shared journey to real farms, sugar shacks, heritage villages and Indigenous-led experiences —
-              personalized for every member of your party.
+              Visit farms, sugar shacks, heritage villages and Indigenous-led sites that match your group’s interests.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg" variant="gold"><Link to="/plan">Plan Your Journey<ArrowRight /></Link></Button>
@@ -62,7 +60,7 @@ export function HomePage() {
           </div>
           <div className="mt-16 flex flex-wrap items-end justify-between gap-6">
             <dl className="flex flex-wrap gap-x-10 gap-y-4 text-cream">
-              <div><dt className="text-xs tracking-[0.16em] text-cream/60 uppercase">Researched destinations</dt><dd className="font-display text-3xl">{count ?? '—'}</dd></div>
+              <div><dt className="text-xs tracking-[0.16em] text-cream/60 uppercase">Researched destinations</dt><dd className="font-display text-3xl">{count ?? '…'}</dd></div>
               <div><dt className="text-xs tracking-[0.16em] text-cream/60 uppercase">Regions</dt><dd className="font-display text-3xl">5</dd></div>
               <div><dt className="text-xs tracking-[0.16em] text-cream/60 uppercase">Cultural heritages</dt><dd className="font-display text-3xl">4</dd></div>
             </dl>
@@ -93,7 +91,7 @@ export function HomePage() {
       <section className="bg-cream-200/60 py-24">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Featured destinations" title="Real places with deep roots">
+            <SectionHeading eyebrow="Featured destinations" title="Farms and heritage sites">
               Every destination is sourced from official and heritage organizations, with seasons and prices labelled honestly.
             </SectionHeading>
             <Button asChild variant="outline"><Link to="/destinations">See all {count ?? ''}<ArrowRight /></Link></Button>
@@ -109,14 +107,14 @@ export function HomePage() {
       </section>
 
       <section className="container-page py-24">
-        <SectionHeading eyebrow="Four threads of heritage" title="Taste the cultures that shaped Canadian farming" />
+        <SectionHeading eyebrow="Explore by culture" title="Food and farming traditions" />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {(Object.keys(CULTURE_META) as CultureId[]).map((c) => (
             <Card key={c} className="p-6 transition hover:-translate-y-1 hover:shadow-lift">
               <span className={`block h-1.5 w-12 rounded-full ${CULTURE_META[c].dot}`} />
               <h3 className="mt-5 text-xl font-medium">{CULTURE_META[c].short} influences</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{CULTURE_META[c].blurb}</p>
-              <p className="mt-4 text-xs font-semibold text-forest">{experiences.data?.filter((e) => e.cultures.includes(c)).length ?? '—'} destinations</p>
+              <p className="mt-4 text-xs font-semibold text-forest">{experiences.data?.filter((e) => e.cultures.includes(c)).length ?? '…'} destinations</p>
             </Card>
           ))}
         </div>
@@ -128,7 +126,7 @@ export function HomePage() {
           <div className="absolute -bottom-32 right-40 size-72 rounded-full bg-terracotta/20" aria-hidden />
           <div className="relative max-w-2xl">
             <h2 className="text-3xl leading-tight font-medium text-cream sm:text-5xl">From {REGION_NAMES.atlantic} dykelands to Okanagan vineyards.</h2>
-            <p className="mt-4 text-lg text-cream/80">Start with who’s coming. We’ll handle the matching, the route and the math.</p>
+            <p className="mt-4 text-lg text-cream/80">Add your travellers to get a route and an estimated budget.</p>
             <Button asChild size="lg" variant="gold" className="mt-8"><Link to="/plan">Plan Your Journey<ArrowRight /></Link></Button>
           </div>
         </div>

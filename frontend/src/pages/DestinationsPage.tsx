@@ -75,7 +75,7 @@ export function DestinationsPage() {
           ) : experiences.data.length === 0 ? (
             <EmptyState title="No destinations yet" message="The database is empty. Run python scripts/seed_database.py to import the researched destinations." />
           ) : filtered.length === 0 ? (
-            <EmptyState title="Nothing matches those filters" message="Try another month or region — many farms are seasonal."
+            <EmptyState title="Nothing matches those filters" message="Try another month or region."
               action={<Button variant="outline" onClick={() => setParams({}, { replace: true })}>Clear filters</Button>} />
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

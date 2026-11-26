@@ -25,7 +25,7 @@ def test_seed_is_idempotent(session, tmp_path):
 def test_seed_updates_and_removes(session, tmp_path):
     data = copy.deepcopy(FIXTURE)
     data["experiences"][0]["tags"] = ["farming"]
-    data["experiences"].pop()  # drop yukon-farm
+    data["experiences"].pop()
     result = seed(session, DatasetIn.model_validate(data), image_dir=tmp_path)
     assert result["removed"] == 1
     exp = session.scalar(select(Experience).where(Experience.slug == "ottawa-indigenous-farm"))
@@ -42,12 +42,12 @@ def test_local_image_preferred(session, tmp_path):
 
 
 @pytest.mark.parametrize("mutate", [
-    lambda r: r.update(region="prairies"),                       # province/region mismatch
+    lambda r: r.update(region="prairies"),
     lambda r: r.update(tags=["not_a_tag"]),
-    lambda r: r.update(pricing={"status": "verified", "adult_price_cad": 5}),  # no source
+    lambda r: r.update(pricing={"status": "verified", "adult_price_cad": 5}),
     lambda r: r.update(sources=[]),
     lambda r: r.update(available_months=[13]),
-    lambda r: r.update(latitude=10.0),                           # not in Canada
+    lambda r: r.update(latitude=10.0),
 ])
 def test_validation_rejects_bad_records(mutate):
     data = copy.deepcopy(FIXTURE)

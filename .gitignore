@@ -1,23 +1,19 @@
-# Python
 __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
 
-# Local database & secrets
 
 *.db-journal
 .env
 !.env.example
 
-# Node
 node_modules/
 frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
 *.tsbuildinfo
 
-# OS / editors
 .DS_Store
 Thumbs.db
 .vscode/

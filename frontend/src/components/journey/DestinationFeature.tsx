@@ -85,7 +85,7 @@ export function DestinationFeature({ exp, reverse, travellers }: { exp: Experien
               <p className="mt-2 font-display text-2xl">{exp.food_spotlight_name}</p>
               {exp.food_spotlight_description && <p className="mt-2 leading-relaxed text-cream/80">{exp.food_spotlight_description}</p>}
               <p className="mt-3 text-xs text-cream/60">
-                {exp.food_included_in_admission ? 'Included with admission, per the destination.' : 'Not assumed to be included in admission — tastings and purchases may cost extra.'}
+                {exp.food_included_in_admission ? 'Included with admission.' : 'Tastings and purchases may cost extra.'}
               </p>
             </section>
           )}
@@ -108,7 +108,7 @@ export function DestinationFeature({ exp, reverse, travellers }: { exp: Experien
                   <a className="break-all text-ink-soft underline decoration-dotted hover:text-forest" href={s.url} target="_blank" rel="noreferrer">
                     {s.title ?? s.url}
                   </a>
-                  {s.publisher && <span className="text-muted"> — {s.publisher}</span>}
+                  {s.publisher && <span className="text-muted"> ({s.publisher})</span>}
                 </li>
               ))}
             </ul>

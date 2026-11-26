@@ -3,7 +3,7 @@ import { MemberAvatar } from '@/components/common/badges'
 import { SmartImage } from '@/components/common/SmartImage'
 import { Card } from '@/components/ui/primitives'
 import { hours, money } from '@/lib/utils'
-import type { Flight, Member, Recommendation, Trip, TripStop } from '@/types/api'
+import type { Flight, Member, Recommendation, TravelSegment, Trip, TripStop } from '@/types/api'
 
 function FlightLeg({ flight, first }: { flight: Flight; first: boolean }) {
   return (
@@ -19,7 +19,7 @@ function TravelLeg({ km, h, from }: { km: number; h: number; from: string | null
   return (
     <div className="flex items-center gap-2 py-3 pl-1 text-sm text-ink-soft">
       <Car className="size-4 text-sage" aria-hidden />
-      <span>≈ {Math.round(km)} km · about {hours(h)}{from ? ` from ${from}` : ''}</span>
+      <span>Total drive: ≈ {Math.round(km)} km · about {hours(h)}{from ? ` from ${from}` : ''}</span>
     </div>
   )
 }
@@ -60,17 +60,43 @@ function StopCard({ stop, members, recs }: { stop: TripStop; members: Member[]; 
   )
 }
 
+function ScheduledTravel({ segment, trip }: { segment: TravelSegment; trip: Trip }) {
+  const stop = trip.stops.find((item) => item.experience.slug === segment.before_stop)
+  const destination = stop?.experience.name ?? trip.travel.origin.city
+  const arrives = !trip.travel.segments?.some((later) =>
+    later.before_stop === segment.before_stop && later.day > segment.day,
+  )
+  const flight = segment.flight
+  const usesFlight = trip.travel.flights?.some((item) => item.before_stop === segment.before_stop)
+  const verb = usesFlight ? 'Travel' : 'Drive'
+  const label = arrives && !stop ? verb + ' home' : verb + (arrives ? ' to ' : ' toward ') + destination
+  const Icon = flight ? Plane : arrives && !stop ? Home : usesFlight ? Clock : Car
+
+  return (
+    <p className="flex items-center gap-2 py-3 pl-1 text-sm text-ink-soft">
+      <Icon className="size-4 shrink-0 text-sage" aria-hidden />
+      <span>
+        {flight ? <>Fly {flight.from} → {flight.to}, travelling {arrives ? 'to' : 'toward'} {destination}</> : label}
+        {' · '}about {hours(segment.hours)} today
+      </span>
+    </p>
+  )
+}
+
 export function ItineraryTimeline({ trip }: { trip: Trip }) {
   const days = Array.from({ length: trip.duration_days }, (_, i) => i + 1)
   const flights = trip.travel.flights ?? []
   const flightTo = (slug: string) => flights.find((f) => f.before_stop === slug)
-  // Trips saved before multi-region support describe a single outbound flight only.
   const legacyFlight = trip.travel.effective_method === 'plane' && flights.length === 0 && trip.travel.origin_airport
   const flyHome = trip.travel.return_flight ?? trip.travel.effective_method === 'plane'
+  const segments = trip.travel.segments
+  const stopCard = (stop: TripStop) => <StopCard stop={stop} members={trip.party.members} recs={trip.recommendations} />
   return (
     <ol className="relative space-y-10 border-l-2 border-dashed border-sage/60 pl-6 sm:pl-10">
       {days.map((day) => {
         const stops = trip.stops.filter((s) => s.day_number === day)
+        const travelToday = segments?.filter((segment) => segment.day === day) ?? []
+        const nextStop = trip.stops.find((stop) => stop.day_number > day)
         const isFirst = day === 1
         const isLast = day === trip.duration_days
         return (
@@ -79,32 +105,45 @@ export function ItineraryTimeline({ trip }: { trip: Trip }) {
               {day}
             </span>
             <h3 className="pt-2 text-2xl font-medium">Day {day}</h3>
-            {isFirst && legacyFlight && (
+            {!segments && isFirst && legacyFlight && (
               <p className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
                 <Plane className="size-4 text-terracotta" aria-hidden />
                 Fly {trip.travel.origin_airport!.code} → {trip.travel.arrival_airport?.code} (≈ {hours(trip.travel.flight_hours ?? 0)} incl. airport time), pick up the rental car.
               </p>
             )}
             <div className="mt-4 space-y-1">
-              {stops.length === 0 && (
+              {!segments && stops.length === 0 && !isLast && (
                 <p className="rounded-xl border border-dashed border-cream-300 p-4 text-sm text-ink-soft">
-                  Unscheduled time — linger at local markets, revisit a favourite, or rest before the drive.
+                  Travel day. {nextStop ? <>Heading toward {nextStop.experience.name}.</> : <>Heading home to {trip.travel.origin.city}.</>}
                 </p>
               )}
-              {stops.map((s) => {
-                const flight = flightTo(s.experience.slug)
+              {travelToday.filter((segment) => !stops.some((stop) => stop.experience.slug === segment.before_stop)
+                && segment.before_stop !== null).map((segment) => (
+                <ScheduledTravel key={segment.before_stop} segment={segment} trip={trip} />
+              ))}
+              {stops.map((stop) => {
+                const flight = flightTo(stop.experience.slug)
+                const arrival = travelToday.find((segment) => segment.before_stop === stop.experience.slug)
                 return (
-                <div key={s.id}>
-                  {flight && <FlightLeg flight={flight} first={flight === flights[0]} />}
-                  <TravelLeg km={s.travel_km_from_previous} h={s.travel_hours_from_previous} from={s.previous_label} />
-                  <StopCard stop={s} members={trip.party.members} recs={trip.recommendations} />
-                </div>
+                  <div key={stop.id}>
+                    {arrival && <ScheduledTravel segment={arrival} trip={trip} />}
+                    {!segments && (
+                      <>
+                        {flight && <FlightLeg flight={flight} first={flight === flights[0]} />}
+                        <TravelLeg km={stop.travel_km_from_previous} h={stop.travel_hours_from_previous} from={stop.previous_label} />
+                      </>
+                    )}
+                    {stopCard(stop)}
+                  </div>
                 )
               })}
-              {isLast && (
+              {travelToday.filter((segment) => segment.before_stop === null).map((segment) => (
+                <ScheduledTravel key="return" segment={segment} trip={trip} />
+              ))}
+              {!segments && isLast && (
                 <div className="flex items-center gap-2 pt-4 text-sm text-ink-soft">
                   <Home className="size-4 text-terracotta" aria-hidden />
-                  Head home: ≈ {Math.round(trip.travel.return_km)} km to {trip.travel.return_label}
+                  Return trip total: ≈ {Math.round(trip.travel.return_km)} km to {trip.travel.return_label}
                   {flyHome ? `, then fly back to ${trip.travel.origin_airport?.city}` : ''} (about {hours(trip.travel.return_hours)} total).
                 </div>
               )}

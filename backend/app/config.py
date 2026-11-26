@@ -1,5 +1,3 @@
-"""Runtime configuration read from environment variables (see backend/.env.example)."""
-
 from __future__ import annotations
 
 import os
@@ -10,7 +8,6 @@ REPO_ROOT = BACKEND_DIR.parent
 
 
 def _load_dotenv() -> None:
-    """Minimal .env loader so we don't need python-dotenv as a dependency."""
     env_file = BACKEND_DIR / ".env"
     if not env_file.exists():
         return
@@ -35,12 +32,6 @@ CORS_ORIGINS: list[str] = [
     ).split(",")
     if o.strip()
 ]
-# Optional regex for extra allowed origins, e.g. Vercel preview deployments:
-#   ^https://canadian-roots(-[a-z0-9-]+)?\.vercel\.app$
 CORS_ORIGIN_REGEX: str | None = os.environ.get("CORS_ORIGIN_REGEX") or None
-# Create the schema and upsert the researched destinations every time the server starts.
-# The seed is idempotent and never touches saved parties or trips, so a fresh hosted database
-# (e.g. an empty Render disk) is ready without a manual step, and data updates ship on deploy.
 SEED_ON_STARTUP: bool = os.environ.get("SEED_ON_STARTUP", "true").strip().lower() in ("1", "true", "yes")
-# Folder where locally cached, openly licensed destination photos live (served by Vite).
 IMAGE_DIR: Path = REPO_ROOT / "frontend" / "public" / "images" / "experiences"

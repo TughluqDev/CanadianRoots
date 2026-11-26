@@ -10,7 +10,6 @@ export const useRegions = () => useQuery({ queryKey: ['regions'], queryFn: api.r
 export const useCities = () => useQuery({ queryKey: ['cities'], queryFn: api.cities, ...STATIC })
 export const useExperiences = () => useQuery({ queryKey: ['experiences'], queryFn: api.experiences, staleTime: 5 * 60_000 })
 
-/** Label lookups backed by the API's preference vocabulary (falls back to the id). */
 export function usePreferenceLabels() {
   const { data } = usePreferences()
   const interestLabel = useCallback(

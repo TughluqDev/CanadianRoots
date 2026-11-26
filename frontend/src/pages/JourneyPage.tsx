@@ -53,8 +53,7 @@ function JourneyContent({ trip }: { trip: Trip }) {
 
       <section id="for-you" className="container-page scroll-mt-36 pt-16">
         <SectionHeading eyebrow="Personalized for your party" title="A highlight for every traveller">
-          Each recommendation is matched from that person’s interests, cultural preferences and region — and
-          shared stops are planned once for the whole group.
+          Recommendations reflect each traveller’s preferences. The itinerary lists shared stops once.
         </SectionHeading>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {trip.recommendations.map((r) => {
@@ -67,8 +66,8 @@ function JourneyContent({ trip }: { trip: Trip }) {
 
       <section id="destinations" className="scroll-mt-36 pt-24">
         <div className="container-page">
-          <SectionHeading eyebrow="Explore your stops" title="The land, the food, the stories">
-            Real places, researched from official and heritage sources. Seasonal programs change — confirm before you go.
+          <SectionHeading eyebrow="Explore your stops" title="Destinations">
+            Check seasonal hours and programs before you visit.
           </SectionHeading>
           <div className="mt-14 space-y-24">
             {trip.stops.map((s, i) => (
@@ -80,8 +79,7 @@ function JourneyContent({ trip }: { trip: Trip }) {
 
       <section id="map" className="container-page no-print scroll-mt-36 pt-24">
         <SectionHeading eyebrow="Where you’ll be" title="Your stops on the map">
-          Markers show exact locations. We don’t draw driving routes because we don’t have real routing data —
-          distances in the itinerary are conservative straight-line estimates.
+          The map shows stop locations. The itinerary estimates driving distances from straight-line distances.
         </SectionHeading>
         <div className="mt-10">
           <Suspense fallback={<Skeleton className="h-[520px] rounded-3xl" />}>
@@ -121,7 +119,7 @@ function JourneyContent({ trip }: { trip: Trip }) {
 
       <section id="budget" className="container-page scroll-mt-36 pt-24">
         <SectionHeading eyebrow="Trip budget" title="What it’s likely to cost">
-          Every number comes from an explicit assumption you can adjust. All amounts in Canadian dollars.
+          Adjust the estimates below. All amounts are in Canadian dollars.
         </SectionHeading>
         <div className="mt-10"><BudgetPanel trip={trip} /></div>
       </section>
@@ -130,7 +128,7 @@ function JourneyContent({ trip }: { trip: Trip }) {
         <Card className="paper-grain flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-10">
           <div>
             <h2 className="text-2xl font-medium sm:text-3xl">Want a different mix?</h2>
-            <p className="mt-2 text-ink-soft">Change interests, add travellers or try another month — we’ll replan from scratch.</p>
+            <p className="mt-2 text-ink-soft">Edit your group or travel dates to plan a new trip.</p>
           </div>
           <Button asChild size="lg"><Link to={`/plan?party=${trip.party.id}`}><RefreshCw />Edit party & regenerate</Link></Button>
         </Card>

@@ -29,9 +29,9 @@
         "warm_weather"
       ],
       "short_description": "A working farm and food-science museum inside Ottawa's Central Experimental Farm.",
-      "description": "Visitors walk through barns housing cattle, horses, goats, alpacas and other farm animals, and can watch museum guides care for them. Indoor exhibitions explain the science behind food production and sustainable agriculture, and the demonstration kitchen hosts seasonal cooking demonstrations built around harvest crops. Because the museum is open year-round, it works as a rainy-day or winter stop in the capital.",
-      "agricultural_significance": "The museum sits on the Central Experimental Farm, the federal research farm established in 1886 to test crops and livestock suited to Canadian conditions. Its exhibits connect that research legacy to modern food production, aquaculture and farm technology.",
-      "cultural_context": "The Experimental Farm system was created by the federal government in the late nineteenth century as settlement expanded west, reflecting the British-Canadian institutional model of scientific agriculture. Today the museum presents farming as a shared national story, with free admission for Indigenous visitors noted by Ingenium.",
+      "description": "Visit the livestock barns to see cattle, horses, goats and alpacas. Indoor exhibits cover food science and sustainable farming, and the kitchen runs seasonal cooking demonstrations. The museum is open year-round.",
+      "agricultural_significance": "The museum sits on the Central Experimental Farm, founded in 1886 to study crops and livestock suited to Canada. Exhibits cover farming, aquaculture and food production.",
+      "cultural_context": "The federal government set up the Experimental Farm system in the late 1800s as settlement expanded west. Ingenium offers free admission to Indigenous visitors.",
       "food_spotlight": {
         "name": "Demonstration Kitchen harvest demos",
         "description": "Seasonal demonstrations use crops such as apples and sweet corn to show how farm products become food.",
@@ -123,9 +123,9 @@
         "warm_weather"
       ],
       "short_description": "An Indigenous-run agritourism farm in Ottawa's Greenbelt, home to a herd of endangered Ojibwe Spirit Horses.",
-      "description": "Operated by Indigenous Experiences, the farm invites visitors to meet the rare Ojibwe Spirit Horses along with goats and other small animals. A Legacy Trail with interpretive signs introduces traditional medicines and the Seven Grandfather Teachings, while an Indigenous marketplace sells goods from Indigenous vendors. Bookable add-ons such as the self-guided Trail of the Spirit Horse and seasonal festivals deepen the visit.",
-      "agricultural_significance": "The farm describes itself as Canada's only Indigenous agritourism destination and working farm, and it is helping to rebuild the population of the Ojibwe Spirit Horse, Canada's only Indigenous horse breed. Land-based programming ties animal care, plants and foodways together.",
-      "cultural_context": "Mādahòkì is an Anishinaabemowin word meaning 'to share the land', and the farm acknowledges that it sits on the unceded traditional territory of the Algonquin peoples. It opened in October 2021 and hosts events such as the Summer Solstice Indigenous Festival and the Sìgwan (spring) festival.",
+      "description": "Meet Ojibwe Spirit Horses and other farm animals. The Legacy Trail introduces traditional medicines and the Seven Grandfather Teachings. Shop at the Indigenous marketplace or book the Trail of the Spirit Horse.",
+      "agricultural_significance": "The farm helps rebuild the Ojibwe Spirit Horse population. Its programs teach animal care, plant knowledge and food traditions.",
+      "cultural_context": "Mādahòkì means 'to share the land' in Anishinaabemowin. The farm opened in 2021 on unceded Algonquin territory and hosts the Summer Solstice Indigenous Festival and Sìgwan.",
       "food_spotlight": {
         "name": "Indigenous snack bar and Bannock in a Bag",
         "description": "A rotating snack bar serves Indigenous treats during the visitor season, and the farm sells its own bannock mix in the marketplace.",
@@ -209,9 +209,9 @@
         "warm_weather"
       ],
       "short_description": "A living-history village recreating rural English Canada in 1866, with working mills and heritage trades.",
-      "description": "More than forty historic buildings, many relocated during construction of the St. Lawrence Seaway, form a village staffed by costumed interpreters. Visitors can watch flour being ground, wool being spun and blacksmiths at work, ride a horse-drawn conveyance, and eat period-style meals at Willard's Hotel. In late autumn and winter the site switches to evening events such as PumpkInferno and Alight at Night.",
+      "description": "Explore more than 40 historic buildings. Watch millers grind flour, see blacksmiths at work or eat at Willard's Hotel. PumpkInferno and Alight at Night run outside the main season.",
       "agricultural_significance": "The village shows the farm-to-table chain of a nineteenth-century Ontario community, from field and mill to bakery and table. Working mills and farm buildings demonstrate how grain, wool and dairy sustained rural households.",
-      "cultural_context": "The site interprets the year 1866 in a community shaped by Loyalist and later English-speaking settlement along the St. Lawrence. It opened in 1961, built from heritage buildings saved from villages flooded by the Seaway project.",
+      "cultural_context": "The village depicts life in 1866 along the St. Lawrence, where Loyalist and other English-speaking settlers lived. Many buildings came from villages flooded by the Seaway project.",
       "food_spotlight": {
         "name": "Village bread and cheddar",
         "description": "The Village Café serves grilled cheddar sandwiches on fresh-baked Village Bread, and Willard's Hotel offers period-style dishes such as rarebit and afternoon tea.",
@@ -291,7 +291,7 @@
         "nature"
       ],
       "short_description": "A traditional wood-fired sugar shack in a maple forest west of Montreal, famous for its sugaring-off feasts.",
-      "description": "During sugaring-off season, sap is still collected in pails and boiled down over a wood-fired evaporator. Guests sit down to a traditional sugar-shack meal, taste maple taffy poured on snow, browse a general store of maple products and handicrafts, and, for larger groups, enjoy live music and horse-drawn rides. The site also hosts meals and overnight stays outside the sugar season by reservation.",
+      "description": "See maple sap collected in pails and boiled over a wood fire during sugaring season. Try a sugar-shack meal and maple taffy on snow. Meals and overnight stays are available by reservation outside the sugar season.",
       "agricultural_significance": "Maple syrup production is one of Quebec's signature agricultural traditions, and the sucrerie demonstrates the older, labour-intensive pail-and-wood-fire method. Its menu showcases farm staples such as pea soup, ham, baked beans and maple desserts.",
       "cultural_context": "Founded in 1978 by Pierre Faucher and now run with his son Stefan, the sucrerie presents the 'temps des sucres' as a festive rural Québécois gathering. It describes itself as a recognized Québec heritage site.",
       "food_spotlight": {
@@ -371,7 +371,7 @@
         "warm_weather"
       ],
       "short_description": "An organic family dairy farm in Compton that makes raw-milk farmhouse cheeses and runs an ÉCONOMUSÉE of farm cheesemaking.",
-      "description": "A free self-guided interpretation route, open year-round during shop hours, covers the farm, its ripening rooms and the craft of farmhouse cheese, including a scent organ and multimedia displays. Booked guided tours add a look at the hay dryer and pastured cows and finish with a tasting. The farm shop sells the full range of cheeses, such as Alfred Le Fermier and Comtomme.",
+      "description": "Follow a free, year-round route through exhibits about the farm and its ripening rooms. Book a guided tour to see the hay dryer and pastured cows and try the cheeses. The shop sells Alfred Le Fermier and Comtomme.",
       "agricultural_significance": "La Station is a certified-organic farm where cheese is made from the herd's own milk, so pasture, cows and cheese are part of one operation. It shows how farmstead cheesemaking adds value to dairy farming in the Coaticook region.",
       "cultural_context": "The farm presents itself as the work of four generations of farmers. It belongs to Quebec's farmhouse-cheese revival and to the ÉCONOMUSÉE network, which showcases traditional crafts in working businesses.",
       "food_spotlight": {
@@ -451,7 +451,7 @@
         "photography"
       ],
       "short_description": "A Benedictine abbey on Lake Memphremagog where monks make award-winning cheeses and visitors pick apples in the abbey orchards.",
-      "description": "The abbey shop sells cheeses, ciders, compotes and spreads made by the monastic community, and the abbey church is open daily for visitors and Gregorian-chant services. Guided tours of selected spaces run in summer, and in early autumn the orchards of about 3,500 apple trees open for pick-your-own on weekends. The lakeside setting in the Eastern Townships makes it a calm stop between Magog and the U.S. border.",
+      "description": "Visit the church for Gregorian chant or buy cheese, cider and preserves made by the monks. Guided tours run in summer and the orchard opens for apple picking on early autumn weekends.",
       "agricultural_significance": "The monks run a cheese dairy supplied entirely by local dairy farms, producing cheeses such as Bleu Bénédictin, and they tend extensive apple orchards used for fresh fruit and cider. Their products carry the PAX mark, which certifies work done by monks.",
       "cultural_context": "The community traces its origins to monks of the abbey of Saint-Wandrille in Normandy who, exiled by French anti-clerical laws, settled on Lake Memphremagog in 1912. The current abbey church, designed by Dan Hanganu, was built between 1990 and 1994.",
       "food_spotlight": {
@@ -550,9 +550,9 @@
         "photography"
       ],
       "short_description": "A reconstructed 1639 French Jesuit mission in Wendat country, with a heritage farm of 17th-century crops and animal breeds.",
-      "description": "Costumed interpreters bring the palisaded mission to life with activities such as canoeing in the locked waterway, quill-pen writing, lacrosse and blacksmithing. The heritage farm, open from early May to Thanksgiving, features historic gardens and heritage breeds such as Canadienne cattle and Houdan chickens. Harvest and Indigenous Peoples' Day events add seasonal programming.",
+      "description": "Try quill writing, lacrosse or canoeing at the reconstructed fort. The heritage farm is open from early May to Thanksgiving and keeps breeds such as Canadienne cattle and Houdan chickens.",
       "agricultural_significance": "The farm interprets the crops and animals that sustained life in Wendake in the 1600s, including Canadienne cattle, Canada's original dairy breed, of which fewer than 200 are registered. It also highlights the Wendat as skilled farmers whose agriculture supported the region.",
-      "cultural_context": "Wendake, on the shores of Georgian Bay, was the ancestral homeland of the Wendat, a matrilineal farming and trading people. French Jesuits built Sainte-Marie as their mission headquarters in the seventeenth century; the site was reconstructed after archaeological research and is now operated by the province.",
+      "cultural_context": "Wendake, on Georgian Bay, is the ancestral homeland of the Wendat, a matrilineal farming and trading people. French Jesuits built their mission headquarters here in the 1600s. The province runs the reconstructed site.",
       "food_spotlight": {
         "name": "Restaurant Sainte-Marie",
         "description": "The on-site restaurant is open year-round; harvest events such as Hearth to Table focus on historic foodways.",
@@ -636,9 +636,9 @@
         "photography"
       ],
       "short_description": "A 60-acre living-history village showing rural Waterloo Region in 1914, with heritage farm animals.",
-      "description": "Costumed interpreters staff historic homes, shops and farm buildings set out as they would have looked in 1914. In season, farm animals live on the village farms, and the 'Taste of 1914' program runs on Saturday afternoons. Admission also covers the galleries of the adjoining Ken Seiling Waterloo Region Museum, which stays open after the village closes for the year.",
+      "description": "Step into 1914 in the village's homes, shops and farm buildings. See farm animals in season or try Taste of 1914 on Saturday afternoons. Admission includes the adjoining Ken Seiling Waterloo Region Museum.",
       "agricultural_significance": "The village interprets the farm economy of Waterloo Region on the eve of the First World War, when mixed family farms supplied local markets. Seasonal livestock come from area farms, linking the museum to present-day agriculture.",
-      "cultural_context": "Waterloo Region was settled heavily by Pennsylvania German Mennonites and later German immigrants. The village's Peter Martin House, built in 1820, was restored with help from the Old Order Mennonite community, including descendants of its builder; the museum's newer interpretive plan aims to tell a broader range of community stories.",
+      "cultural_context": "Pennsylvania German Mennonites and later German immigrants settled in Waterloo Region. Old Order Mennonites, including descendants of Peter Martin, helped restore his 1820 house.",
       "food_spotlight": {
         "name": "Taste of 1914",
         "description": "A Saturday-afternoon program presenting foods of the period in the village.",
@@ -724,7 +724,7 @@
         "warm_weather"
       ],
       "short_description": "A restored 1890s Island crossroads village with a working farm, agricultural museum and tea room.",
-      "description": "Visitors can meet and help feed cows, horses, sheep, goats, pigs, turkeys and chickens, take a horse-and-wagon ride, and visit the blacksmith, general store, church and schoolhouse. The Agricultural Museum displays farm equipment, and the Community Hall tea room serves snacks and meals in summer. Ticketed programs such as Food on the Farm include hands-on bread- and butter-making.",
+      "description": "Feed farm animals, take a wagon ride and visit the village blacksmith and general store. The Agricultural Museum displays farm equipment. Summer visitors can eat at the tea room or book a bread- and butter-making program.",
       "agricultural_significance": "Orwell Corner preserves the mixed-farming way of life that defined rural PEI, where families raised livestock and crops for their own tables and local trade. Its agricultural museum and working barnyard make that history tangible.",
       "cultural_context": "The village is operated by the PEI Museum and Heritage Foundation and depicts a late-Victorian Island farm community in the 1890s. Its gardens and picnic area overlook Orwell Bay.",
       "food_spotlight": {
@@ -799,9 +799,9 @@
         "warm_weather"
       ],
       "short_description": "A 60-acre living-history farm showing Nova Scotia family farming more than a century ago, complete with working oxen.",
-      "description": "Visitors roam rolling farmland, historic buildings and barns where heritage animals are kept and cows are milked. Interpreters demonstrate period chores, and Rosebank Cottage often offers samples of traditional recipes. Year-round workshops range from ox handling and spoon carving to sewing, and the Hearth Room Café serves house-made food.",
+      "description": "Meet heritage animals and watch interpreters demonstrate farm chores. Rosebank Cottage often has samples of traditional recipes. Year-round workshops include ox handling, spoon carving and sewing.",
       "agricultural_significance": "Ross Farm preserves heritage livestock and the ox-powered farming methods that cleared and worked Nova Scotia's forested interior. Its beginner ox workshops keep a rare draft-animal skill alive.",
-      "cultural_context": "In 1816 Captain William Ross, a native of County Cork, Ireland, led his family and 172 disbanded soldiers to settle the area at the urging of Governor Lord Dalhousie, who wanted farming settlements in Nova Scotia's forested interior. The frame house he built the following year, Rosebank, still stands, and the farm is now part of the Nova Scotia Museum network.",
+      "cultural_context": "Captain William Ross moved here from Ireland in 1816 with his family and a group of disbanded soldiers. Rosebank, the house he built the following year, still stands.",
       "food_spotlight": {
         "name": "Rosebank Cottage recipes",
         "description": "Traditional recipes are frequently sampled in Rosebank Cottage during visits.",
@@ -893,8 +893,8 @@
         "warm_weather"
       ],
       "short_description": "The heart of the UNESCO-listed Landscape of Grand-Pré, where Acadian dykelands still produce farmland reclaimed from the sea.",
-      "description": "The site's visitor centre uses multimedia and displays to tell the story of Acadian settlement and the Deportation, and the Memorial Church and Victorian garden stand in a sweeping farm landscape. Parks Canada interpreters lead guided tours, and the Harvest Moon trail links Grand-Pré to Annapolis Royal for walkers and cyclists. The surrounding dykeland fields are still actively farmed.",
-      "agricultural_significance": "Beginning in the 17th century, Acadian settlers built dykes and wooden aboiteau sluices to turn tidal marshland on the Minas Basin into farmland, a system later maintained by the Planters and today's farmers. That 1,300-hectare farmed landscape is why the Landscape of Grand Pré is a UNESCO World Heritage Site.",
+      "description": "Learn about Acadian settlement and the Deportation at the visitor centre, then visit the Memorial Church and garden. Parks Canada offers guided tours. The Harvest Moon Trail passes through the surrounding farmland.",
+      "agricultural_significance": "Acadian farmers drained tidal marshes with dykes and wooden sluices called aboiteaux. Farmers still work the dykelands, part of a 1,300-hectare UNESCO World Heritage Site.",
       "cultural_context": "Grand-Pré is a monument to Acadian culture and to the Deportation of the Acadians that began in 1755. Parks Canada and the Mi'kmaq of Nova Scotia co-manage protected areas under the Toqi'maliaptmu'k Arrangement, recognizing the site's location on unceded Mi'kmaw territory.",
       "food_spotlight": {
         "name": "Dykeland harvests",
@@ -986,7 +986,7 @@
         "warm_weather"
       ],
       "short_description": "A living-history settlement on the Saint John River that recreates 19th-century rural New Brunswick.",
-      "description": "Costumed interpreters live out daily life in a riverside village of homes, farms and workshops about 20 minutes west of Fredericton. Visitors can see period farming and trades in action and stop for a meal at the King's Head Inn. Outside the main summer season, the site hosts holiday dinners and a Christmas village event.",
+      "description": "Visit farms and workshops in a riverside village about 20 minutes west of Fredericton. Watch interpreters demonstrate trades or eat at the King's Head Inn. Holiday dinners and a Christmas village run outside summer.",
       "agricultural_significance": "Kings Landing shows how river-valley farms fed New Brunswick households about 200 years ago. Interpreters demonstrate the farm work, food preparation and trades that kept a rural community self-sufficient.",
       "cultural_context": "The settlement represents the English-speaking rural communities of the Saint John River valley in the 19th century. Kings Landing offers free admission to Indigenous visitors and to military veterans and serving members.",
       "food_spotlight": {
@@ -1066,7 +1066,7 @@
         "warm_weather"
       ],
       "short_description": "An open-air museum where costumed interpreters tell the stories of Ukrainian pioneers on the Alberta prairie.",
-      "description": "Visitors wander historic buildings, including a school, a railway station, a hotel, a lumber yard and a blacksmith shop, talking with costumed interpreters who portray early settlers. The site explains how Ukrainian immigration shaped east-central Alberta and the province's cultural identity. Special events run during the summer season.",
+      "description": "Visit a historic school, railway station and blacksmith shop. Costumed interpreters tell the stories of Ukrainian settlers in east-central Alberta. Special events run in summer.",
       "agricultural_significance": "Ukrainian immigrants homesteaded the parkland east of Edmonton and built farming communities there. The village shows the rural buildings and work of those early settlers.",
       "cultural_context": "The village, run by the Government of Alberta, tells the first-hand stories of early settlers in east-central Alberta, an area closely linked to Ukrainian immigration. It sits 25 minutes east of Edmonton on Highway 16.",
       "food_spotlight": null,
@@ -1136,7 +1136,7 @@
         "warm_weather"
       ],
       "short_description": "A living-history park in Edmonton's river valley whose Indigenous Peoples Experience stays open on winter weekends.",
-      "description": "In summer, visitors ride the train and streetcar between recreated eras of Edmonton's past, take pony or wagon rides, and join costumed interpreters in historic buildings. The Indigenous Peoples Experience uses immersive exhibits and storytelling to share the histories and living traditions of First Nations and Métis Peoples, and it stays open on winter weekends with hands-on workshops. Plan at least four hours for a summer visit.",
+      "description": "Take a train or streetcar through recreations of Edmonton's past. The Indigenous Peoples Experience shares First Nations and Métis histories and runs workshops on winter weekends. Allow at least four hours in summer.",
       "agricultural_significance": "The park traces the shift from the fur-trade fort economy to the farms and settler towns that grew around Edmonton. Animal rides and historic farm buildings illustrate prairie livelihoods.",
       "cultural_context": "Fort Edmonton Park formally partners with the Confederacy of Treaty Six First Nations and the Métis Nation of Alberta and offers free admission to Indigenous Peoples. Its later-era streets interpret settlement by newcomers from many backgrounds.",
       "food_spotlight": {
@@ -1224,7 +1224,7 @@
         "cold_weather"
       ],
       "short_description": "A living-history village and museum telling the story of the Russian Mennonites who settled southern Manitoba.",
-      "description": "The outdoor village includes a working windmill, a Chortitz housebarn, a blacksmith shop, churches, a school and an agricultural building, while indoor galleries display Mennonite artefacts and changing exhibits. The Livery Barn Restaurant serves traditional dishes in summer and the General Store sells treats such as peppernuts. Winter weekends bring evening events and the museum galleries stay open year-round.",
+      "description": "See a working windmill, a Chortitz housebarn and indoor exhibits on Mennonite history. The Livery Barn Restaurant serves traditional dishes in summer. The galleries stay open year-round.",
       "agricultural_significance": "Mennonite settlers farmed southern Manitoba in compact villages, and the housebarn, which joined family home and livestock barn under one roof, shows how they adapted to the prairie. The windmill demonstrates the wind-powered grain milling that served those communities.",
       "cultural_context": "The village focuses on Russian Mennonites, a German-speaking Anabaptist people who emigrated from the Russian Empire to the Steinbach area. Exhibits and memorials also address conscientious objection and the persecution of Mennonites who stayed in the Soviet Union.",
       "food_spotlight": {
@@ -1314,8 +1314,8 @@
         "warm_weather"
       ],
       "short_description": "A sacred gathering place of more than 6,400 years north of Saskatoon, with a conservation bison herd and Indigenous cuisine.",
-      "description": "Valley walking trails lead through restored grassland past archaeological sites, and a conservation herd of plains bison roams the park. The visitor centre holds galleries of contemporary and historical work, and interpretive guides run drop-in programs, with dance, drum or fiddle presentations on weekends. The restaurant serves Indigenous-inspired dishes.",
-      "agricultural_significance": "Wanuskewin's story is one of land-based food systems: Northern Plains peoples gathered here for thousands of years to hunt bison and harvest plants. Grassland restoration and the return of bison connect visitors to that pre-agricultural prairie food landscape.",
+      "description": "Walk through restored grassland and see the plains bison herd. Visit the galleries or join a drop-in program. Weekend performances may feature dance, drumming or fiddle music.",
+      "agricultural_significance": "Northern Plains peoples gathered here for thousands of years to hunt bison and harvest plants. The park is restoring the grasslands and has brought bison back.",
       "cultural_context": "The name, from nēhiyawēwin (Plains Cree), is roughly translated as 'seeking peace of mind'. The park works to advance understanding of the evolving cultures of Northern Plains Indigenous peoples and reinvests admission fees in programming, grassland restoration and its bison herd.",
       "food_spotlight": {
         "name": "Indigenous cuisine at the Wanuskewin restaurant",
@@ -1401,8 +1401,8 @@
         "warm_weather"
       ],
       "short_description": "The restored prairie homestead of W.R. Motherwell, a pioneer farmer who became Canada's Minister of Agriculture.",
-      "description": "Visitors live a day in the life of a 1900s prairie farmer at Lanark Place, Motherwell's homestead about an hour east of Regina. Parks Canada programs include tours, a children's day camp, the 'Little Red Hen' program and a fall pumpkin harvest festival.",
-      "agricultural_significance": "W.R. Motherwell championed scientific dryland farming methods and later served as federal Minister of Agriculture. His homestead illustrates the practices that helped make Saskatchewan a grain-growing powerhouse.",
+      "description": "Explore W. R. Motherwell's prairie homestead about an hour east of Regina. Parks Canada offers tours, a children's day camp and a fall pumpkin harvest festival.",
+      "agricultural_significance": "William Richard Motherwell promoted dryland farming and later served as federal Minister of Agriculture. The homestead shows how farmers grew grain in Saskatchewan's dry climate.",
       "cultural_context": "Parks Canada notes that the fertile Qu'Appelle region was a crossroads for First Nations, Métis and waves of newcomers. Motherwell was part of the late-19th-century stream of pioneer farmers who moved west from Ontario.",
       "food_spotlight": {
         "name": "Pumpkin Harvest Festival",
@@ -1478,9 +1478,9 @@
         "photography"
       ],
       "short_description": "North America's first Indigenous-owned and -operated winery, set in vineyards above Osoyoos Lake.",
-      "description": "The wine shop offers walk-in tasting flights of the Winemaker's Series and premium Qwam Qwmt wines, along with Indigenous artisan goods. Seasonal guided experiences pair wines with food, such as the autumn Sip & Soups pairing, and the Sweetgrass restaurant patio overlooks the vineyards and lake. The neighbouring Nk'Mip Desert Cultural Centre adds a cultural visit.",
-      "agricultural_significance": "The Osoyoos Indian Band cultivates vineyards in one of Canada's hottest, driest landscapes and produces VQA wines from them. The winery is a leading example of Indigenous-led agricultural enterprise in the Okanagan.",
-      "cultural_context": "The Osoyoos Indian Band was registered as a reserve in 1877 and its lands extend across a large stretch of the south Okanagan. Nk'Mip means 'bottomland', describing its location at the southern end of the reserve; Qwam Qwmt translates as 'achieving excellence'.",
+      "description": "Try a walk-in tasting of the Winemaker's Series or Qwam Qwmt wines. Book a seasonal food pairing, eat on the Sweetgrass patio or visit the neighbouring Nk'Mip Desert Cultural Centre.",
+      "agricultural_significance": "The Osoyoos Indian Band grows grapes for VQA wines in the hot, dry south Okanagan.",
+      "cultural_context": "The winery sits on Osoyoos Indian Band land in the south Okanagan. Nk'Mip means 'bottomland' and Qwam Qwmt means 'achieving excellence'.",
       "food_spotlight": {
         "name": "Sip & Soups pairing",
         "description": "A reserved fall experience pairing three Nk'Mip wines with three of the chef's soups ($25).",
@@ -1563,7 +1563,7 @@
         "warm_weather"
       ],
       "short_description": "The 1859 Oblate mission that was the first permanent non-Indigenous settlement in the Okanagan Valley.",
-      "description": "Visitors wander a quiet four-acre site with the original chapel, root house and Brothers' House plus a barn and other historic buildings moved here. It is an easy, low-cost stop on Benvoulin Road in Kelowna's Mission district. The grounds are open from dawn to dusk in the spring-to-fall season.",
+      "description": "See the original chapel, root house and Brothers' House at this four-acre site on Kelowna's Benvoulin Road. The grounds are open from dawn to dusk in season.",
       "agricultural_significance": "Father Charles Pandosy and the Oblates farmed the mission, raising hogs, sheep, oats, barley, wheat, tobacco and potatoes and irrigating their fields. The surviving root house reflects the food storage that kept a self-sufficient mission going.",
       "cultural_context": "French-born Oblate priest Charles Pandosy founded the mission in 1859, and the site is recognized as the impetus for later settlement of the Okanagan. It is a designated provincial heritage site jointly administered by the Okanagan Historical Society and the Roman Catholic Bishop of Nelson.",
       "food_spotlight": {
@@ -1643,7 +1643,7 @@
         "warm_weather"
       ],
       "short_description": "BC's 'museum of rural life', with a 1906 general store and a 1920s-style working farm in the Fraser Valley.",
-      "description": "Interpreters bring the 1906 Kilby General Store to life with original artefacts and hands-on activities, and visitors can feed the goats, donkeys, pigs and chickens on the Waterloo Farm. The Kilby Café serves seasonal menus using regional ingredients, and a riverside campground sits next door. Themes include transportation, logging, farming and local Indigenous culture.",
+      "description": "Explore the 1906 Kilby General Store and feed animals at Waterloo Farm. The café serves seasonal food made with regional ingredients. There's a riverside campground next door.",
       "agricultural_significance": "In 1912 the Kilby family started the Waterloo Jersey Dairy Farm on more than 200 acres beside their store, also raising chickens and pigs. The preserved farm shows how livestock gave early Fraser Valley settlers both food and income.",
       "cultural_context": "Harrison Mills was a boom-and-bust river community, and the Kilby site is its only remaining trace. The farm was named after Thomas Kilby's first Canadian home in Waterloo, Ontario; the family's earlier origins are not documented in the sources consulted.",
       "food_spotlight": {
@@ -1726,7 +1726,7 @@
         "warm_weather"
       ],
       "short_description": "An 1894 salmon cannery in Steveston village that tells the story of Canada's West Coast fishing industry.",
-      "description": "Inside the historic plant, visitors follow the canning line and herring reduction plant through exhibits, films and tours. Current exhibits include work re-presencing Indigenous women's connections to fish, water and family around the Salish Sea. The surrounding Steveston waterfront is still a working fishing village.",
+      "description": "Follow the old salmon canning line and see the herring reduction plant. Exhibits cover cannery work and Indigenous women's connections to fishing in the Salish Sea. Steveston remains a working fishing village.",
       "agricultural_significance": "Salmon canning was one of British Columbia's largest employers and export industries, and this plant, nicknamed the 'Monster Cannery', packed more than 2.5 million cans in 1897. It shows how wild fisheries fed a global food trade.",
       "cultural_context": "Each canning season drew hundreds of workers, usually of First Nations, Chinese, Japanese and European descent, making the cannery a meeting point of BC's immigrant and Indigenous communities. The site is operated by the Gulf of Georgia Cannery Society on behalf of Parks Canada.",
       "food_spotlight": {
@@ -1817,7 +1817,7 @@
         "warm_weather"
       ],
       "short_description": "The Tr'ondëk Hwëch'in cultural centre on Dawson's waterfront, gateway to Hän heritage and the river life of the Klondike.",
-      "description": "Each summer the Gathering Room hosts a new exhibition, and visitors can join river-walk tours, watch films and see art shows. The gift shop sells hand-made clothing, beaded footwear, jewellery, music and books by First Nation artists. The building looks across the Yukon River toward Moosehide Village.",
+      "description": "See the Gathering Room's summer exhibit or join a river walk. The shop sells clothing, beadwork, jewellery, music and books by First Nations artists. The centre looks across the Yukon River toward Moosehide Village.",
       "agricultural_significance": "The centre's architecture draws on salmon drying racks and winter shelters, reflecting a food system built on river fishing and harvesting. Tr'ondëk Hwëch'in also operate TH Farm near Dawson, described as the only First Nations working farm north of 60.",
       "cultural_context": "Dänojà Zho means 'Long Ago House'. It opened in July 1998 to give the Tr'ondëk Hwëch'in a strong presence in their traditional territory that would not be bound to the gold-rush story, and its design won the Lieutenant Governor of BC's Medal in Architecture.",
       "food_spotlight": {
@@ -1895,9 +1895,9 @@
         "warm_weather"
       ],
       "short_description": "A summer weekend market where Klondike farmers sell plants, vegetables, berries and preserves under the midnight sun.",
-      "description": "On summer Saturdays and Sundays, local farmers and artisans set up in Waterfront Park on Front Street. Early in the season stalls offer bedding plants and nursery stock; later come fresh vegetables, herbs, berries, apples and preserves. An artists' market runs alongside it, operated by the Klondike Institute of Art and Culture.",
+      "description": "Shop at Waterfront Park on summer weekends. Look for bedding plants early in the season and vegetables, berries and preserves later on. An artists' market runs alongside it.",
       "agricultural_significance": "The Klondike valley has some of the Yukon's best growing conditions, and the market is the main outlet for the small farms that supply Dawson. It shows how northern growers use long summer daylight to raise crops far north.",
-      "cultural_context": "Dawson's farming dates to the gold rush, when market gardens fed the boomtown, and it continues today with both settler-run farms and the Tr'ondëk Hwëch'in teaching farm, whose produce is sold in local markets. The artists' market carries a Hän-language name. (The 'immigrant' label here is an approximate fit for a mixed community.)",
+      "cultural_context": "Market gardens fed Dawson during the gold rush. Today local farms, including the Tr'ondëk Hwëch'in teaching farm, supply Dawson's markets. The artists' market uses a Hän name.",
       "food_spotlight": {
         "name": "Klondike-grown produce",
         "description": "Seasonal vegetables, herbs, berries, apples and preserves grown in the Klondike valley.",
@@ -1966,9 +1966,9 @@
         "scenic_landscapes"
       ],
       "short_description": "Herb gardens built on reclaimed Gold Rush dredge tailings, with garden tours and herbal-remedy workshops.",
-      "description": "Guided garden tours show medicinal herbs growing in quartz-rock beds on old dredge tailings along the Klondike River. Visitors can make their own herbal remedy during the tour workshop and shop an apothecary of Yukon-grown herbal products. Wildcrafting and herbalism courses are also offered.",
-      "agricultural_significance": "The gardens use the unusual microclimates of quartz tailings left by Gold Rush dredging, turning a damaged landscape into productive growing ground. It is a small-scale example of land reclamation through cultivation in the subarctic.",
-      "cultural_context": "The tailings piles around Dawson are a visible legacy of the Klondike Gold Rush and the industrial dredging that followed it. Tours combine Yukon history with herbal medicine. (The 'immigrant' label is an approximate fit; the business does not claim a specific ethnic heritage.)",
+      "description": "See how herbs grow in quartz-rock beds on old dredge tailings. Make an herbal remedy in a workshop or shop for Yukon-grown products. The farm also offers wildcrafting and herbalism courses.",
+      "agricultural_significance": "Herbs grow in beds made from quartz tailings left by gold dredging. The gardens show how cultivation can reclaim disturbed ground in the subarctic.",
+      "cultural_context": "The tailings came from industrial dredging after the Klondike Gold Rush. Tours cover that history and how the gardens are used for herbal medicine today.",
       "food_spotlight": {
         "name": "Yukon-grown herbal remedies",
         "description": "Workshop participants make their own herbal remedy from plants grown on site.",
@@ -2032,9 +2032,9 @@
         "photography"
       ],
       "short_description": "North America's northernmost commercial greenhouse, a converted hockey arena growing food under the midnight sun.",
-      "description": "Summer tours show more than 170 community garden plots on the main floor, including dedicated beds for Elders, children's groups and the food bank, and a commercial growing area upstairs. The greenhouse café serves a weekly-changing menu built on the harvest. Visitors also find a gift shop and plants for sale.",
-      "agricultural_significance": "Located north of the Arctic Circle, the greenhouse uses 24-hour summer daylight to grow fresh produce in a region that relies heavily on expensive imported food. It is often cited as a model for northern food security.",
-      "cultural_context": "Inuvik is home to Gwich'in, Inuvialuit and non-Indigenous residents, and the greenhouse is a shared community space where locals rent plots and volunteer. (Its cultural classification here reflects its setting and Elder plots, not ownership by a specific Nation.)",
+      "description": "Summer tours visit community garden plots, including beds for Elders, children and the food bank. The café changes its menu weekly based on the harvest. The greenhouse also sells plants.",
+      "agricultural_significance": "North of the Arctic Circle, the greenhouse uses summer daylight to grow fresh produce locally and reduce reliance on shipped food.",
+      "cultural_context": "Gwich'in, Inuvialuit and other Inuvik residents rent plots and volunteer at the greenhouse.",
       "food_spotlight": {
         "name": "Inuvik Greenhouse Café",
         "description": "A garden-inspired menu that changes weekly to use the greenhouse's harvest.",

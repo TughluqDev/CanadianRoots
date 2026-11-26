@@ -22,14 +22,14 @@ export function SavedTripsPage() {
       <header className="mb-10 max-w-2xl">
         <p className="eyebrow mb-3">Saved journeys</p>
         <h1 className="text-4xl leading-tight font-medium sm:text-5xl">Your planned trips</h1>
-        <p className="mt-4 text-lg text-ink-soft">Every journey you generate is stored locally in SQLite and can be reopened any time.</p>
+        <p className="mt-4 text-lg text-ink-soft">Open a saved trip to view its itinerary and budget.</p>
       </header>
       {trips.error ? (
         <ErrorState message={trips.error.message} onRetry={() => void trips.refetch()} />
       ) : trips.isPending ? (
         <div className="grid gap-6 md:grid-cols-2">{[0, 1].map((i) => <Skeleton key={i} className="h-64" />)}</div>
       ) : trips.data.length === 0 ? (
-        <EmptyState title="No journeys yet" message="Build a party and generate your first Canadian Roots journey."
+        <EmptyState title="No journeys yet" message="Plan a trip to see it here."
           action={<Button asChild><Link to="/plan">Plan your journey</Link></Button>} />
       ) : (
         <div className="grid gap-6 md:grid-cols-2">

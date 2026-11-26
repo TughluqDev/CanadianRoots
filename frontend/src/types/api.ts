@@ -1,5 +1,3 @@
-// Mirrors backend/app/schemas.py. Keep in sync when the API contract changes.
-
 export type InterestId =
   | 'cold_weather' | 'warm_weather' | 'adventure' | 'relaxation' | 'nature' | 'hiking' | 'fishing'
   | 'animals' | 'farming' | 'fruit_picking' | 'cheese' | 'food_tasting' | 'cooking' | 'history'
@@ -138,8 +136,14 @@ export interface Flight {
   km: number
   hours: number
   to_airport_hours: number
-  /** Slug of the stop this flight leads to; null for the flight home. */
   before_stop: string | null
+}
+
+export interface TravelSegment {
+  day: number
+  hours: number
+  before_stop: string | null
+  flight?: { from: string; to: string }
 }
 
 export interface Travel {
@@ -154,6 +158,7 @@ export interface Travel {
   no_flight_reason?: string
   regions?: RegionId[]
   flights?: Flight[]
+  segments?: TravelSegment[]
   return_flight?: boolean
   ground_km: number
   outbound_hours: number

@@ -1,6 +1,3 @@
-"""Database engine/session setup. Schema is created with ``Base.metadata.create_all``
-(documented initialization strategy; the schema is small and seeded idempotently)."""
-
 from __future__ import annotations
 
 from collections.abc import Iterator
@@ -19,7 +16,6 @@ class Base(DeclarativeBase):
 
 
 def _ensure_sqlite_dir(url: str) -> None:
-    """Create the folder for a file-based SQLite database (e.g. a freshly mounted disk)."""
     path = make_url(url).database
     if path and path != ":memory:":
         Path(path).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
@@ -35,11 +31,10 @@ def make_engine(url: str) -> Engine:
         file_based = make_url(url).database not in (None, "", ":memory:")
 
         @event.listens_for(engine, "connect")
-        def _sqlite_pragmas(dbapi_conn, _record) -> None:  # noqa: ANN001
+        def _sqlite_pragmas(dbapi_conn, _record) -> None:
             cur = dbapi_conn.cursor()
             cur.execute("PRAGMA foreign_keys=ON")
             if file_based:
-                # Readers don't block the writer, which suits a single hosted instance.
                 cur.execute("PRAGMA journal_mode=WAL")
                 cur.execute("PRAGMA synchronous=NORMAL")
             cur.close()
@@ -52,7 +47,7 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False
 
 
 def init_db(bind: Engine | None = None) -> None:
-    from . import models  # noqa: F401  (register mappers)
+    from . import models
 
     Base.metadata.create_all(bind or engine)
 

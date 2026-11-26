@@ -1,12 +1,3 @@
-"""Transparent, itemized cost estimation (CAD). Pure functions — no database access.
-
-Tax treatment:
-- Activity prices are used exactly as published/estimated; no tax is added on top.
-- Accommodation: an explicit lodging tax rate (sales + accommodation levies) is added.
-- Meal allowance is assumed to already include tax and tip.
-- Fuel prices at the pump include taxes.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -15,12 +6,11 @@ from typing import Any
 
 from ..domain import REGION_BY_ID
 
-DISCLAIMER = "Prices are estimates for trip-planning purposes and are not live booking quotes."
+DISCLAIMER = "Prices are estimates for planning."
 
 FOOD_BY_BUDGET = {"economy": 55.0, "moderate": 75.0, "premium": 110.0}
 ROOM_MULTIPLIER_BY_BUDGET = {"economy": 0.8, "moderate": 1.0, "premium": 1.4}
 
-# Bounds used to validate user-edited assumptions.
 ASSUMPTION_BOUNDS: dict[str, tuple[float, float]] = {
     "fuel_price_per_litre": (0.5, 5.0),
     "fuel_consumption_l_per_100km": (3.0, 25.0),
@@ -41,20 +31,16 @@ ASSUMPTION_BOUNDS: dict[str, tuple[float, float]] = {
 class StopCostInput:
     slug: str
     name: str
-    pricing_status: str  # verified | estimate | free | unavailable
+    pricing_status: str
     adult_price_cad: float | None
-    price_basis: str  # per_person | per_group
+    price_basis: str
 
 
 def sample_airfare(flight_km: float) -> float:
-    """Sample round-trip economy fare: a base fee plus a distance component, rounded to $10.
-    Clearly labelled as a sample — not a quote, and not evidence that a route exists."""
     return float(round((160 + 0.17 * flight_km) / 10) * 10)
 
 
 def sample_multi_city_airfare(leg_kms: list[float]) -> float:
-    """Sample fare for an itinerary of one-way legs: half the round-trip formula per leg, so two
-    equal legs cost exactly ``sample_airfare`` of one of them."""
     return float(round(sum(80 + 0.085 * km for km in leg_kms) / 10) * 10)
 
 
@@ -101,7 +87,7 @@ def activity_line(stop: StopCostInput, travellers: int) -> dict[str, Any]:
     if stop.pricing_status in ("free",):
         subtotal, note = 0.0, "Free admission."
     elif stop.pricing_status == "unavailable" or stop.adult_price_cad is None:
-        subtotal, note = 0.0, "Price unavailable — not included in the total. Check with the destination."
+        subtotal, note = 0.0, "Check admission prices with the destination. The total excludes this cost."
     elif stop.price_basis == "per_group":
         subtotal, note = price, "Fixed group price."
     else:
@@ -109,7 +95,7 @@ def activity_line(stop: StopCostInput, travellers: int) -> dict[str, Any]:
         note = (
             "Published adult admission × travellers."
             if stop.pricing_status == "verified"
-            else "Demo estimate × travellers (not an official price)."
+            else "Estimated admission × travellers."
         )
     return {
         "slug": stop.slug, "name": stop.name, "pricing_status": stop.pricing_status,
@@ -131,8 +117,6 @@ def compute_budget(
     a = assumptions
     nights = max(0, duration_days - 1)
     vehicles = ceil(travellers / int(a["vehicle_capacity"]))
-
-    # Activities — one line per unique stop, so shared stops are never double-counted.
     seen: set[str] = set()
     activity_items = []
     for s in stops:
@@ -142,7 +126,6 @@ def compute_budget(
         activity_items.append(activity_line(s, travellers))
     activities_total = _money(sum(i["subtotal"] for i in activity_items))
 
-    # Transportation
     ground_km = float(travel.get("ground_km", 0))
     fuel_litres = ground_km * a["fuel_consumption_l_per_100km"] / 100 * vehicles
     fuel_cost = fuel_litres * a["fuel_price_per_litre"]
@@ -169,7 +152,6 @@ def compute_budget(
                         "amount": _money(a["parking_misc_per_vehicle_per_day"] * vehicles * duration_days)})
     transport_total = _money(sum(i["amount"] for i in t_items))
 
-    # Accommodation
     occupancy = int(a["room_occupancy"])
     rooms = ceil(travellers / occupancy) if nights else 0
     lodging_before_tax = rooms * nights * a["nightly_room_rate"]
@@ -185,8 +167,7 @@ def compute_budget(
     meals = {
         "days": duration_days, "travellers": travellers, "daily_per_person": a["daily_food_per_person"],
         "total": meals_total,
-        "note": "Daily allowance including tax and tip. Food spotlights and tastings are not assumed "
-                "to be included in admission unless a destination states so.",
+        "note": "Meal estimates include tax and tip. Check whether tastings are included in admission.",
     }
 
     subtotal = _money(activities_total + transport_total + accommodation["total"] + meals_total)
@@ -206,10 +187,8 @@ def compute_budget(
         "contingency": contingency,
         "total": total,
         "per_person": _money(total / travellers),
-        "tax_note": "Activity prices are used as published, with no tax added; some destinations publish "
-                    "prices before HST/GST (see each destination's pricing notes), so tax at the gate may "
-                    "be slightly higher. Lodging tax is added explicitly. Meal allowance and pump fuel "
-                    "prices include tax.",
+        "tax_note": "Some published activity prices exclude tax. Check the destination’s pricing notes. "
+                    "The budget includes tax on lodging, meals and fuel.",
         "disclaimer": DISCLAIMER,
     }
 

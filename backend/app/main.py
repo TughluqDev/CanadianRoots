@@ -1,5 +1,3 @@
-"""FastAPI application entry point."""
-
 from __future__ import annotations
 
 import logging
@@ -43,7 +41,7 @@ app.include_router(router)
 def _friendly_field(loc: tuple) -> str:
     parts = [str(p) for p in loc if p not in ("body", "query", "path")]
     if len(parts) >= 3 and parts[0] == "members" and parts[1].isdigit():
-        return f"Traveller {int(parts[1]) + 1} — {parts[2].replace('_', ' ')}"
+        return f"Traveller {int(parts[1]) + 1} ({parts[2].replace('_', ' ')})"
     return " → ".join(p.replace("_", " ") for p in parts) or "request"
 
 
@@ -56,7 +54,7 @@ async def validation_handler(_req: Request, exc: RequestValidationError) -> JSON
     ]
     summary = "; ".join(f"{e['field']}: {e['message']}" for e in errors[:3])
     return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-                        content={"detail": f"Please check your details — {summary}", "errors": errors})
+                        content={"detail": f"Please check your details. {summary}", "errors": errors})
 
 
 @app.exception_handler(SQLAlchemyError)

@@ -1,8 +1,3 @@
-"""Centralized domain vocabulary: interest tags, cultural influences, regions and origin cities.
-
-Stable string identifiers are stored in the database; display labels may change freely.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -19,7 +14,6 @@ RegionId = Literal["central", "atlantic", "prairies", "northern", "west_coast"]
 TransportMethod = Literal["car", "plane"]
 BudgetPreference = Literal["economy", "moderate", "premium"]
 
-# (id, label, short phrase used in generated explanations)
 INTERESTS: list[tuple[str, str, str]] = [
     ("cold_weather", "Cold Weather", "crisp, cold-weather outings"),
     ("warm_weather", "Warm Weather", "warm-weather days outdoors"),
@@ -62,7 +56,6 @@ class Region:
     id: str
     name: str
     provinces: tuple[str, ...]
-    # Demo average nightly room rate (CAD, before tax). Clearly labelled as an estimate in the UI.
     nightly_rate: float
 
 
@@ -92,12 +85,9 @@ class City:
     province: str
     latitude: float
     longitude: float
-    # IATA code of the city's main commercial airport, or None if we don't model flights from it.
     airport: str | None
 
 
-# Supported trip origins. Coordinates are city-centre approximations; airports are assumed
-# to be at the city centre for distance heuristics (documented limitation).
 CITIES: list[City] = [
     City("toronto", "Toronto", "ON", 43.6532, -79.3832, "YYZ"),
     City("ottawa", "Ottawa", "ON", 45.4215, -75.6972, "YOW"),

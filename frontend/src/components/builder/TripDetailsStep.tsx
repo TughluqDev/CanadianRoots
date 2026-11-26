@@ -114,7 +114,7 @@ export function TripDetailsStep({ cities }: { cities: City[] }) {
           </div>
         )}
         <FieldError>{errors.departure_month?.message ?? errors.departure_date?.message}</FieldError>
-        <p className="mt-2 text-xs text-muted">Seasonality matters: destinations closed in your month are never scheduled. There’s no need to pick a trip length: we work out how many days your stops and travel need.</p>
+        <p className="mt-2 text-xs text-muted">We plan around seasonal closures and allow time for visits and travel.</p>
       </fieldset>
 
       <div>

@@ -9,7 +9,6 @@ interface ChipProps extends Omit<React.ComponentProps<'button'>, 'onChange'> {
   tone?: 'forest' | 'terracotta'
 }
 
-/** Toggleable preference chip. Exposes aria-pressed for assistive tech and tests. */
 export function Chip({ selected, onToggle, icon: Icon, tone = 'forest', className, children, ...props }: ChipProps) {
   return (
     <button

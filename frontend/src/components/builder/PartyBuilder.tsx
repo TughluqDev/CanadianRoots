@@ -47,8 +47,6 @@ export function PartyBuilder({
     topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  /** Timing rules live in a schema-level refinement, which zod skips while other fields are
-   *  invalid — so the first step checks them explicitly. */
   const timingValid = () => {
     const v = form.getValues()
     if (v.timing === 'month' && !v.departure_month) {
@@ -71,7 +69,6 @@ export function PartyBuilder({
   }
 
   const submit = form.handleSubmit(onSubmit, () => {
-    // Send the user back to the first step with an error.
     const e = form.formState.errors
     if (e.starting_city_id || e.departure_month || e.departure_date) goTo(0)
     else if (e.members) goTo(1)
@@ -104,8 +101,6 @@ export function PartyBuilder({
             {step > 0 ? (
               <Button type="button" variant="outline" onClick={() => goTo(step - 1)}><ArrowLeft />Back</Button>
             ) : <span />}
-            {/* Distinct keys matter: if React reused the Continue <button> and flipped it to
-                type="submit" mid-click, the browser would submit the form immediately. */}
             {step < 2 ? (
               <Button key="continue" type="button" onClick={next}>Continue<ArrowRight /></Button>
             ) : (

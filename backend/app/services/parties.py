@@ -1,5 +1,3 @@
-"""Party persistence and serialization."""
-
 from __future__ import annotations
 
 from sqlalchemy.orm import Session
@@ -18,7 +16,7 @@ def _apply(party: Party, data: PartyIn) -> None:
     party.origin_latitude = city.latitude
     party.origin_longitude = city.longitude
     party.transportation_method = data.transportation_method
-    party.departure_month = data.departure_month  # type: ignore[assignment]  (validated non-null)
+    party.departure_month = data.departure_month
     party.departure_date = data.departure_date
     party.budget_preference = data.budget_preference
     party.members.clear()
@@ -41,8 +39,6 @@ def create_party(session: Session, data: PartyIn) -> Party:
 
 
 def update_party(session: Session, party: Party, data: PartyIn) -> Party:
-    # Trips generated for the old party definition would reference replaced members and stale
-    # preferences, so they are discarded. (The UI creates a new party per generation instead.)
     party.trips.clear()
     session.flush()
     _apply(party, data)

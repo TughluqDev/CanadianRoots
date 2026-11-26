@@ -62,7 +62,6 @@ export const REGION_META: Record<RegionId, { short: string; tint: string }> = {
   west_coast: { short: 'British Columbia', tint: 'from-[#1d4a46]/80' },
 }
 
-/** "Central Canada", "Central Canada & Northern Canada", ... for one or more visited regions. */
 export function regionList(regions: RegionId[] | undefined, fallback: RegionId | null): string {
   const ids = regions && regions.length ? regions : fallback ? [fallback] : []
   return ids.length ? ids.map((r) => REGION_NAMES[r]).join(' & ') : 'Canada'
@@ -78,9 +77,9 @@ export const REGION_NAMES: Record<RegionId, string> = {
 
 export const PRICING_META: Record<PricingStatus, { label: string; className: string; help: string }> = {
   verified: { label: 'Published price', className: 'bg-forest-100 text-forest', help: 'Taken from the destination’s published rates.' },
-  estimate: { label: 'Demo estimate', className: 'bg-gold-100 text-[#7a5a17]', help: 'No published price found — a clearly labelled planning estimate.' },
-  free: { label: 'Free admission', className: 'bg-sage-100 text-forest-700', help: 'Admission is free; purchases on site are extra.' },
-  unavailable: { label: 'Price unavailable', className: 'bg-cream-200 text-ink-soft', help: 'Not included in totals — check with the destination.' },
+  estimate: { label: 'Demo estimate', className: 'bg-gold-100 text-[#7a5a17]', help: 'Estimated for planning.' },
+  free: { label: 'Free admission', className: 'bg-sage-100 text-forest-700', help: 'Admission is free. Purchases cost extra.' },
+  unavailable: { label: 'Price unavailable', className: 'bg-cream-200 text-ink-soft', help: 'Check with the destination for prices. The budget excludes this stop’s admission.' },
 }
 
 export const MEMBER_COLORS = [

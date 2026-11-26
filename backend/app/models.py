@@ -1,5 +1,3 @@
-"""SQLAlchemy ORM models."""
-
 from __future__ import annotations
 
 from datetime import date, datetime, timezone
@@ -16,9 +14,6 @@ from .db import Base
 
 def _now() -> datetime:
     return datetime.now(timezone.utc)
-
-
-# ---------------------------------------------------------------------------- parties
 
 
 class Party(Base):
@@ -82,9 +77,6 @@ class MemberPreference(Base):
     member: Mapped[PartyMember] = relationship(back_populates="preferences")
 
 
-# ------------------------------------------------------------------------- experiences
-
-
 class Experience(Base):
     __tablename__ = "experience"
     __table_args__ = (
@@ -145,7 +137,6 @@ class Experience(Base):
 
     @property
     def culture_ids(self) -> list[str]:
-        # primary first, then the rest alphabetically for stable output
         rest = sorted(c.culture for c in self.cultures if c.culture != self.primary_culture)
         return [self.primary_culture, *rest]
 
@@ -191,9 +182,6 @@ class ExperienceSource(Base):
     experience: Mapped[Experience] = relationship(back_populates="sources")
 
 
-# ------------------------------------------------------------------------------- trips
-
-
 class Trip(Base):
     __tablename__ = "trip"
 
@@ -201,9 +189,7 @@ class Trip(Base):
     party_id: Mapped[int] = mapped_column(ForeignKey("party.id", ondelete="CASCADE"), index=True)
     generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     primary_region: Mapped[str | None] = mapped_column(String(20))
-    # Calculated by the planner from the stops and travel time (no user-chosen limit).
     duration_days: Mapped[int] = mapped_column(Integer)
-    # Editable cost assumptions and the computed itemized budget are stored as JSON snapshots
     assumptions: Mapped[dict[str, Any]] = mapped_column(JSON)
     travel: Mapped[dict[str, Any]] = mapped_column(JSON)
     budget: Mapped[dict[str, Any]] = mapped_column(JSON)
@@ -249,7 +235,6 @@ class TripRecommendation(Base):
     member_id: Mapped[int] = mapped_column(
         ForeignKey("party_member.id", ondelete="CASCADE"), index=True
     )
-    # Nullable: when no suitable experience exists we store an explanatory fallback instead.
     experience_id: Mapped[int | None] = mapped_column(ForeignKey("experience.id"))
     score: Mapped[float] = mapped_column(Float, default=0)
     explanation: Mapped[str] = mapped_column(Text)

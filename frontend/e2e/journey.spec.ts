@@ -31,12 +31,10 @@ async function buildParty(page: Page, o: Opts) {
   }
   await page.getByRole('button', { name: 'Continue' }).click()
   await expect(page.getByRole('heading', { name: 'Review' })).toBeVisible()
-  // Submit with the keyboard (also checks keyboard accessibility of the primary action).
   await page.getByRole('button', { name: 'Generate My Journey' }).focus()
   await page.keyboard.press('Enter')
   await page.waitForURL(/\/journey\/\d+$/, { timeout: 30_000 })
   await page.waitForLoadState('networkidle')
-  // Exactly one party + one generation per submit (guards against double submission).
   expect(posts).toEqual(['/api/parties', '/api/trips/generate'])
   const id = Number(page.url().split('/').pop())
   const trip = await (await page.request.get(`http://127.0.0.1:8000/api/trips/${id}`)).json()
@@ -50,7 +48,6 @@ function checkBudget(trip: any) {
   expect(b.subtotal).toBeCloseTo(b.activities.total + b.transportation.total + b.accommodation.total + b.meals.total, 2)
   expect(b.total).toBeCloseTo(b.subtotal + b.contingency, 2)
   expect(b.per_person).toBeCloseTo(b.total / trip.party.members.length, 2)
-  // one activity line per unique stop — shared stops never double-charged
   const slugs = trip.stops.map((s: any) => s.experience.slug)
   expect(new Set(slugs).size).toBe(slugs.length)
   expect(b.activities.items.length).toBe(slugs.length)
@@ -71,7 +68,6 @@ test('Scenario A — four mixed travellers drive from Toronto', async ({ page })
   for (const n of ['Bob', 'Sarah', 'Alex', 'Priya']) await expect(page.getByText(`For ${n}`, { exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Your shared itinerary' })).toBeVisible()
   await expect(page.getByTestId('budget-total')).toBeVisible()
-  // one coherent trip: a single region, every stop scheduled within the trip, car costs are party-level
   expect(new Set(trip.stops.map((s: any) => s.experience.region)).size).toBe(1)
   expect(trip.stops.every((s: any) => s.day_number >= 1 && s.day_number <= 3)).toBe(true)
   expect(trip.travel.effective_method).toBe('car')
@@ -115,14 +111,12 @@ test('Scenario C — overlapping interests share one destination, charged once',
   if (line.basis === 'per_person' && line.unit_price != null && line.pricing_status !== 'free') {
     expect(line.subtotal).toBeCloseTo(line.unit_price * 3, 2)
   }
-  // personalized, distinct explanations that mention the shared stop
   const texts = trip.recommendations.map((r: any) => r.explanation)
   expect(new Set(texts).size).toBe(3)
   for (const r of trip.recommendations) expect(r.explanation).toContain(r.member_name)
-  await expect(page.getByText(/shared highlight/).first()).toBeVisible()
+  await expect(page.getByText(/Also recommended for/).first()).toBeVisible()
   checkBudget(trip)
 
-  // editable assumptions recalculate and persist
   const before = trip.budget.total
   const food = page.getByRole('spinbutton', { name: 'Food per person / day' })
   await food.scrollIntoViewIfNeeded()
@@ -131,7 +125,7 @@ test('Scenario C — overlapping interests share one destination, charged once',
   expect((await patched).status()).toBe(200)
   const after = (await (await page.request.get(`http://127.0.0.1:8000/api/trips/${trip.id}`)).json()).budget
   expect(after.total).not.toBe(before)
-  expect(after.meals.total).toBe(100 * 3 * 2)
+  expect(after.meals.total).toBe(100 * trip.party.members.length * trip.duration_days)
   await expect(page.getByTestId('budget-total')).toHaveText(new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 }).format(after.total))
 })
 

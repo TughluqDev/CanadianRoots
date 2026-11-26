@@ -1,50 +1,25 @@
-"""Group-level trip planner.
-
-Explainable heuristic (no solver):
-
-1. Filter experiences to those open in the travel month (hard eligibility rule).
-2. Score every eligible experience for every member.
-3. Build the trip out of one or more *areas*. An area is a compact cluster of nearby eligible
-   experiences around an anchor, which keeps each part of the trip geographically coherent.
-   - Every region a traveller prefers gets its own area inside that region, so a member who
-     asks for Northern Canada really goes there, and the rest of the group comes along.
-   - If nobody states a region (or someone is still without a suitable stop), one more area is
-     chosen anywhere, wherever it serves the group best.
-4. Inside an area, greedily add the stop with the largest *marginal* gain for the group
-   (how much it improves each member's best match so far), so shared stops that please several
-   people win naturally. Then lightly top up with a stop the group still enjoys.
-5. Visit areas in nearest-neighbour order from home. Each hop between areas is driven, or flown
-   when travelling by plane and flying is faster.
-6. Pack stops into days under a daily hour budget. There is no fixed trip length: the number of
-   days is whatever the stops, the travel between them and the journey home actually need.
-7. Choosing an area's anchor: highest group gain, with travel time counting against it.
-   Ties break deterministically.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from math import ceil
 
 from ..domain import AIRPORT_CITIES, CITY_BY_ID, CULTURE_ADJ, INTEREST_LABEL, MONTH_NAMES, REGION_BY_ID, City
 from ..models import Experience
 from . import geo
 from .scoring import MatchScore, MemberProfile, explain, is_in_season, score_member
 
-DAY_HOURS = 10.0  # travel + activities per day
-CLUSTER_RADIUS_KM = 320.0  # max straight-line radius of an area around its anchor
+DAY_HOURS = 10.0
+CLUSTER_RADIUS_KM = 320.0
 MAX_GROUND_FROM_AIRPORT_HOURS = 3.5
-AIRPORT_TRANSFER_HOURS = 0.75  # minimum time to get to (or home from) an airport
+AIRPORT_TRANSFER_HOURS = 0.75
 MAX_STOPS_PER_DAY = 3
-MIN_STOPS = 2  # top up an area to this many stops when the group still enjoys another one
-MAX_STOPS_PER_AREA = 6  # sanity cap on itinerary size (not a day limit)
+MAX_STOPS_PER_AREA = 6
 COVERAGE_BONUS = 15.0
 TRAVEL_PENALTY_PER_HOUR = 3.0
-LONG_DRIVE_DAYS = 2  # warn when one drive takes more than this many full days
+LONG_DRIVE_DAYS = 2
 
 
 class PlanningError(Exception):
-    """Raised when no plausible trip can be generated; message is user-facing."""
+    pass
 
 
 @dataclass(frozen=True)
@@ -89,21 +64,17 @@ class _Point:
     lat: float
     lon: float
     label: str
-    home: bool = False  # the party's starting city
+    home: bool = False
 
 
 @dataclass
 class _Hop:
-    """Getting from one point to the next: driven, or flown then driven."""
-    total_hours: float  # door to door, used for scheduling
-    ground_km: float  # rental / own-car driving (counts toward fuel)
-    drive_km: float  # the final drive shown to the user
+    total_hours: float
+    ground_km: float
+    drive_km: float
     drive_hours: float
-    label: str  # where that final drive starts
+    label: str
     flight: dict | None = None
-
-
-# ----------------------------------------------------------------------------- helpers
 
 
 def _nearest_airport(lat: float, lon: float) -> City:
@@ -135,8 +106,7 @@ def _hop(settings: PartySettings, a: _Point, b: _Point) -> _Hop:
         from_arr_h = max(AIRPORT_TRANSFER_HOURS, from_arr_h)
     total = to_dep_h + flight_h + from_arr_h
     if total >= h:
-        return drive  # flying wouldn't be any faster
-    # Getting to/from the airport at home is covered by the airport-transfer cost, not fuel.
+        return drive
     ground = (0.0 if a.home else to_dep_km) + (0.0 if b.home else from_arr_km)
     flight = {
         "from": {"code": dep.airport, "city": dep.name, "province": dep.province},
@@ -168,41 +138,44 @@ def _centroid(exps: list[Experience]) -> tuple[float, float]:
     return (sum(e.latitude for e in exps) / len(exps), sum(e.longitude for e in exps) / len(exps))
 
 
-def _schedule(legs: list[tuple[Experience, _Hop]], home: _Hop) -> tuple[list[PlannedStop], int]:
-    """Pack stops into days; returns the stops and the number of days the trip needs.
-
-    Long legs (and flights) simply take extra travel days, so nothing is ever dropped for lack
-    of time.
-    """
+def _schedule(
+    legs: list[tuple[Experience, _Hop]], home: _Hop
+) -> tuple[list[PlannedStop], list[dict], int]:
     placed: list[PlannedStop] = []
+    segments: list[dict] = []
     day, used, count = 1, 0.0, 0
-    local_h = geo.drive_hours(geo.LOCAL_MIN_KM)
+
+    def travel(remaining: float, before_stop: str | None, flight: dict | None) -> None:
+        nonlocal day, used, count
+        elapsed = 0.0
+        while remaining > 1e-8:
+            portion = min(remaining, DAY_HOURS - used)
+            if portion <= 1e-8:
+                day, used, count = day + 1, 0.0, 0
+                continue
+            segment = {"day": day, "hours": round(portion, 2), "before_stop": before_stop}
+            if flight and elapsed <= flight["to_airport_hours"] < elapsed + portion:
+                segment["flight"] = {"from": flight["from"]["code"], "to": flight["to"]["code"]}
+            segments.append(segment)
+            elapsed += portion
+            used += portion
+            remaining -= portion
 
     for exp, hop in legs:
-        remaining = hop.total_hours
-        while not (count < MAX_STOPS_PER_DAY and used + remaining + exp.visit_duration_hours <= DAY_HOURS):
-            if count == 0:
-                if used == 0.0 and remaining <= local_h:
-                    break  # a very long visit on its own day: schedule it anyway
-                # Nothing planned yet today, so the day is spent travelling toward this stop.
-                remaining = max(local_h, remaining - (DAY_HOURS - used))
+        if count and (count == MAX_STOPS_PER_DAY or used + hop.total_hours + exp.visit_duration_hours > DAY_HOURS):
             day, used, count = day + 1, 0.0, 0
-        used += remaining + exp.visit_duration_hours
+        travel(hop.total_hours, exp.slug, hop.flight)
+        if used + exp.visit_duration_hours > DAY_HOURS + 1e-8:
+            day, used, count = day + 1, 0.0, 0
+        used += exp.visit_duration_hours
         count += 1
         placed.append(PlannedStop(exp, day, count, round(hop.drive_km, 1), round(hop.drive_hours, 2), hop.label))
 
-    # The journey home: finish it on the last day if it fits, otherwise add travel days.
-    overflow = used + home.total_hours - DAY_HOURS
-    if overflow > 0:
-        day += ceil(overflow / DAY_HOURS)
-    return placed, day
-
-
-# -------------------------------------------------------------------------- the planner
+    travel(home.total_hours, None, home.flight)
+    return placed, segments, day
 
 
 class _Selector:
-    """Chooses areas, remembering each member's best match so far across the whole trip."""
 
     def __init__(self, settings: PartySettings, members: list[MemberProfile],
                  scores: dict[tuple[int, str], MatchScore]) -> None:
@@ -215,32 +188,39 @@ class _Selector:
 
     def _gain(self, e: Experience, best_for: dict[int, float]) -> float:
         return sum(
-            max(0.0, self.scores[(m.id, e.slug)].score - best_for[m.id])
-            for m in self.members if self.scores[(m.id, e.slug)].suitable
+            max(0.0, self.scores[(member_id, e.slug)].score - best)
+            for member_id, best in best_for.items() if self.scores[(member_id, e.slug)].suitable
         )
 
     def _group_value(self, e: Experience) -> float:
-        return sum(self.scores[(m.id, e.slug)].score for m in self.members if self.scores[(m.id, e.slug)].suitable)
+        return self._gain(e, dict.fromkeys(self.best_for, 0.0))
 
-    def _pick(self, cluster: list[Experience], anchor: Experience) -> tuple[list[Experience], dict[int, float]]:
+    def _pick(self, cluster: list[Experience], anchor: Experience, limit: int,
+              preferred: dict[int, float]) -> tuple[list[Experience], dict[int, float], float]:
         chosen: list[Experience] = []
         best_for = dict(self.best_for)
+        regional_best = dict(preferred)
         pool = list(cluster)
-        while pool and len(chosen) < MAX_STOPS_PER_AREA:
-            cand = max(pool, key=lambda e: (self._gain(e, best_for), self._group_value(e), e.slug == anchor.slug, e.slug))
-            if self._gain(cand, best_for) <= 0 and (len(chosen) >= MIN_STOPS or self._group_value(cand) <= 0):
+        while pool and len(chosen) < limit:
+            cand = max(pool, key=lambda e: (
+                self._gain(e, regional_best), self._gain(e, best_for),
+                self._group_value(e), e.slug == anchor.slug, e.slug,
+            ))
+            if self._gain(cand, regional_best) <= 0 and self._gain(cand, best_for) <= 0:
                 break
             chosen.append(cand)
             pool.remove(cand)
-            for m in self.members:
-                s = self.scores[(m.id, cand.slug)]
-                if s.suitable:
-                    best_for[m.id] = max(best_for[m.id], s.score)
-        return chosen, best_for
+            for member_id in best_for:
+                score = self.scores[(member_id, cand.slug)]
+                if score.suitable:
+                    best_for[member_id] = max(best_for[member_id], score.score)
+                    if member_id in regional_best:
+                        regional_best[member_id] = max(regional_best[member_id], score.score)
+        return chosen, best_for, sum(regional_best.values())
 
-    def best_area(self, candidates: list[Experience], *, region: str | None = None) -> list[Experience] | None:
-        """Best area among ``candidates``. With ``region`` set, the area must be in that region
-        even if nothing there suits anyone (the traveller asked to go there)."""
+    def best_area(self, candidates: list[Experience], limit: int, *, region: str | None = None) -> list[Experience] | None:
+        preferred = {m.id: 0.0 for m in self.members if region is not None and m.preferred_region == region}
+        limit = min(limit, MAX_STOPS_PER_AREA)
 
         def search(airport_filter: bool):
             best = None
@@ -252,23 +232,20 @@ class _Selector:
                     e for e in candidates
                     if geo.great_circle_km(anchor.latitude, anchor.longitude, e.latitude, e.longitude) <= CLUSTER_RADIUS_KM
                 ]
-                chosen, best_for = self._pick(cluster, anchor)
+                chosen, best_for, regional_score = self._pick(cluster, anchor, limit, preferred)
                 if not chosen:
                     continue
                 objective = sum(
                     best_for[m.id] - self.best_for[m.id] + (COVERAGE_BONUS if best_for[m.id] > 0 >= self.best_for[m.id] else 0.0)
                     for m in self.members
                 ) - TRAVEL_PENALTY_PER_HOUR * hop.total_hours
-                key = (round(objective, 6), -round(hop.total_hours, 6))
-                # Higher objective, then shorter reach, then alphabetical anchor.
+                key = (regional_score, round(objective, 6), -round(hop.total_hours, 6))
                 if best is None or key > best[0] or (key == best[0] and anchor.slug < best[1]):
                     best = (key, anchor.slug, chosen, best_for)
             return best
 
         best = search(True) or search(False)
         if best is None and region is not None:
-            # Nothing in the region suits anyone's interests: still go, to the stop the
-            # travellers who asked for it would like most.
             wanted = [m for m in self.members if m.preferred_region == region]
             stop = max(candidates, key=lambda e: (
                 sum(self.scores[(m.id, e.slug)].score for m in wanted), self._group_value(e), e.slug,
@@ -281,7 +258,6 @@ class _Selector:
         return chosen
 
     def uncovered(self, eligible: list[Experience]) -> bool:
-        """Someone still has no suitable stop, though a suitable one is open somewhere."""
         return any(
             self.best_for[m.id] <= 0 and any(self.scores[(m.id, e.slug)].suitable for e in eligible)
             for m in self.members
@@ -308,19 +284,19 @@ def plan_trip(
     }
     selector = _Selector(settings, members, scores)
 
-    # One area per preferred region (in the order travellers asked for them).
     wanted_regions = list(dict.fromkeys(m.preferred_region for m in members if m.preferred_region))
     areas: list[list[Experience]] = []
     for region in wanted_regions:
         in_region = [e for e in eligible if e.region == region]
         if in_region:
-            area = selector.best_area(in_region, region=region)
+            limit = sum(m.preferred_region == region for m in members)
+            area = selector.best_area(in_region, limit, region=region)
             if area:
                 areas.append(area)
-    # Plus the best area anywhere, when nobody named a region or someone is still left out.
-    if not areas or selector.uncovered(eligible):
-        used = {e.slug for a in areas for e in a}
-        area = selector.best_area([e for e in eligible if e.slug not in used])
+    used = {e.slug for area in areas for e in area}
+    remaining_slots = len(members) - len(used)
+    if remaining_slots and (not areas or selector.uncovered(eligible)):
+        area = selector.best_area([e for e in eligible if e.slug not in used], remaining_slots)
         if area:
             areas.append(area)
 
@@ -330,7 +306,6 @@ def plan_trip(
             "Try a different month or add more interests."
         )
 
-    # Visit the areas in nearest-neighbour order from home, and each area's stops likewise.
     home = selector.home
     ordered_areas: list[list[Experience]] = []
     cur_lat, cur_lon = home.lat, home.lon
@@ -348,7 +323,7 @@ def plan_trip(
         for i, e in enumerate(stops):
             here = _point(e)
             if i == 0:
-                hop = _hop(settings, prev, here)  # between areas: may be a flight
+                hop = _hop(settings, prev, here)
             else:
                 km = geo.road_km(prev.lat, prev.lon, here.lat, here.lon)
                 hop = _Hop(geo.drive_hours(km), km, km, geo.drive_hours(km), prev.label)
@@ -356,9 +331,8 @@ def plan_trip(
             prev = here
     home_hop = _hop(settings, prev, home)
 
-    placed, days = _schedule(legs, home_hop)
-    return _finalize(settings, members, eligible, experiences, scores, placed, legs, home_hop, days,
-                     wanted_regions)
+    placed, segments, days = _schedule(legs, home_hop)
+    return _finalize(settings, members, eligible, experiences, scores, placed, legs, home_hop, segments, days)
 
 
 def _finalize(
@@ -370,8 +344,8 @@ def _finalize(
     placed: list[PlannedStop],
     legs: list[tuple[Experience, _Hop]],
     home_hop: _Hop,
+    segments: list[dict],
     duration_days: int,
-    wanted_regions: list[str],
 ) -> Plan:
     month_name = MONTH_NAMES[settings.month - 1]
     region_counts: dict[str, int] = {}
@@ -381,7 +355,6 @@ def _finalize(
     primary_region = max(region_counts, key=lambda r: (region_counts[r], -visit_order.index(r)))
     regions = list(dict.fromkeys(visit_order))
 
-    # --- per-member recommendation
     picks: dict[int, tuple[Experience | None, MatchScore]] = {}
     for m in members:
         best_stop: PlannedStop | None = None
@@ -415,29 +388,24 @@ def _finalize(
                 f"{m.name} preferred {REGION_BY_ID[m.preferred_region].name}, but none of our "
                 f"destinations there are open in {month_name}."
             )
-        # Best match anywhere in season, to suggest a future trip.
         alt = max(
             (e for e in eligible if e.slug not in placed_slugs and scores[(m.id, e.slug)].suitable),
             key=lambda e: (scores[(m.id, e.slug)].score, e.slug), default=None,
         )
         if alt is not None and scores[(m.id, alt.slug)].score > match.score:
             unmet.append(
-                f"{m.name}'s strongest match overall is {alt.name} ({alt.city}, {alt.province}) — "
-                "worth saving for a future trip."
+                f"Best match for a future trip: {alt.name} ({alt.city}, {alt.province})."
             )
 
         if exp is None:
             explanation = (
-                f"None of the destinations on this route closely match {m.name}'s selected interests "
-                f"or cultural preferences, so we haven't forced a recommendation. {m.name} is warmly "
-                "welcome at every shared stop, and the notes below suggest better-suited destinations."
+                f"No stop on this route closely matches {m.name}'s interests or cultural preferences."
             )
         else:
             shared = [o.name for o in members if o.id != m.id and picks[o.id][0] is not None and picks[o.id][0].slug == exp.slug]
             explanation = explain(m, exp, match, shared)
         recs.append(MemberRecommendation(m, exp, match, explanation, unmet))
 
-    # --- travel summary
     flights = []
     for e, hop in legs:
         if hop.flight:
@@ -452,6 +420,7 @@ def _finalize(
                    "latitude": settings.origin.latitude, "longitude": settings.origin.longitude},
         "regions": regions,
         "flights": flights,
+        "segments": segments,
         "ground_km": round(sum(h.ground_km for _, h in legs) + home_hop.ground_km, 1),
         "outbound_hours": round(first_hop.total_hours, 1),
         "return_hours": round(home_hop.total_hours, 1),
@@ -474,37 +443,34 @@ def _finalize(
         })
     elif settings.transport == "plane":
         travel["no_flight_reason"] = (
-            f"These destinations are within driving distance of {settings.origin.name}, so no flight is "
-            "needed; ground transport is estimated instead."
+            f"This itinerary uses ground transport from {settings.origin.name}."
         )
 
     considerations = [
-        "Distances are straight-line estimates multiplied by 1.25 for road detours, at an average "
-        "80 km/h. Real driving routes and times will differ — check a routing service before you go.",
+        "Driving estimates use straight-line distance × 1.25 and an average speed of 80 km/h. "
+        "Check driving directions before you leave.",
     ]
     for f in flights:
         considerations.append(
-            f"Flight assumes service between {f['from']['city']} ({f['from']['code']}) and "
-            f"{f['to']['city']} ({f['to']['code']}); a direct route may not exist in your month, and "
-            "connections can add time. Check airline schedules."
+            f"Check flights from {f['from']['city']} ({f['from']['code']}) to "
+            f"{f['to']['city']} ({f['to']['code']}). Connections may add travel time."
         )
     if flights:
         cities = _join(list(dict.fromkeys(f["to"]["city"] for f in flights if f["before_stop"])))
-        considerations.append(f"A rental car is assumed for getting around from {cities}.")
+        considerations.append(f"The budget includes a rental car for local travel from {cities}.")
     if travel.get("no_flight_reason"):
         considerations.append(travel["no_flight_reason"])
     if len(regions) > 1:
         considerations.append(
-            f"This trip covers {_join([REGION_BY_ID[r].name for r in regions])} so that every "
-            "traveller's preferred region is included."
+            f"Regions on this trip: {_join([REGION_BY_ID[r].name for r in regions])}."
         )
     long_drives = [e.name for e, h in legs if not h.flight and h.total_hours > LONG_DRIVE_DAYS * DAY_HOURS]
     if long_drives:
         considerations.append(
-            f"Reaching {_join(long_drives)} takes several days of driving; flying may be more practical."
+            f"Allow several days to drive to {_join(long_drives)}."
         )
     if any(p.experience.visit_duration_hours >= 4 for p in placed):
-        considerations.append("Some stops are half-day visits; arrive early to make the most of them.")
+        considerations.append("Some visits take half a day.")
     travel["considerations"] = considerations
 
     notes: list[str] = []
@@ -512,14 +478,12 @@ def _finalize(
     if closed:
         plural = closed != 1
         notes.append(
-            f"{closed} destination{'s are' if plural else ' is'} closed to visitors in {month_name} "
-            f"and {'were' if plural else 'was'} not considered."
+            f"{closed} destination{'s are' if plural else ' is'} closed in {month_name}."
         )
     notes.append(
-        f"Trip length is worked out automatically: {duration_days} day{'s' if duration_days != 1 else ''} "
-        "covers every stop at a comfortable pace, plus the travel there and back."
+        f"Allow {duration_days} day{'s' if duration_days != 1 else ''} for visits and round-trip travel."
     )
-    notes.append("Opening hours and seasonal programs change — confirm with each destination before visiting.")
+    notes.append("Confirm hours and seasonal programs before you visit.")
 
     return Plan(placed, recs, primary_region, travel, notes, duration_days)
 

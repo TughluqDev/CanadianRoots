@@ -1,10 +1,3 @@
-"""Initialize the SQLite schema and import data/researched_experiences.json (idempotent).
-
-Usage (from the repo root, with the backend virtualenv active):
-    python scripts/seed_database.py            # create tables + upsert destinations
-    python scripts/seed_database.py --reset    # delete the database file first (clears saved trips)
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -13,9 +6,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
 
-from app import config  # noqa: E402
-from app.db import SessionLocal, engine, init_db  # noqa: E402
-from app.seed import load_dataset, seed  # noqa: E402
+from app import config
+from app.db import SessionLocal, engine, init_db
+from app.seed import load_dataset, seed
 
 
 def main() -> None:
@@ -25,7 +18,7 @@ def main() -> None:
 
     if args.reset:
         from app.db import Base
-        from app import models  # noqa: F401
+        from app import models
 
         Base.metadata.drop_all(engine)
         print("Dropped all tables.")

@@ -1,5 +1,3 @@
-"""Pydantic request/response schemas (the API contract mirrored in frontend/src/types/api.ts)."""
-
 from __future__ import annotations
 
 from datetime import date, datetime
@@ -9,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 from .domain import CITY_BY_ID, CULTURE_IDS, INTEREST_IDS, REGION_IDS
 
-MAX_PARTY_SIZE = 100  # sanity guard against abuse, not a product limit
+MAX_PARTY_SIZE = 100
 
 
 def _dedupe(values: list[str]) -> list[str]:
@@ -171,7 +169,6 @@ class TripGenerateIn(BaseModel):
 
 
 class AssumptionsPatch(BaseModel):
-    """Any subset of editable cost assumptions."""
     model_config = ConfigDict(extra="forbid")
     fuel_price_per_litre: float | None = None
     fuel_consumption_l_per_100km: float | None = None
@@ -213,7 +210,7 @@ class TripOut(BaseModel):
     id: int
     generated_at: datetime
     primary_region: str | None
-    regions: list[str]  # every region visited, in visit order
+    regions: list[str]
     duration_days: int
     currency: str
     estimated_total: float

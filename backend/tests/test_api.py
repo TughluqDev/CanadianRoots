@@ -35,7 +35,7 @@ def test_party_create_and_retrieve_with_multiple_members(client):
     names = [m["name"] for m in party["members"]]
     assert names == ["Bob", "Sarah", "Alex"]
     assert party["members"][0]["preferred_region"] == "northern"
-    assert party["members"][1]["preferred_region"] is None  # region is optional
+    assert party["members"][1]["preferred_region"] is None
     assert party["members"][1]["cultures"] == ["french", "british"]
     assert party["members"][2]["interests"] == ["animals", "history"]
 
@@ -102,9 +102,8 @@ def test_trip_reload_list_and_assumption_patch(client, make_trip):
     assert r.status_code == 200
     new = r.json()
     nights = new["budget"]["accommodation"]["nights"]
-    expected_delta = 100 * nights * 1 * 1.15 * 1.10  # 1 room, lodging tax, contingency
+    expected_delta = 100 * nights * 1 * 1.15 * 1.10
     assert abs(new["budget"]["total"] - old_total - expected_delta) < 0.02
-    # persisted
     assert client.get(f"/api/trips/{trip['id']}").json()["budget"]["total"] == new["budget"]["total"]
     assert client.patch(f"/api/trips/{trip['id']}/assumptions", json={"nightly_room_rate": -5}).status_code == 422
     assert client.patch(f"/api/trips/{trip['id']}/assumptions", json={"hack": 1}).status_code == 422

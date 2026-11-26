@@ -26,7 +26,6 @@ function SiteHeader() {
   const { pathname } = useLocation()
   const overHero = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
-  // The mobile menu is "open for" a specific route, so navigating closes it without an effect.
   const [openFor, setOpenFor] = useState<string | null>(null)
   const open = openFor === pathname
   const setOpen = (next: (o: boolean) => boolean) => setOpenFor(next(open) ? pathname : null)
@@ -102,8 +101,7 @@ function SiteFooter() {
         <div>
           <Logo light />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-            Discover Canada through its land, food, and cultures. A curated planner for agritourism and
-            agricultural-heritage journeys.
+            Plan trips to Canadian farms and heritage sites.
           </p>
         </div>
         <div className="text-sm">
@@ -116,8 +114,7 @@ function SiteFooter() {
         </div>
         <div className="text-sm leading-relaxed text-cream/60">
           <p className="mb-3 font-semibold text-cream">Good to know</p>
-          Prices are estimates for trip-planning purposes and are not live booking quotes. Always confirm hours
-          and programs with each destination. Photos: Wikimedia Commons contributors (licences shown on each card).
+          Prices are for planning. Confirm hours and programs before visiting. Photo credits appear on each card.
         </div>
       </div>
     </footer>

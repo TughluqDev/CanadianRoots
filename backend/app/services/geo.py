@@ -1,19 +1,13 @@
-"""Conservative distance and travel-time heuristics.
-
-We have no routing engine, so road distance is approximated as great-circle distance multiplied
-by a detour factor. Results are always presented to users as *approximate*.
-"""
-
 from __future__ import annotations
 
 from math import asin, cos, radians, sin, sqrt
 
 EARTH_RADIUS_KM = 6371.0
-ROAD_DETOUR_FACTOR = 1.25  # typical ratio of road to straight-line distance in settled Canada
-AVERAGE_DRIVE_KMH = 80.0  # blended highway / rural road speed incl. short breaks
+ROAD_DETOUR_FACTOR = 1.25
+AVERAGE_DRIVE_KMH = 80.0
 FLIGHT_CRUISE_KMH = 750.0
-FLIGHT_OVERHEAD_HOURS = 2.0  # airport arrival, boarding, taxi, baggage
-LOCAL_MIN_KM = 5.0  # even "next door" stops need some local driving
+FLIGHT_OVERHEAD_HOURS = 2.0
+LOCAL_MIN_KM = 5.0
 
 
 def great_circle_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

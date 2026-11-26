@@ -20,11 +20,11 @@ def car_budget(travellers: int = 4, days: int = 3, **over):
 def test_activity_costs_by_pricing_status():
     b = car_budget()
     items = {i["slug"]: i for i in b["activities"]["items"]}
-    assert items["a"]["subtotal"] == 80.0  # 20 x 4
-    assert items["b"]["subtotal"] == 60.0  # estimate 15 x 4
+    assert items["a"]["subtotal"] == 80.0
+    assert items["b"]["subtotal"] == 60.0
     assert items["c"]["subtotal"] == 0.0
-    assert items["d"]["subtotal"] == 0.0 and "unavailable" in items["d"]["note"].lower()
-    assert items["e"]["subtotal"] == 100.0  # fixed group price, not multiplied
+    assert items["d"]["subtotal"] == 0.0 and "The total excludes this cost." in items["d"]["note"]
+    assert items["e"]["subtotal"] == 100.0
     assert b["activities"]["total"] == 240.0
 
 
@@ -39,10 +39,9 @@ def test_shared_stop_not_double_counted():
 def test_car_cost_is_party_level():
     b = car_budget()
     fuel, parking = b["transportation"]["items"]
-    assert fuel["amount"] == pytest.approx(500 * 9.0 / 100 * 1.60)  # 72.00, one vehicle
+    assert fuel["amount"] == pytest.approx(500 * 9.0 / 100 * 1.60)
     assert parking["amount"] == 45.0
     assert b["transportation"]["total"] == 117.0
-    # Six travellers need two vehicles at capacity 5
     six = car_budget(travellers=6)
     assert six["vehicles"] == 2
     assert six["transportation"]["items"][0]["amount"] == pytest.approx(144.0)
@@ -64,10 +63,10 @@ def test_plane_costs():
 def test_hotel_rooms_and_tax():
     b = car_budget(travellers=5)
     acc = b["accommodation"]
-    assert acc["nights"] == 2 and acc["rooms"] == 3  # ceil(5 / 2)
+    assert acc["nights"] == 2 and acc["rooms"] == 3
     assert acc["subtotal_before_tax"] == 3 * 2 * 185
     assert acc["total"] == pytest.approx(1110 * 1.15)
-    assert car_budget(days=1)["accommodation"]["total"] == 0  # day trip, no nights
+    assert car_budget(days=1)["accommodation"]["total"] == 0
 
 
 def test_total_aggregation():
@@ -79,7 +78,7 @@ def test_total_aggregation():
     assert b["total"] == pytest.approx(2318.8)
     assert b["per_person"] == pytest.approx(579.7)
     assert b["currency"] == "CAD"
-    assert "not live booking quotes" in b["disclaimer"]
+    assert "estimates for planning" in b["disclaimer"]
 
 
 def test_budget_preference_changes_defaults():

@@ -11,7 +11,6 @@ interface CitySelectProps {
   describedBy?: string
 }
 
-/** Accessible combobox limited to supported origin cities (we never guess coordinates). */
 export function CitySelect({ cities, value, onChange, invalid, describedBy }: CitySelectProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -85,8 +84,7 @@ export function CitySelect({ cities, value, onChange, invalid, describedBy }: Ci
         >
           {results.length === 0 && (
             <li className="px-3 py-4 text-sm text-ink-soft">
-              We don’t support that city yet. Choose the nearest listed city — we only plan from places with known
-              coordinates.
+              Choose the nearest city from the list.
             </li>
           )}
           {results.map((c, i) => (

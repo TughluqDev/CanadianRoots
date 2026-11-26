@@ -1,4 +1,3 @@
-# One-time setup on Windows (PowerShell): backend venv + deps, seed SQLite, frontend deps.
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root

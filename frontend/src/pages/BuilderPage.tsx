@@ -38,13 +38,13 @@ export function BuilderPage() {
     onSuccess: (trip) => {
       queryClient.setQueryData(['trip', trip.id], trip)
       void queryClient.invalidateQueries({ queryKey: ['trips'] })
-      try { sessionStorage.removeItem(DRAFT_KEY) } catch { /* storage unavailable */ }
+      try { sessionStorage.removeItem(DRAFT_KEY) } catch {}
       navigate(`/journey/${trip.id}`)
     },
   })
 
   const saveDraft = useCallback((values: PartyForm, step: number) => {
-    try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ values, step })) } catch { /* storage unavailable */ }
+    try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ values, step })) } catch {}
   }, [])
 
   const initial = useMemo(() => {

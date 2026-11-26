@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# One-time setup on macOS/Linux: backend venv + deps, seed SQLite, frontend deps.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

@@ -27,7 +27,7 @@ export function ReviewStep({ cities, onEdit }: { cities: City[]; onEdit: (step: 
   const city = cities.find((c) => c.id === v.starting_city_id)
   const when = v.timing === 'date' && v.departure_date
     ? new Date(`${v.departure_date}T12:00:00`).toLocaleDateString('en-CA', { month: 'long', day: 'numeric', year: 'numeric' })
-    : v.departure_month ? MONTHS[v.departure_month - 1] : '—'
+    : v.departure_month ? MONTHS[v.departure_month - 1] : 'Not set'
 
   return (
     <div className="space-y-6">
@@ -37,7 +37,7 @@ export function ReviewStep({ cities, onEdit }: { cities: City[]; onEdit: (step: 
           <Button variant="ghost" size="sm" onClick={() => onEdit(0)}><Pencil />Edit</Button>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <Fact icon={MapPin} label="Starting from" value={city ? `${city.name}, ${city.province}` : '—'} />
+          <Fact icon={MapPin} label="Starting from" value={city ? `${city.name}, ${city.province}` : 'Not set'} />
           <Fact icon={v.transportation_method === 'plane' ? Plane : Car} label="Travel" value={v.transportation_method === 'plane' ? 'Fly & drive' : 'Road trip'} />
           <Fact icon={CalendarDays} label="When" value={when} />
           <Fact icon={Clock} label="Length" value="Calculated for you" />

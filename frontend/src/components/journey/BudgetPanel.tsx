@@ -8,7 +8,6 @@ import { cn, money } from '@/lib/utils'
 import { api } from '@/services/api'
 import type { Assumptions, Trip } from '@/types/api'
 
-/** Part-to-whole as single-hue bars: one series, so no categorical palette is needed. */
 function ShareBars({ rows, total }: { rows: { label: string; value: number }[]; total: number }) {
   return (
     <div className="space-y-3.5" role="list" aria-label="Share of estimated total by category">
@@ -161,7 +160,7 @@ export function BudgetPanel({ trip }: { trip: Trip }) {
           <p className="eyebrow mb-1">Accommodation</p>
           <div className="divide-y divide-cream-300/70">
             {acc.nights === 0 ? (
-              <Line label="Day trip — no overnight stay" amount={0} />
+              <Line label="No overnight stay" amount={0} />
             ) : (
               <>
                 <Line label={`${acc.rooms} room${acc.rooms > 1 ? 's' : ''} × ${acc.nights} night${acc.nights > 1 ? 's' : ''}`}

@@ -42,8 +42,8 @@ export function JourneyHero({ trip }: { trip: Trip }) {
           {party.name || `${party.starting_city} to ${region}`}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-cream/80">
-          {trip.stops.length} hand-matched stop{trip.stops.length === 1 ? '' : 's'} across {trip.duration_days} day
-          {trip.duration_days === 1 ? '' : 's'}, chosen so every traveller finds something that speaks to them.
+          {trip.stops.length} stop{trip.stops.length === 1 ? '' : 's'} across {trip.duration_days} day
+          {trip.duration_days === 1 ? '' : 's'}.
         </p>
         <div className="mt-10 grid gap-6 rounded-2xl border border-white/15 bg-white/8 p-6 backdrop-blur-md sm:grid-cols-3 lg:grid-cols-[repeat(5,auto)_1fr] lg:items-center lg:gap-10">
           <Stat icon={MapPin} label="From" value={`${party.starting_city}, ${party.starting_province}`} />

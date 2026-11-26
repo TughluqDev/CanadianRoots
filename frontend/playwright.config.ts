@@ -1,7 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
 
-// End-to-end tests drive the real UI against the real FastAPI backend and seeded SQLite DB.
-// Start both servers first (see README) or let Playwright start them.
 export default defineConfig({
   testDir: './e2e',
   timeout: 60_000,

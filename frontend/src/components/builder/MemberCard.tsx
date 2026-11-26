@@ -117,7 +117,7 @@ export function MemberCard({ index, expanded, onToggle, onRemove, preferences, r
 
           <fieldset>
             <legend className="mb-1 text-sm font-semibold text-forest-900">Preferred region <span className="font-normal text-muted">(optional)</span></legend>
-            <p className="mb-3 text-xs text-muted">A nudge, not a rule — we keep the shared trip practical for everyone.</p>
+            <p className="mb-3 text-xs text-muted">Optional. Choose a region this traveller would like to visit.</p>
             <Controller
               control={control}
               name={`members.${index}.preferred_region`}

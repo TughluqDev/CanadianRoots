@@ -6,7 +6,6 @@ import { REGION_NAMES } from '@/lib/domain'
 import { monthRange } from '@/lib/utils'
 import type { Experience } from '@/types/api'
 
-/** Compact preview card used on the home and destinations pages. */
 export function ExperienceCard({ exp, onOpen }: { exp: Experience; onOpen?: () => void }) {
   const Wrapper = onOpen ? 'button' : 'div'
   return (

@@ -1,11 +1,3 @@
-"""Download the openly licensed (Wikimedia Commons) photos listed in data/researched_experiences.json
-into frontend/public/images/experiences/<slug>.<ext> so the app works offline.
-
-Run once during setup (optional — without it the app hotlinks Commons, and falls back to an
-illustration if offline). Re-run `python scripts/seed_database.py` afterwards so the database
-points at the local copies. Attribution/licence metadata stays in the dataset and is shown in the UI.
-"""
-
 from __future__ import annotations
 
 import json
@@ -23,7 +15,6 @@ EXT_BY_TYPE = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}
 
 
 def _download(url: str, attempts: int = 5) -> tuple[str, bytes]:
-    """GET with exponential backoff on HTTP 429 (Wikimedia rate limiting)."""
     import urllib.error
 
     for attempt in range(attempts):
@@ -62,8 +53,8 @@ def main() -> int:
             (OUT / f"{slug}.{ext}").write_bytes(data)
             ok += 1
             print(f"  ✓ {slug} ({len(data) // 1024} KB)")
-            time.sleep(3)  # be polite to Wikimedia
-        except Exception as exc:  # noqa: BLE001 — report and continue
+            time.sleep(3)
+        except Exception as exc:
             failed += 1
             print(f"  ✗ {slug}: {exc}")
     print(f"Images: {ok} cached, {skipped} without a Commons photo, {failed} failed.")

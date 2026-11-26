@@ -49,7 +49,6 @@ describe('PartyBuilder', () => {
 
   it('adds and removes travellers', async () => {
     const { user } = setup(ready(), 1)
-    // A lone traveller can't be removed
     expect(screen.queryByRole('button', { name: /^Remove/ })).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Add traveller' }))
     await user.click(screen.getByRole('button', { name: 'Add traveller' }))
@@ -86,7 +85,6 @@ describe('PartyBuilder', () => {
     await user.click(screen.getByRole('button', { name: 'Continue' }))
     const review = await screen.findByRole('heading', { name: 'Review' })
     expect(review).toBeInTheDocument()
-    // Clicking Continue must not submit by itself (regression: button type swap mid-click)
     expect(onSubmit).not.toHaveBeenCalled()
     expect(within(document.body).getByText('Bob')).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Generate My Journey' }))

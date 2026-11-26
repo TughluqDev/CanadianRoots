@@ -8,7 +8,6 @@ export function cn(...inputs: ClassValue[]) {
 const cad = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 })
 const cadCents = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 2 })
 
-/** Format CAD. Whole dollars by default; cents when `exact` is set. */
 export function money(value: number, exact = false): string {
   return (exact ? cadCents : cad).format(value)
 }
@@ -31,14 +30,12 @@ export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', '
   'September', 'October', 'November', 'December']
 const SHORT = MONTHS.map((m) => m.slice(0, 3))
 
-/** Compress [5,6,7,8,9,10] into "May – Oct". Handles wrap-around and gaps. */
 export function monthRange(months: number[]): string {
   if (!months.length) return 'Season unknown'
   if (months.length === 12) return 'Year-round'
   const set = new Set(months)
   const next = (m: number) => (m === 12 ? 1 : m + 1)
   const prev = (m: number) => (m === 1 ? 12 : m - 1)
-  // Start from a month that begins a run so Dec → Jan wrap-around stays in one range.
   const start = [...set].sort((a, b) => a - b).find((m) => !set.has(prev(m))) ?? months[0]
   const runs: [number, number][] = []
   let m = start

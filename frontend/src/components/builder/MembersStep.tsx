@@ -21,7 +21,7 @@ export function MembersStep({ preferences, regions }: { preferences: Preferences
     <div className="space-y-4">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <p className="text-sm text-ink-soft">
-          <span className="font-semibold text-forest-900">{fields.length}</span> traveller{fields.length === 1 ? '' : 's'} — add as many as you like.
+          <span className="font-semibold text-forest-900">{fields.length}</span> traveller{fields.length === 1 ? '' : 's'} so far.
         </p>
       </div>
       <div className="space-y-3" aria-live="polite">

@@ -2,10 +2,10 @@ import { Sprout } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const MESSAGES = [
-  'Matching interests to real Canadian destinations…',
-  'Checking what’s open in your travel month…',
-  'Finding stops the whole party will love…',
-  'Mapping a practical route…',
+  'Matching your interests…',
+  'Checking seasonal hours…',
+  'Choosing stops…',
+  'Planning the route…',
   'Estimating your budget in CAD…',
 ]
 
@@ -24,7 +24,7 @@ export function GeneratingOverlay() {
             <Sprout className="size-10" aria-hidden />
           </span>
         </div>
-        <p className="font-display text-3xl text-forest-900">Composing your journey</p>
+        <p className="font-display text-3xl text-forest-900">Planning your trip</p>
         <p key={i} className="animate-fade-up mt-3 text-ink-soft">{MESSAGES[i]}</p>
       </div>
     </div>

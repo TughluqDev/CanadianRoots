@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Start the FastAPI backend (port 8000) and Vite frontend (port 5173) on macOS/Linux.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 (cd "$ROOT/backend" && .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000) &

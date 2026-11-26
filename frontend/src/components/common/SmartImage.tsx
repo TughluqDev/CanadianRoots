@@ -12,7 +12,6 @@ interface SmartImageProps {
   eager?: boolean
 }
 
-/** Image with a shimmer while loading and a designed illustration if missing or broken. */
 export function SmartImage({ src, alt, region, className, imgClassName, eager }: SmartImageProps) {
   const [failed, setFailed] = useState(false)
   const [loaded, setLoaded] = useState(false)

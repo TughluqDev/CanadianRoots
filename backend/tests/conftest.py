@@ -1,6 +1,3 @@
-"""Shared fixtures. Tests use an in-memory SQLite database and a small *synthetic* dataset
-(names start with "Test") so assertions don't depend on the researched data."""
-
 from __future__ import annotations
 
 import os
@@ -13,15 +10,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-# Never touch the developer's real database from tests.
 os.environ["DATABASE_URL"] = "sqlite://"
-os.environ["SEED_ON_STARTUP"] = "false"  # tests seed their own synthetic fixture
+os.environ["SEED_ON_STARTUP"] = "false"
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.db import Base, get_session  # noqa: E402
-from app import models  # noqa: E402,F401
-from app.main import app  # noqa: E402
-from app.seed import DatasetIn, seed  # noqa: E402
+from app.db import Base, get_session
+from app import models
+from app.main import app
+from app.seed import DatasetIn, seed
 
 ALL_YEAR = list(range(1, 13))
 
@@ -79,7 +75,6 @@ FIXTURE = {"experiences": [
 
 @pytest.fixture()
 def engine():
-    # One shared in-memory connection so every session sees the same database.
     eng = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
     Base.metadata.create_all(eng)
     return eng

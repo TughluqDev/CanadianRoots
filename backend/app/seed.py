@@ -1,5 +1,3 @@
-"""Validate researched destination data and import it into SQLite idempotently (upsert by slug)."""
-
 from __future__ import annotations
 
 import json
@@ -178,14 +176,12 @@ def seed(session: Session, dataset: DatasetIn, image_dir: Path | None = None) ->
         exp.pricing_notes = rec.pricing.notes
         exp.pricing_source_url = rec.pricing.source_url
         exp.website = rec.website
-        # Prefer a locally cached copy of the openly licensed photo; fall back to the remote URL.
         exp.image_url = (_local_image(rec.slug, image_dir) or img.url) if img else None
         exp.image_page_url = img.page_url if img else None
         exp.image_author = img.author if img else None
         exp.image_license = img.license if img else None
         exp.image_caption = img.caption if img else None
         exp.verified_at = rec.verified_at
-        # Diff association rows instead of replacing them, so unique constraints never collide.
         exp.tags = [t for t in exp.tags if t.tag in rec.tags] + [
             ExperienceTag(tag=t) for t in rec.tags if t not in {x.tag for x in exp.tags}
         ]

@@ -16,7 +16,6 @@ def test_scoring_weights(session):
     cheese = _exp(session, "townships-cheese")
     m = MemberProfile(1, 0, "Sarah", ("cheese", "food_tasting", "hiking"), ("french",), "central")
     s = score_member(m, cheese)
-    # culture 40 + primary bonus 5 + 2 tags x 15 + region 25
     assert s.score == 40 + 5 + 30 + 25
     assert s.matched_interests == ["cheese", "food_tasting"] and s.region_match
     nomatch = MemberProfile(2, 1, "Z", ("fishing",), ("indigenous",), None)
@@ -27,7 +26,7 @@ def test_recommendations_reflect_preferences(make_trip):
     trip = make_trip([
         member("Sarah", ["french"], ["cheese", "food_tasting"]),
         member("Alex", ["british"], ["animals", "history"]),
-    ], city="montreal", month=7)  # Ottawa and Coaticook (~300 km) fit one cluster
+    ], city="montreal", month=7)
     recs = {r["member_name"]: r for r in trip["recommendations"]}
     assert recs["Sarah"]["experience_slug"] == "townships-cheese"
     assert recs["Alex"]["experience_slug"] == "ottawa-ag-museum"
@@ -46,7 +45,6 @@ def test_deterministic(make_trip):
 
 
 def test_season_filtering(make_trip):
-    # In March only year-round stops and the sugar shack are open; Ottawa Indigenous farm is closed.
     trip = make_trip([member("A", ["french"], ["food_tasting", "cooking"])], city="montreal", month=3)
     slugs = {s["experience"]["slug"] for s in trip["stops"]}
     assert "montreal-sugar-shack" in slugs
@@ -54,11 +52,10 @@ def test_season_filtering(make_trip):
         assert 3 in s["experience"]["available_months"]
     july = make_trip([member("A", ["french"], ["food_tasting", "cooking"])], city="montreal", month=7)
     assert "montreal-sugar-shack" not in {s["experience"]["slug"] for s in july["stops"]}
-    assert any("closed to visitors in July" in n for n in july["notes"])
+    assert any("closed in July" in n for n in july["notes"])
 
 
 def test_every_preferred_region_is_visited(make_trip):
-    # Members with interests scattered across Canada, road trip from Toronto.
     trip = make_trip([
         member("Bob", ["indigenous"], ["cold_weather", "fishing"], "northern"),
         member("Sarah", ["french"], ["cheese"]),
@@ -66,14 +63,13 @@ def test_every_preferred_region_is_visited(make_trip):
         member("Kim", ["immigrant"], ["fruit_picking"], "west_coast"),
     ], city="toronto", month=7)
     stops = trip["stops"]
+    assert len(stops) <= len(trip["party"]["members"])
     regions = {s["experience"]["region"] for s in stops}
-    # Nobody is forced into one region: each preferred region gets its own part of the trip.
     assert {"northern", "atlantic", "west_coast"} <= regions
     assert set(trip["regions"]) == regions
     for name in ("Bob", "Alex", "Kim"):
         rec = next(r for r in trip["recommendations"] if r["member_name"] == name)
         assert not any("preferred" in u for u in rec["unmet"])
-    # Each region's stops stay within one compact area.
     for region in regions:
         here = [s for s in stops if s["experience"]["region"] == region]
         for a in here:
@@ -81,10 +77,9 @@ def test_every_preferred_region_is_visited(make_trip):
                 d = geo.great_circle_km(a["experience"]["latitude"], a["experience"]["longitude"],
                                         b["experience"]["latitude"], b["experience"]["longitude"])
                 assert d <= 2 * CLUSTER_RADIUS_KM
-    # Days are within the calculated duration and in visit order.
     days = [s["day_number"] for s in stops]
     assert days == sorted(days) and all(1 <= d <= trip["duration_days"] for d in days)
-    assert any("every traveller's preferred region" in c for c in trip["travel"]["considerations"])
+    assert any(c.startswith("Regions on this trip:") for c in trip["travel"]["considerations"])
 
 
 def test_multi_region_plane_trip_flies_between_regions(make_trip):
@@ -94,7 +89,7 @@ def test_multi_region_plane_trip_flies_between_regions(make_trip):
     ], city="toronto", transport="plane", month=7)
     assert set(trip["regions"]) == {"northern", "atlantic"}
     flights = trip["travel"]["flights"]
-    assert len(flights) == 3  # out to the first region, between regions, then home
+    assert len(flights) == 3
     assert flights[0]["from"]["code"] == "YYZ" and flights[-1]["to"]["code"] == "YYZ"
     assert flights[-1]["before_stop"] is None and trip["travel"]["return_flight"] is True
     airfare = next(i for i in trip["budget"]["transportation"]["items"] if "irfare" in i["label"])
@@ -103,7 +98,6 @@ def test_multi_region_plane_trip_flies_between_regions(make_trip):
 
 
 def test_preferred_region_closed_is_explained(make_trip):
-    # The only northern fixture stop is closed in January.
     trip = make_trip([
         member("Bob", ["british"], ["history"], "northern"),
     ], city="ottawa", month=1)
@@ -143,11 +137,10 @@ def test_shared_destination_charged_once(make_trip):
     slugs = [s["experience"]["slug"] for s in trip["stops"]]
     assert slugs.count("ottawa-ag-museum") == 1
     item = next(i for i in trip["budget"]["activities"]["items"] if i["slug"] == "ottawa-ag-museum")
-    assert item["subtotal"] == 12.0 * 3  # once for the party, not once per member
-    # Personalized, distinct explanations mentioning companions
+    assert item["subtotal"] == 12.0 * 3
     assert len({r["explanation"] for r in recs}) == 3
     assert all(r["member_name"] in r["explanation"] for r in recs)
-    assert "shared highlight" in recs[0]["explanation"]
+    assert "Also recommended for" in recs[0]["explanation"]
 
 
 def test_no_suitable_match_gives_fallback(make_trip):
@@ -157,14 +150,13 @@ def test_no_suitable_match_gives_fallback(make_trip):
     ], city="ottawa", month=1)
     zed = next(r for r in trip["recommendations"] if r["member_name"] == "Zed")
     assert zed["experience_slug"] is None
-    assert "haven't forced a recommendation" in zed["explanation"]
+    assert "No stop on this route closely matches Zed" in zed["explanation"]
 
 
 def test_infeasible_trip_returns_friendly_error(client):
     from conftest import party_payload
     p = client.post("/api/parties", json=party_payload(
         [member("A", ["indigenous"], ["cold_weather"])], city="whitehorse", month=1)).json()
-    # Nothing open in January matches this traveller, so no trip can be built.
     r = client.post("/api/trips/generate", json={"party_id": p["id"]})
     assert r.status_code == 422
     assert "suit your group" in r.json()["detail"]
@@ -182,13 +174,22 @@ def test_itinerary_daily_capacity(make_trip):
 
 
 def test_duration_is_calculated_from_the_itinerary(make_trip):
-    # A short local outing fits in one day.
     near = make_trip([member("A", ["british"], ["animals"])], city="ottawa", month=7)
     assert near["duration_days"] == 1
     assert near["budget"]["accommodation"]["nights"] == 0
-    # The same interests from far away need extra days for the drive there and back.
     far = make_trip([member("A", ["british"], ["animals"])], city="winnipeg", month=7)
     assert far["duration_days"] > near["duration_days"]
     assert far["duration_days"] >= max(s["day_number"] for s in far["stops"])
+    scheduled_hours = {}
+    for segment in far["travel"]["segments"]:
+        day = segment["day"]
+        scheduled_hours[day] = scheduled_hours.get(day, 0) + segment["hours"]
+    for stop in far["stops"]:
+        day = stop["day_number"]
+        scheduled_hours[day] = scheduled_hours.get(day, 0) + stop["experience"]["visit_duration_hours"]
+    assert set(scheduled_hours) == set(range(1, far["duration_days"] + 1))
+    assert all(0 < hours <= DAY_HOURS + 0.01 for hours in scheduled_hours.values())
+    assert all(segment["before_stop"] is None
+               for segment in far["travel"]["segments"] if segment["day"] == far["duration_days"])
     assert far["budget"]["meals"]["days"] == far["duration_days"]
-    assert any("worked out automatically" in n for n in far["notes"])
+    assert any("for visits and round-trip travel" in n for n in far["notes"])

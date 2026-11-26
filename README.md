@@ -26,8 +26,8 @@ Everything runs on your own computer: FastAPI and SQLite for the backend, React 
 
 **Windows (PowerShell)**
 ```powershell
-./scripts/setup.ps1     # venv + deps, cache photos, seed SQLite, npm install
-./scripts/dev.ps1       # starts backend :8000 and frontend :5173
+./scripts/setup.ps1
+./scripts/dev.ps1
 ```
 
 **macOS / Linux**
@@ -41,44 +41,57 @@ Then open **http://localhost:5173**. The API is at http://127.0.0.1:8000, with i
 
 ## 3. Manual setup (step by step)
 
+Create the virtual environment from the repository root.
+
 ```bash
-# Backend: create a virtual environment and install dependencies
 python -m venv backend/.venv
-#   Windows:      backend\.venv\Scripts\activate
-#   macOS/Linux:  source backend/.venv/bin/activate
+```
+
+Activate it with `.\backend\.venv\Scripts\Activate.ps1` in PowerShell or `source backend/.venv/bin/activate` on macOS or Linux. Then install the backend dependencies and seed SQLite. You can run the seed again to update destination records by slug.
+
+```bash
 pip install -r backend/requirements.txt
-
-# Optional: cache the openly licensed Wikimedia Commons photos locally (needs internet)
-python scripts/fetch_images.py
-
-# Create the SQLite schema and import data/researched_experiences.json.
-# Safe to run again; it updates records by slug and never duplicates them.
 python scripts/seed_database.py
+```
 
-# Start FastAPI
+To cache the destination photos locally, run `python scripts/fetch_images.py` while online.
+
+Start FastAPI from the repository root.
+
+```bash
 cd backend
 uvicorn app.main:app --reload --port 8000
+```
 
-# In a second terminal, start Vite
+Open a second terminal at the repository root and start Vite.
+
+```bash
 cd frontend
 npm install
-npm run dev            # http://localhost:5173 (proxies /api to :8000)
+npm run dev
 ```
 
 ## 4. Running tests
 
+Run the backend tests from the repository root with the virtual environment active.
+
 ```bash
-# Backend: 39 pytest tests (API, scoring, planner, costs, seeding)
-cd backend && python -m pytest -q
+cd backend
+python -m pytest -q
+```
 
-# Frontend: Vitest + React Testing Library
-cd frontend && npm test
-cd frontend && npm run typecheck
+In the frontend directory, run the unit tests and type checks.
 
-# End-to-end: Playwright drives the real UI against the real API and database
-cd frontend
-npx playwright install chromium   # first time only
-npm run test:e2e                  # reuses running servers, or starts them
+```bash
+npm test
+npm run typecheck
+```
+
+Playwright uses the frontend and backend servers, starting them if needed. Install Chromium once, then run the browser suite from the frontend directory.
+
+```bash
+npx playwright install chromium
+npm run test:e2e
 ```
 
 The end-to-end suite covers:
@@ -92,8 +105,10 @@ The end-to-end suite covers:
 
 ## 5. Resetting the demo data
 
+Resetting drops the existing tables, including parties and saved trips, and then seeds the destinations again.
+
 ```bash
-python scripts/seed_database.py --reset   # drops all tables (parties, trips) and re-seeds destinations
+python scripts/seed_database.py --reset
 ```
 You can also delete `backend/canadian_roots.db` and run the seed script again.
 

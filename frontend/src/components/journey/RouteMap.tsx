@@ -20,15 +20,12 @@ function pin(label: string, variant: 'stop' | 'origin' | 'airport') {
   })
 }
 
-/** Marker map of the selected stops. Without real routing data we deliberately draw no route lines. */
 export default function RouteMap({ stops, travel }: { stops: TripStop[]; travel: Travel }) {
   const [tilesFailed, setTilesFailed] = useState(false)
   const points = useMemo(() => {
     const pts: [number, number][] = stops.map((s) => [s.experience.latitude, s.experience.longitude])
-    // Road trips frame the whole drive; fly-and-drive trips frame the destination area only.
     if (travel.effective_method === 'car') pts.push([travel.origin.latitude, travel.origin.longitude])
     if (pts.length === 1) {
-      // A single point has no extent; give the map a sensible regional zoom around it.
       const [lat, lng] = pts[0]
       pts.push([lat + 0.4, lng + 0.6], [lat - 0.4, lng - 0.6])
     }
@@ -64,7 +61,7 @@ export default function RouteMap({ stops, travel }: { stops: TripStop[]; travel:
       {tilesFailed && (
         <div className="absolute inset-x-4 bottom-4 z-[500] flex items-center gap-2 rounded-xl bg-cream-50/95 px-4 py-3 text-sm text-ink-soft shadow-soft">
           <WifiOff className="size-4 text-terracotta" aria-hidden />
-          Map tiles need an internet connection — stop locations are still shown accurately.
+          The map background needs an internet connection. Stop markers are still available.
         </div>
       )}
     </div>
