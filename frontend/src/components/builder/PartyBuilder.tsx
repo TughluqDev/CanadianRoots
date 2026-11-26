@@ -76,15 +76,14 @@ export function PartyBuilder({
 
   return (
     <FormProvider {...form}>
-      <div ref={topRef} className="scroll-mt-28" />
+      <div ref={topRef} className="scroll-mt-4" />
       <StepIndicator step={step} onJump={goTo} />
-      <form noValidate onSubmit={(e) => { e.preventDefault(); if (step === 2) void submit() }} className="mt-8">
-        <Card className="p-5 sm:p-8 lg:p-10">
-          <div className="mb-8">
-            <p className="eyebrow mb-2">Step {step + 1} of 3</p>
-            <h2 className="text-3xl font-medium">{STEPS[step].title}</h2>
+      <form noValidate onSubmit={(e) => { e.preventDefault(); if (step === 2) void submit() }} className="mt-3">
+        <Card className="p-4 sm:p-5">
+          <div className="mb-4">
+            <h2 className="text-xl font-bold">{STEPS[step].title}</h2>
           </div>
-          <div key={step} className="animate-fade-up">
+          <div key={step}>
             {step === 0 && <TripDetailsStep cities={cities} />}
             {step === 1 && <MembersStep preferences={preferences} regions={regions} />}
             {step === 2 && <ReviewStep cities={cities} onEdit={goTo} />}
@@ -97,7 +96,7 @@ export function PartyBuilder({
             </div>
           )}
 
-          <div className="mt-10 flex flex-col-reverse gap-3 border-t border-cream-300/70 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-5 flex flex-col-reverse gap-3 border-t border-cream-300 pt-4 sm:flex-row sm:items-center sm:justify-between">
             {step > 0 ? (
               <Button type="button" variant="outline" onClick={() => goTo(step - 1)}><ArrowLeft />Back</Button>
             ) : <span />}

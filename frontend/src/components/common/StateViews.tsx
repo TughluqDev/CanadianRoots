@@ -23,7 +23,7 @@ export function ErrorState({ title = 'Something went wrong', message, onRetry, a
 
 export function EmptyState({ title, message, action }: { title: string; message: string; action?: React.ReactNode }) {
   return (
-    <Card className="paper-grain mx-auto max-w-xl p-10 text-center">
+    <Card className="mx-auto max-w-xl p-10 text-center">
       <div className="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-sage-100 text-forest">
         <Compass className="size-6" aria-hidden />
       </div>

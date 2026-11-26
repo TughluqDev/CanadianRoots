@@ -21,26 +21,26 @@ export function priceText(exp: Experience): string {
   return `${money(exp.adult_price_cad, true)}${exp.price_basis === 'per_group' ? ' per group' : ' per adult'}`
 }
 
-export function DestinationFeature({ exp, reverse, travellers }: { exp: Experience; reverse?: boolean; travellers?: string[] }) {
+export function DestinationFeature({ exp, travellers }: { exp: Experience; travellers?: string[] }) {
   return (
-    <article className="grid items-start gap-8 lg:grid-cols-2 lg:gap-14" id={`dest-${exp.slug}`}>
-      <div className={cn('lg:sticky lg:top-24', reverse && 'lg:order-2')}>
-        <SmartImage src={exp.image_url} alt={exp.image_caption ?? exp.name} region={exp.region}
-          className="aspect-[4/3] rounded-3xl shadow-lift" />
+    <article className="grid items-start gap-4 border border-cream-300 bg-cream-50 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]" id={`dest-${exp.slug}`}>
+      <div>
+        <SmartImage src={exp.image_url} alt={exp.image_caption ?? exp.name}
+          className="aspect-[4/3] rounded" />
         <PhotoCredit exp={exp} className="mt-3 px-1" />
       </div>
       <div>
         <div className="flex flex-wrap gap-1.5">
           {exp.cultures.map((c) => <CultureBadge key={c} culture={c} />)}
         </div>
-        <h3 className="mt-4 text-3xl leading-tight font-medium sm:text-4xl">{exp.name}</h3>
+        <h3 className="mt-2 text-xl font-bold">{exp.name}</h3>
         <p className="mt-2 text-ink-soft">{exp.address ? `${exp.address} · ` : ''}{exp.city}, {exp.province}</p>
         {travellers && travellers.length > 0 && (
           <p className="mt-3 text-sm font-medium text-terracotta">Recommended for {travellers.join(', ')}</p>
         )}
-        <p className="mt-5 text-lg leading-relaxed text-ink">{exp.description}</p>
+        <p className="mt-3 text-sm leading-relaxed text-ink">{exp.description}</p>
 
-        <dl className="mt-7 grid grid-cols-2 gap-4 rounded-2xl border border-cream-300/70 bg-white/50 p-5 sm:grid-cols-3">
+        <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-cream-300 pt-3 text-sm sm:grid-cols-3">
           <div>
             <dt className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-muted uppercase"><Clock className="size-3.5" aria-hidden />Visit</dt>
             <dd className="mt-1 font-semibold text-forest-900">≈ {hours(exp.visit_duration_hours)}</dd>
@@ -59,7 +59,7 @@ export function DestinationFeature({ exp, reverse, travellers }: { exp: Experien
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">{[exp.season_notes, exp.pricing_notes].filter(Boolean).join(' ')}</p>
         )}
 
-        <div className="mt-8 space-y-6">
+        <div className="mt-4 space-y-4 text-sm">
           <section>
             <h4 className="flex items-center gap-2 font-sans text-sm font-bold tracking-wide text-forest uppercase"><Sprout className="size-4 text-sage" aria-hidden />Agricultural heritage</h4>
             <p className="mt-2 leading-relaxed text-ink-soft">{exp.agricultural_significance}</p>
@@ -80,11 +80,11 @@ export function DestinationFeature({ exp, reverse, travellers }: { exp: Experien
             </section>
           )}
           {exp.food_spotlight_name && (
-            <section className="rounded-2xl bg-forest p-6 text-cream">
-              <p className="flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-gold uppercase"><Utensils className="size-4" aria-hidden />Food spotlight</p>
-              <p className="mt-2 font-display text-2xl">{exp.food_spotlight_name}</p>
-              {exp.food_spotlight_description && <p className="mt-2 leading-relaxed text-cream/80">{exp.food_spotlight_description}</p>}
-              <p className="mt-3 text-xs text-cream/60">
+            <section className="border-l-2 border-gold bg-gold-100 p-3">
+              <p className="flex items-center gap-2 text-xs font-semibold text-forest"><Utensils className="size-4" aria-hidden />Food spotlight</p>
+              <p className="mt-1 font-semibold">{exp.food_spotlight_name}</p>
+              {exp.food_spotlight_description && <p className="mt-2 leading-relaxed text-ink-soft">{exp.food_spotlight_description}</p>}
+              <p className="mt-3 text-xs text-ink-soft">
                 {exp.food_included_in_admission ? 'Included with admission.' : 'Tastings and purchases may cost extra.'}
               </p>
             </section>
@@ -94,7 +94,7 @@ export function DestinationFeature({ exp, reverse, travellers }: { exp: Experien
         <div className="mt-8 flex flex-wrap items-center gap-4">
           {exp.website && (
             <a href={exp.website} target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-cream transition hover:bg-forest-900">
+              className="inline-flex items-center gap-2 rounded bg-forest px-3 py-2 text-sm font-semibold text-cream transition hover:bg-forest-900">
               Official website<ExternalLink className="size-4" aria-hidden />
             </a>
           )}

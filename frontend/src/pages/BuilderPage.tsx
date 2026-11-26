@@ -56,11 +56,10 @@ export function BuilderPage() {
   const error = prefs.error ?? regions.error ?? cities.error ?? party.error
 
   return (
-    <div className="paper-grain pt-28 pb-10">
+    <div className="py-6">
       <div className="container-page max-w-5xl">
-        <header className="mb-10 max-w-2xl">
-          <p className="eyebrow mb-3">Build your party</p>
-          <h1 className="text-4xl leading-tight font-medium sm:text-5xl">Tell us who’s coming, and we’ll find the farms, kitchens and stories to match.</h1>
+        <header className="mb-5">
+          <h1 className="text-2xl font-bold">Plan a journey</h1>
         </header>
         {error ? (
           <ErrorState message={error.message} onRetry={() => { void prefs.refetch(); void regions.refetch(); void cities.refetch(); void party.refetch() }} />

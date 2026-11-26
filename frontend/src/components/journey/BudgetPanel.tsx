@@ -8,27 +8,6 @@ import { cn, money } from '@/lib/utils'
 import { api } from '@/services/api'
 import type { Assumptions, Trip } from '@/types/api'
 
-function ShareBars({ rows, total }: { rows: { label: string; value: number }[]; total: number }) {
-  return (
-    <div className="space-y-3.5" role="list" aria-label="Share of estimated total by category">
-      {rows.map((r) => {
-        const pct = total > 0 ? (r.value / total) * 100 : 0
-        return (
-          <div key={r.label} role="listitem" className="group" title={`${r.label}: ${money(r.value, true)} (${pct.toFixed(1)}%)`}>
-            <div className="mb-1.5 flex items-baseline justify-between text-sm">
-              <span className="font-medium text-ink">{r.label}</span>
-              <span className="text-ink-soft"><span className="font-semibold text-forest-900">{money(r.value)}</span> · {pct.toFixed(0)}%</span>
-            </div>
-            <div className="h-2.5 rounded-full bg-cream-200">
-              <div className="h-full rounded-full bg-forest transition-all duration-700 group-hover:bg-terracotta" style={{ width: `${Math.max(pct, r.value > 0 ? 1.5 : 0)}%` }} />
-            </div>
-          </div>
-        )
-      })}
-    </div>
-  )
-}
-
 function Line({ label, detail, amount, strong }: { label: string; detail?: string; amount: number; strong?: boolean }) {
   return (
     <div className="flex items-start justify-between gap-4 py-2.5">
@@ -107,29 +86,21 @@ function AssumptionsEditor({ trip }: { trip: Trip }) {
 
 export function BudgetPanel({ trip }: { trip: Trip }) {
   const b = trip.budget
-  const rows = [
-    { label: 'Experiences', value: b.activities.total },
-    { label: 'Transportation', value: b.transportation.total },
-    { label: 'Accommodation', value: b.accommodation.total },
-    { label: 'Meals', value: b.meals.total },
-    { label: 'Contingency', value: b.contingency },
-  ]
   const acc = b.accommodation
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_1.15fr]">
+    <div className="grid items-start gap-4 lg:grid-cols-[1fr_1.15fr]">
       <div className="space-y-6">
         <Card className="overflow-hidden">
-          <div className="bg-forest p-7 text-cream">
+          <div className="bg-forest p-4 text-cream">
             <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Estimated party total</p>
-            <p className="mt-2 font-display text-5xl font-medium sm:text-6xl" data-testid="budget-total">{money(b.total)}</p>
+            <p className="mt-1 text-2xl font-bold" data-testid="budget-total">{money(b.total)}</p>
             <p className="mt-2 text-cream/75">{money(b.per_person)} per person · {b.travellers} traveller{b.travellers > 1 ? 's' : ''} · CAD</p>
           </div>
-          <div className="p-7"><ShareBars rows={rows} total={b.total} /></div>
         </Card>
         <AssumptionsEditor trip={trip} />
       </div>
 
-      <Card className="p-6 sm:p-8">
+      <Card className="p-4">
         <h3 className="text-xl font-medium">Itemized breakdown</h3>
         <section className="mt-5">
           <p className="eyebrow mb-1">Experiences</p>
@@ -181,8 +152,8 @@ export function BudgetPanel({ trip }: { trip: Trip }) {
           <Line label="Subtotal" amount={b.subtotal} />
           <Line label={`Contingency (${Math.round(b.contingency_rate * 100)}%)`} detail="Buffer for incidentals and price changes." amount={b.contingency} />
           <div className="flex items-center justify-between py-3">
-            <p className="font-display text-lg text-forest-900">Estimated total</p>
-            <p className="font-display text-2xl text-forest-900 tabular-nums">{money(b.total, true)}</p>
+            <p className="text-lg text-forest-900">Estimated total</p>
+            <p className="text-2xl text-forest-900 tabular-nums">{money(b.total, true)}</p>
           </div>
         </div>
         <div className="mt-4 space-y-2 rounded-xl bg-cream-200/60 p-4 text-xs leading-relaxed text-ink-soft">

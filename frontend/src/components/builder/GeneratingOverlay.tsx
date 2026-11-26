@@ -1,32 +1,7 @@
-import { Sprout } from 'lucide-react'
-import { useEffect, useState } from 'react'
-
-const MESSAGES = [
-  'Matching your interests…',
-  'Checking seasonal hours…',
-  'Choosing stops…',
-  'Planning the route…',
-  'Estimating your budget in CAD…',
-]
-
 export function GeneratingOverlay() {
-  const [i, setI] = useState(0)
-  useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % MESSAGES.length), 1100)
-    return () => clearInterval(t)
-  }, [])
   return (
-    <div role="status" aria-live="polite" className="animate-fade-in fixed inset-0 z-[1500] flex items-center justify-center bg-cream/95 backdrop-blur-sm">
-      <div className="text-center">
-        <div className="relative mx-auto mb-8 size-24">
-          <span className="absolute inset-0 animate-ping rounded-full bg-gold/30" />
-          <span className="relative flex size-24 items-center justify-center rounded-full bg-forest text-gold shadow-lift">
-            <Sprout className="size-10" aria-hidden />
-          </span>
-        </div>
-        <p className="font-display text-3xl text-forest-900">Planning your trip</p>
-        <p key={i} className="animate-fade-up mt-3 text-ink-soft">{MESSAGES[i]}</p>
-      </div>
+    <div role="status" aria-live="polite" className="fixed inset-0 z-[1500] grid place-items-center bg-cream/90">
+      <p className="border border-cream-300 bg-cream-50 p-5 font-semibold text-forest">Planning your trip…</p>
     </div>
   )
 }

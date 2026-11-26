@@ -80,7 +80,7 @@ export function CitySelect({ cities, value, onChange, invalid, describedBy }: Ci
           id={listId}
           role="listbox"
           aria-label="Supported starting cities"
-          className="animate-fade-in absolute z-30 mt-2 max-h-72 w-full overflow-auto rounded-xl border border-cream-300 bg-cream-50 p-1.5 shadow-lift"
+          className="absolute z-30 mt-2 max-h-72 w-full overflow-auto rounded-xl border border-cream-300 bg-cream-50 p-1.5"
         >
           {results.length === 0 && (
             <li className="px-3 py-4 text-sm text-ink-soft">

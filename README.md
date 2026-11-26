@@ -117,8 +117,8 @@ You can also delete `backend/canadian_roots.db` and run the seed script again.
 | Feature | Offline? |
 |---|---|
 | Planning, recommendations, itinerary, budget, saved trips | ✅ fully offline |
-| Fonts | ✅ bundled via `@fontsource` |
-| Destination photos | ✅ once cached by `fetch_images.py`. Otherwise they load from Wikimedia, and a designed illustration is shown when that fails |
+| Fonts | ✅ uses system fonts |
+| Destination photos | ✅ once cached by `fetch_images.py`. Otherwise they load from Wikimedia, and a placeholder is shown if the photo fails to load |
 | Map tiles (OpenStreetMap) | ❌ online only. Markers still render and a notice explains |
 | Official-website and source links | ❌ online only |
 

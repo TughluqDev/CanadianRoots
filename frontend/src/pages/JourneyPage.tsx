@@ -26,8 +26,8 @@ const SECTIONS = [
 function JourneySkeleton() {
   return (
     <div aria-busy="true" aria-label="Loading journey">
-      <div className="h-[460px] animate-pulse bg-forest-900/90" />
-      <div className="container-page mt-12 grid gap-6 md:grid-cols-3">
+      <div className="h-40 bg-cream-200" />
+      <div className="container-page mt-5 grid gap-4 md:grid-cols-3">
         {[0, 1, 2].map((i) => <Skeleton key={i} className="h-96" />)}
       </div>
     </div>
@@ -41,21 +41,21 @@ function JourneyContent({ trip }: { trip: Trip }) {
   return (
     <>
       <JourneyHero trip={trip} />
-      <nav aria-label="Journey sections" className="no-print sticky top-[72px] z-[900] border-b border-cream-300/60 bg-cream/90 backdrop-blur-lg">
-        <div className="container-page flex gap-1 overflow-x-auto py-2.5 [scrollbar-width:none]">
+      <nav aria-label="Journey sections" className="no-print border-b border-cream-300 bg-cream-50">
+        <div className="container-page flex flex-wrap gap-x-4 gap-y-2 py-3">
           {SECTIONS.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="shrink-0 rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition hover:bg-forest/5 hover:text-forest">
+            <a key={s.id} href={`#${s.id}`} className="text-sm font-semibold text-forest underline">
               {s.label}
             </a>
           ))}
         </div>
       </nav>
 
-      <section id="for-you" className="container-page scroll-mt-36 pt-16">
-        <SectionHeading eyebrow="Personalized for your party" title="A highlight for every traveller">
+      <section id="for-you" className="container-page pt-8">
+        <SectionHeading title="A highlight for every traveller">
           Recommendations reflect each traveller’s preferences. The itinerary lists shared stops once.
         </SectionHeading>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {trip.recommendations.map((r) => {
             const idx = trip.party.members.findIndex((m) => m.id === r.member_id)
             return <RecommendationCard key={r.member_id} rec={r} member={trip.party.members[idx]} index={idx}
@@ -64,39 +64,39 @@ function JourneyContent({ trip }: { trip: Trip }) {
         </div>
       </section>
 
-      <section id="destinations" className="scroll-mt-36 pt-24">
+      <section id="destinations" className="pt-8">
         <div className="container-page">
-          <SectionHeading eyebrow="Explore your stops" title="Destinations">
+          <SectionHeading title="Destinations">
             Check seasonal hours and programs before you visit.
           </SectionHeading>
-          <div className="mt-14 space-y-24">
-            {trip.stops.map((s, i) => (
-              <DestinationFeature key={s.id} exp={s.experience} reverse={i % 2 === 1} travellers={travellersFor(s.experience.slug)} />
+          <div className="mt-4 space-y-6">
+            {trip.stops.map((s) => (
+              <DestinationFeature key={s.id} exp={s.experience} travellers={travellersFor(s.experience.slug)} />
             ))}
           </div>
         </div>
       </section>
 
-      <section id="map" className="container-page no-print scroll-mt-36 pt-24">
-        <SectionHeading eyebrow="Where you’ll be" title="Your stops on the map">
+      <section id="map" className="container-page no-print pt-8">
+        <SectionHeading title="Your stops on the map">
           The map shows stop locations. The itinerary estimates driving distances from straight-line distances.
         </SectionHeading>
-        <div className="mt-10">
+        <div className="mt-4">
           <Suspense fallback={<Skeleton className="h-[520px] rounded-3xl" />}>
             <RouteMap stops={trip.stops} travel={trip.travel} />
           </Suspense>
         </div>
       </section>
 
-      <section id="itinerary" className="container-page scroll-mt-36 pt-24">
-        <div className="grid gap-12 lg:grid-cols-[1fr_340px]">
+      <section id="itinerary" className="container-page pt-8">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
           <div>
-            <SectionHeading eyebrow="Day by day" title="Your shared itinerary" />
-            <div className="mt-10 pl-6">
+            <SectionHeading title="Your shared itinerary" />
+            <div className="mt-4">
               <ItineraryTimeline trip={trip} />
             </div>
           </div>
-          <aside className="space-y-4 lg:pt-24">
+          <aside className="space-y-3 lg:pt-10">
             <Card className="p-6">
               <h3 className="flex items-center gap-2 font-sans text-sm font-bold tracking-wide text-forest uppercase">
                 <Lightbulb className="size-4 text-gold" aria-hidden />Travel considerations
@@ -117,17 +117,17 @@ function JourneyContent({ trip }: { trip: Trip }) {
         </div>
       </section>
 
-      <section id="budget" className="container-page scroll-mt-36 pt-24">
-        <SectionHeading eyebrow="Trip budget" title="What it’s likely to cost">
+      <section id="budget" className="container-page pt-8">
+        <SectionHeading title="Trip budget">
           Adjust the estimates below. All amounts are in Canadian dollars.
         </SectionHeading>
-        <div className="mt-10"><BudgetPanel trip={trip} /></div>
+        <div className="mt-4"><BudgetPanel trip={trip} /></div>
       </section>
 
-      <section className="container-page no-print pt-20">
-        <Card className="paper-grain flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-10">
+      <section className="container-page no-print pt-8">
+        <Card className="flex flex-col items-start justify-between gap-3 p-4 sm:flex-row sm:items-center">
           <div>
-            <h2 className="text-2xl font-medium sm:text-3xl">Want a different mix?</h2>
+            <h2 className="text-2xl font-medium sm:text-3xl">Edit your trip</h2>
             <p className="mt-2 text-ink-soft">Edit your group or travel dates to plan a new trip.</p>
           </div>
           <Button asChild size="lg"><Link to={`/plan?party=${trip.party.id}`}><RefreshCw />Edit party & regenerate</Link></Button>
@@ -144,13 +144,13 @@ export function JourneyPage() {
 
   if (!Number.isInteger(id) || id <= 0 || (trip.error instanceof ApiError && trip.error.status === 404)) {
     return (
-      <div className="container-page pt-36">
+      <div className="container-page pt-6">
         <ErrorState title="Journey not found" message="This journey doesn’t exist or was deleted."
           action={<Button asChild variant="outline"><Link to="/plan">Plan a new journey</Link></Button>} />
       </div>
     )
   }
-  if (trip.error) return <div className="container-page pt-36"><ErrorState message={trip.error.message} onRetry={() => void trip.refetch()} /></div>
+  if (trip.error) return <div className="container-page pt-6"><ErrorState message={trip.error.message} onRetry={() => void trip.refetch()} /></div>
   if (trip.isPending) return <JourneySkeleton />
   return <JourneyContent trip={trip.data} />
 }

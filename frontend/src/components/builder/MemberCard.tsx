@@ -31,13 +31,13 @@ export function MemberCard({ index, expanded, onToggle, onRemove, preferences, r
   const panelId = `member-panel-${index}`
 
   return (
-    <Card className={cn('animate-fade-up overflow-hidden transition-shadow', expanded && 'shadow-lift', hasError && 'border-terracotta/60')}>
+    <Card className={cn('overflow-hidden ', hasError && 'border-terracotta/60')}>
       <div className="flex items-center gap-4 p-4 sm:p-5">
         <MemberAvatar name={member?.name || `${index + 1}`} index={index} />
         <button type="button" onClick={onToggle} aria-expanded={expanded} aria-controls={panelId}
           className="flex min-w-0 flex-1 cursor-pointer items-center gap-3 text-left">
           <span className="min-w-0 flex-1">
-            <span className="block truncate font-display text-lg font-medium text-forest-900">{displayName}</span>
+            <span className="block truncate text-lg font-medium text-forest-900">{displayName}</span>
             <span className="block truncate text-sm text-ink-soft">
               {hasError ? (
                 <span className="inline-flex items-center gap-1 text-terracotta-700"><AlertCircle className="size-3.5" aria-hidden />Needs attention</span>
@@ -60,7 +60,7 @@ export function MemberCard({ index, expanded, onToggle, onRemove, preferences, r
       </div>
 
       {expanded && (
-        <div id={panelId} className="animate-fade-in space-y-8 border-t border-cream-300/70 bg-white/40 p-5 sm:p-7">
+        <div id={panelId} className="space-y-8 border-t border-cream-300/70 bg-white/40 p-5 sm:p-7">
           <div className="max-w-md">
             <Label htmlFor={`member-${index}-name`}>Name</Label>
             <Input id={`member-${index}-name`} placeholder="Who’s coming along?" aria-invalid={!!err?.name || undefined}
@@ -81,8 +81,8 @@ export function MemberCard({ index, expanded, onToggle, onRemove, preferences, r
                     const meta = CULTURE_META[c.id as CultureId]
                     return (
                       <button key={c.id} type="button" aria-pressed={on} onClick={() => field.onChange(toggle(field.value, c.id))}
-                        className={cn('flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-left transition-all',
-                          on ? 'border-forest bg-forest-100/70 shadow-soft' : 'border-cream-300 bg-white/70 hover:border-forest/40')}>
+                        className={cn('flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-left ',
+                          on ? 'border-forest bg-forest-100/70 ' : 'border-cream-300 bg-white/70 hover:border-forest/40')}>
                         <span className={cn('mt-1 size-3 shrink-0 rounded-full ring-4', meta.dot, on ? 'ring-forest/15' : 'ring-transparent')} aria-hidden />
                         <span>
                           <span className="block text-sm font-semibold text-forest-900">{c.label}</span>

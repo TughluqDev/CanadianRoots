@@ -18,24 +18,23 @@ export function SavedTripsPage() {
   })
 
   return (
-    <div className="container-page pt-28">
-      <header className="mb-10 max-w-2xl">
-        <p className="eyebrow mb-3">Saved journeys</p>
-        <h1 className="text-4xl leading-tight font-medium sm:text-5xl">Your planned trips</h1>
-        <p className="mt-4 text-lg text-ink-soft">Open a saved trip to view its itinerary and budget.</p>
+    <div className="container-page pt-6">
+      <header className="mb-4">
+        <h1 className="text-2xl font-bold">Your planned trips</h1>
+        <p className="mt-2 text-ink-soft">Open a saved trip to view its itinerary and budget.</p>
       </header>
       {trips.error ? (
         <ErrorState message={trips.error.message} onRetry={() => void trips.refetch()} />
       ) : trips.isPending ? (
-        <div className="grid gap-6 md:grid-cols-2">{[0, 1].map((i) => <Skeleton key={i} className="h-64" />)}</div>
+        <div className="grid gap-3">{[0, 1].map((i) => <Skeleton key={i} className="h-64" />)}</div>
       ) : trips.data.length === 0 ? (
         <EmptyState title="No journeys yet" message="Plan a trip to see it here."
           action={<Button asChild><Link to="/plan">Plan your journey</Link></Button>} />
       ) : (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-3">
           {trips.data.map((t) => (
-            <Card key={t.id} className="group grid overflow-hidden transition hover:shadow-lift sm:grid-cols-[180px_1fr]">
-              <SmartImage src={t.cover_image_url} alt="" region={t.primary_region} className="aspect-[16/9] sm:aspect-auto sm:h-full" />
+            <Card key={t.id} className="grid overflow-hidden sm:grid-cols-[150px_1fr]">
+              <SmartImage src={t.cover_image_url} alt="" className="aspect-[2/1] sm:aspect-auto sm:h-full" />
               <div className="flex flex-col p-5">
                 <p className="text-xs font-semibold text-terracotta">
                   {regionList(t.regions, t.primary_region)} · {new Date(t.generated_at).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}

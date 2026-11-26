@@ -29,9 +29,9 @@ function StopCard({ stop, members, recs }: { stop: TripStop; members: Member[]; 
   const forWhom = recs.filter((r) => r.experience_slug === exp.slug)
   return (
     <Card className="grid overflow-hidden sm:grid-cols-[200px_1fr]">
-      <SmartImage src={exp.image_url} alt={exp.name} region={exp.region} className="aspect-[16/9] sm:aspect-auto sm:h-full" />
+      <SmartImage src={exp.image_url} alt={exp.name} className="aspect-[16/9] sm:aspect-auto sm:h-full" />
       <div className="p-5">
-        <a href={`#dest-${exp.slug}`} className="font-display text-xl font-medium text-forest-900 hover:text-terracotta">{exp.name}</a>
+        <a href={`#dest-${exp.slug}`} className="text-xl font-medium text-forest-900 hover:text-terracotta">{exp.name}</a>
         <p className="text-sm text-ink-soft">{exp.city}, {exp.province}</p>
         <p className="mt-3 text-sm leading-relaxed text-ink">
           <span className="font-semibold">Main activity:</span> {exp.activities[0] ?? exp.short_description}
@@ -92,7 +92,7 @@ export function ItineraryTimeline({ trip }: { trip: Trip }) {
   const segments = trip.travel.segments
   const stopCard = (stop: TripStop) => <StopCard stop={stop} members={trip.party.members} recs={trip.recommendations} />
   return (
-    <ol className="relative space-y-10 border-l-2 border-dashed border-sage/60 pl-6 sm:pl-10">
+    <ol className="space-y-5">
       {days.map((day) => {
         const stops = trip.stops.filter((s) => s.day_number === day)
         const travelToday = segments?.filter((segment) => segment.day === day) ?? []
@@ -100,20 +100,17 @@ export function ItineraryTimeline({ trip }: { trip: Trip }) {
         const isFirst = day === 1
         const isLast = day === trip.duration_days
         return (
-          <li key={day} className="relative">
-            <span className="absolute top-0 -left-[35px] flex size-12 items-center justify-center rounded-full bg-forest font-display text-lg text-gold ring-8 ring-cream sm:-left-[51px]">
-              {day}
-            </span>
-            <h3 className="pt-2 text-2xl font-medium">Day {day}</h3>
+          <li key={day} className="border border-cream-300 bg-cream-50 p-3">
+            <h3 className="border-b border-cream-300 pb-2 text-lg font-bold">Day {day}</h3>
             {!segments && isFirst && legacyFlight && (
               <p className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
                 <Plane className="size-4 text-terracotta" aria-hidden />
                 Fly {trip.travel.origin_airport!.code} → {trip.travel.arrival_airport?.code} (≈ {hours(trip.travel.flight_hours ?? 0)} incl. airport time), pick up the rental car.
               </p>
             )}
-            <div className="mt-4 space-y-1">
+            <div className="mt-1 space-y-1">
               {!segments && stops.length === 0 && !isLast && (
-                <p className="rounded-xl border border-dashed border-cream-300 p-4 text-sm text-ink-soft">
+                <p className="py-2 text-sm text-ink-soft">
                   Travel day. {nextStop ? <>Heading toward {nextStop.experience.name}.</> : <>Heading home to {trip.travel.origin.city}.</>}
                 </p>
               )}

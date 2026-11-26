@@ -44,7 +44,7 @@ export function MemberAvatar({ name, index, size = 'md' }: { name: string; index
     <span
       aria-hidden
       className={cn(
-        'inline-flex shrink-0 items-center justify-center rounded-full font-display font-semibold ring-4 ring-cream-50',
+        'inline-flex shrink-0 items-center justify-center rounded-full font-semibold ring-4 ring-cream-50',
         MEMBER_COLORS[index % MEMBER_COLORS.length],
         size === 'sm' && 'size-8 text-xs',
         size === 'md' && 'size-11 text-sm',

@@ -59,7 +59,7 @@ export function ReviewStep({ cities, onEdit }: { cities: City[]; onEdit: (step: 
             <div className="flex items-center gap-3">
               <MemberAvatar name={m.name} index={i} />
               <div>
-                <p className="font-display text-lg font-medium text-forest-900">{m.name}</p>
+                <p className="text-lg font-medium text-forest-900">{m.name}</p>
                 <p className="text-xs text-muted">{m.preferred_region ? `Prefers ${REGION_NAMES[m.preferred_region]}` : 'Open to any region'}</p>
               </div>
             </div>

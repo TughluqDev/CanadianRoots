@@ -39,8 +39,8 @@ export function MembersStep({ preferences, regions }: { preferences: Preferences
       </div>
       <FieldError>{errors.members?.root?.message ?? errors.members?.message}</FieldError>
       <button type="button" onClick={add}
-        className="group flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-forest/25 bg-cream-50/50 py-6 font-semibold text-forest transition hover:border-forest/50 hover:bg-cream-50">
-        <span className="flex size-9 items-center justify-center rounded-full bg-forest text-cream transition group-hover:scale-110">
+        className="flex cursor-pointer items-center gap-2 rounded border border-forest/35 px-3 py-2 text-sm font-semibold text-forest hover:bg-cream-200">
+        <span className="flex items-center text-forest">
           <UserPlus className="size-4" aria-hidden />
         </span>
         Add traveller
